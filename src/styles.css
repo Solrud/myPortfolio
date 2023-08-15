@@ -16,4 +16,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .grey-main{color: #495458;}.grey-bg-main{background-color: #495458;}
 
+.sec-grey-main{color: #353c3e;}  .sec-grey-bg-main{background-color: #353c3e;}
+
 .black-main{color: #100e0f;}.black-bg-main{background-color: #100e0f;}

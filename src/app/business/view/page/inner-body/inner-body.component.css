@@ -1,3 +1,23 @@
 .vertical{
   height: calc(100vh - 84px);
 }
+span{
+  color: #fcf1ed;
+}
+.main-label{
+  font-size: 4rem;
+}
+
+
+.button-config{
+  font-size: 2rem;
+  color: #fcf1ed;
+  background-color: #ec5051;
+  border: 0;
+  border-radius: 0.3rem;
+  transition: 0.2s;
+}.button-config:hover{
+  background-color: #97c9d7;
+ }
+
+
