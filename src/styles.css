@@ -6,3 +6,14 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*Главные цвета проекта*/
+.red-main{color: #ec5051;}.red-bg-main{background-color: #ec5051;}
+
+.blue-main{color: #97c9d7;}.blue-bg-main{background-color: #97c9d7;}
+
+.vanilla-main{color: #fcf1ed;}.vanilla-bg-main{background-color: #fcf1ed;}
+
+.grey-main{color: #495458;}.grey-bg-main{background-color: #495458;}
+
+.black-main{color: #100e0f;}.black-bg-main{background-color: #100e0f;}
