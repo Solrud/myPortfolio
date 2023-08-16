@@ -1,7 +1,12 @@
-<div class="col-6 min-height-header"></div>
-<div class="d-flex col-4 min-height-header justify-content-evenly align-items-center">
-  <span>Обо мне</span>
-  <span class="">Навыки</span>
-  <span>Контакты</span>
+<div class="container-header d-flex">
+  <div class="col-6 min-height-header"></div>
+  <div class="d-flex col-4 min-height-header justify-content-evenly align-items-center max-width-1920">
+    <span  (click)="scrollToSection('about')">
+      Обо мне</span>
+    <span  (click)="scrollToSection('skills')"
+           class="">
+      Навыки</span>
+    <span  (click)="scrollToSection('contacts')">
+      Контакты</span>
+  </div>
 </div>
-<div id="skills" class="col-2 min-height-header">d</div>

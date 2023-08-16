@@ -4,4 +4,16 @@
 
 span{
   color: #fcf1ed;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+span:hover{
+  color: #97c9d7;
+}
+
+.container-header {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
 }

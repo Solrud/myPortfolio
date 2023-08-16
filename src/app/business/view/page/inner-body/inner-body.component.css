@@ -1,5 +1,6 @@
 .vertical{
   height: calc(100vh - 84px);
+  /*max-width: 100vh;*/
 }
 span{
   color: #fcf1ed;
@@ -17,7 +18,70 @@ span{
   border-radius: 0.3rem;
   transition: 0.2s;
 }.button-config:hover{
-  background-color: #97c9d7;
+   background-color: #97c9d7;
  }
 
 
+.section-container{
+  /*overflow-y: scroll;*/
+  /*scroll-behavior: smooth;*/
+}
+
+
+.div-photo{
+  width: 354px;
+  height: 472px;
+  background-color: #97c9d7;
+}
+
+
+/*Кнопки нав-бара выбора навыков*/
+.btn{
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: #97c9d7 ;
+}
+
+.btn:hover{
+  background-color: #7eaebb;
+}
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+   color: #fcf1ed;
+   background-color: #ec5051;
+  border-color: green !important;
+}
+
+.btn:active{
+  background-color: #97c9d7;
+}
+
+.btn-nav-resume{
+  width: 200px;
+  height: 30px;
+}
+.gap-nav-divs{
+  gap: 20px;
+}
+
+.column-nav-resume{
+  flex-basis: 35%;
+}
+.column-cards-resume{
+  flex-basis: 65%;
+}
+
+.card-resume{
+  width: 1000px;
+  min-height: 500px;
+  background-color: #100e0f;
+}
+
+.current-card{
+  flex: 1 0 400px;
+  height: 230px;
+  background-color: #ec5051;
+}
+
+.gap-2-navbar-cards{
+  gap: 40px;
+}
