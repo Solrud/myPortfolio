@@ -10,6 +10,7 @@ import { BodyComponent } from './business/view/page/body/body.component';
 import { HeaderComponent } from './business/view/page/header/header.component';
 import { FooterComponent } from './business/view/page/footer/footer.component';
 import { InnerBodyComponent } from './business/view/page/inner-body/inner-body.component';
+import { ContactMeDialogComponent } from './business/view/dialog/contact-me-dialog/contact-me-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { InnerBodyComponent } from './business/view/page/inner-body/inner-body.c
     BodyComponent,
     HeaderComponent,
     FooterComponent,
-    InnerBodyComponent
+    InnerBodyComponent,
+    ContactMeDialogComponent
   ],
   imports: [
     BrowserModule,

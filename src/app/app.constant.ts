@@ -1,7 +1,7 @@
 export const RESUME_CARDS = [
                               [
                                 ['Python 3', 'ООП', 'requests', 'asyncio', 'pyqt5', 'pandas', 'NumPy', 'BeautifulSoup'],
-                                ['SQL', 'Различные СУБД', 'phpMyAdmin', 'mySQL', 'sqLite', 'postgreSQl'],
+                                ['SQL', 'Различные СУБД', 'phpMyAdmin', 'mySQL', 'sqLite', 'postgreSQL'],
                                 ['JavaScript/TypeScript', 'Angular', 'RxJs'],
                                 ['HTML5', 'Верстка'],
                                 ['CSS3', 'Bootstrap', 'TailWind', 'Flex, Grid'],['Server', 'Ubuntu 20.04', 'PuTTY']
@@ -11,7 +11,7 @@ export const RESUME_CARDS = [
                                 ['ПНИПУ', 'Пермский Национально Исследовательский Политехнический Университет', '2022', '2027', 'Информационные Системы и Технологии']
                               ],
                               [
-                                ['Фриланс Телеграмм Боты', 'Написание телеграмм ботов на python3 и фреймворке aiogram', '2021', '2022'],
+                                ['Фриланс Телеграм Боты', 'Написание телеграмм ботов на python3 и фреймворке aiogram', '2021', '2022'],
                                 ['Техник-программист', 'Фронтенд разработчик на TypeScript и Angular', '2023', '...']]
                               ];
 

@@ -1,86 +1,126 @@
-<div #sectionsContainer class="section-container">
-
-  <!--главная-первая страница-->
-  <section id="about"
-           class="d-flex vertical">
-    <div class="col-1"></div>
-    <div class="col-4 d-flex justify-content-center align-items-center">
-      <div class="d-flex flex-column">
-        <span class="main-label">Привет<span class="border-dark">!</span></span>
-        <span class="main-label">Я, Матвей</span>
-        <div>
-          <button class="button-config">Контакты</button>
-        </div>
+<!--1 главная-первая страница-->
+<section
+         class="d-flex vertical">
+  <div class="col-1-my"></div>
+  <div class="col-4-my d-flex justify-content-center align-items-center">
+    <div class="d-flex flex-column"> <!-- Приветствие  -->
+      <span class="main-label">Привет<span class="border-dark">!</span></span>
+      <span class="col main-label">Я, Матвей</span>
+      <div>
+        <button (click)="onContactMe()"
+                class="button-config">СВЯЗАТЬСЯ</button>
       </div>
     </div>
-    <div class="col-7 d-flex  justify-content-center align-items-center"> <!--фотография-->
+  </div>
+  <!--фотография-->
+  <div class="col-7-my d-flex  justify-content-center align-items-center">
+    <div class="div-photo"></div>
+  </div>
+</section>
+
+
+
+<!--2 секция обо мне-->
+<section id="about" class="black-bg-main min-vh-100">
+  <!--  лейбл-->
+  <div class="d-flex justify-content-center align-items-center">
+    <h1 class="vanilla-main mb-5 mt-4">Кто я такой?</h1>
+  </div>
+
+  <div class="d-flex">
+    <!--    левая часть (фото)-->
+    <div class="col-5 d-flex justify-content-center align-items-center">
       <div class="div-photo"></div>
     </div>
-  </section>
-
-
-
-
-
-  <!--Вторая страница-->
-  <section id="skills"
-           class="sec-grey-bg-main min-vh-100 d-flex flex-column ">
-    <input type="hidden" #selectResume>
-
-    <div class="d-flex flex-column justify-content-center align-items-center column-nav-resume">
-      <div>
-        <span>Моё резюме</span>
+    <!--    правая часть (обо мне)-->
+    <div class="col-7 d-flex flex-column">
+      <h3 class="text-white"> Меня зовут Матвей Ильин</h3>
+      <div class="d-flex justify-content-center align-items-center div-text-about-me">
+        <div>
+          <span class="">Monotonectally orchestrate professionals supply chains whereas are metrics.
+            Globally procrastinate backward-compatible application the action items. Collaboratively
+            enhance extensibl collaboration and it's through interdependent opportunities. </span>
+          <br>
+          <span>Ну и все в таком духе свяжитесь со мной</span>
+        </div>
       </div>
-      <div class="d-flex justify-content-center gap-nav-divs">
-        <div class="">
-          <input (click)="selectResume.value = 'skillses'"
-                 type="radio" class="btn-check" name="btnradio" id="skillsRadio" autocomplete="off" checked>
-          <label class="btn btn-nav-resume" for="skillsRadio">Навыки</label>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+
+<!--3 секция навки-->
+<section id="skills"
+         class="sec-grey-bg-main min-vh-100 d-flex flex-column ">
+  <input type="hidden" #selectResume>
+
+  <div class="d-flex flex-column justify-content-center align-items-center column-nav-resume">
+    <div>
+      <span>Моё резюме</span>
+    </div>
+<!--    кнопки выбра навыки, образование, опыт-->
+    <div class="d-flex justify-content-center gap-nav-divs flex-wrap ">
+      <!--НАВЫКИ-->
+      <div class="nav-button-resume">
+        <input (click)="selectResume.value = 'skillses'"
+               type="radio" class="btn-check" name="btnradio" id="skillsRadio" autocomplete="off" checked>
+        <label class="btn btn-nav-resume" for="skillsRadio">Навыки</label>
+      </div>
+      <!--ОБРАЗОВАНИЕ-->
+      <div class="nav-button-resume">
+        <input (click)="selectResume.value = 'educationses'"
+               type="radio" class="btn-check" name="btnradio" id="educationRadio" autocomplete="off">
+        <label class="btn btn-nav-resume" for="educationRadio">Образование</label>
+      </div>
+      <!--ОПЫТ-->
+      <div class="nav-button-resume">
+        <input (click)="selectResume.value = 'expirienceses'"
+               type="radio" class="btn-check" name="btnradio" id="expirienceRadio" autocomplete="off">
+        <label class="btn btn-nav-resume" for="expirienceRadio">Опыт</label>
+      </div>
+    </div>
+  </div>
+
+  <!--карточки с даными по выборке кнопки-->
+  <div class="d-flex column-cards-resume justify-content-center align-items-start">
+    <div class="card-resume" [ngSwitch]="selectResume.value">
+      <!-- _______НАВЫКИ карточки-->
+      <div class="d-flex gap-nav-divs flex-wrap "
+           *ngSwitchDefault>
+        <div *ngFor="let skillCards of resumeCards[0]"
+             class="current-card">
+            <span>{{skillCards[0]}}</span>
+        </div>
+      </div>
+      <!-- _______ОБРАЗОВАНИЕ карточки-->
+      <div class="d-flex gap-nav-divs flex-wrap "
+           *ngSwitchCase="'educationses'">
+        <div *ngFor="let skillCards of resumeCards[1]"
+             class="current-card">
+          <span>{{skillCards[0]}}</span>
+        </div>
+      </div>
+      <!-- _______ОПЫТ карточки-->
+      <div class="d-flex gap-nav-divs flex-wrap "
+           *ngSwitchCase="'expirienceses'">
+        <div *ngFor="let skillCards of resumeCards[2]"
+             class="current-card">
+          <span>{{skillCards[0]}}</span>
         </div>
 
-        <div class="">
-          <input (click)="selectResume.value = 'educationses'"
-                 type="radio" class="btn-check" name="btnradio" id="educationRadio" autocomplete="off">
-          <label class="btn btn-nav-resume" for="educationRadio">Образование</label>
-        </div>
-
-        <div class="">
-          <input (click)="selectResume.value = 'expirienceses'"
-                 type="radio" class="btn-check" name="btnradio" id="expirienceRadio" autocomplete="off">
-          <label class="btn btn-nav-resume" for="expirienceRadio">Опыт</label>
-        </div>
       </div>
     </div>
 
-    <div class="d-flex column-cards-resume justify-content-center align-items-start">
-      <div class="card-resume" [ngSwitch]="selectResume.value">
-        <div class="d-flex gap-nav-divs flex-wrap "
-             *ngSwitchDefault > <!-- НАВЫКИ SKILLS-->
-          <div *ngFor="let skillCards of resumeCards[0]"
-               class="current-card">
-              <span>{{skillCards[0]}}</span>
-          </div>
-        </div>
-        <div class="d-flex gap-nav-divs flex-wrap "
-             *ngSwitchCase="'educationses'">
-          <div *ngFor="let skillCards of resumeCards[1]"
-               class="current-card">
-            <span>{{skillCards[0]}}</span>
-          </div>
-        </div>
-
-        <div class="d-flex gap-nav-divs flex-wrap "
-             *ngSwitchCase="'expirienceses'">
-          <div *ngFor="let skillCards of resumeCards[2]"
-               class="current-card">
-            <span>{{skillCards[0]}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-  </section>
+  </div>
+  <div class="align-self-center">
+    <button (click)="onContactMe()"
+            class="btn"
+            >
+      Связаться
+    </button>
+  </div>
+</section>
 
 
 
@@ -89,8 +129,15 @@
 
 
   <!--третья страница-->
-  <section id="contacts"
-           class="blue-bg-main vh-100">
+<!--  <section id="contacts"-->
+<!--           class="grey-bg-main d-flex flex-column vh-100">-->
+<!--    <div class="align-self-center"><span>Контактные данные</span></div>-->
+<!--    <div class="d-flex flex-wrap align-content-between">-->
+<!--      <div class="col-5 div-photo-sec"></div>-->
+<!--      <div class="col-6 d-flex flex-column">-->
+<!--        <span>напиши мне что нибудь</span>-->
+<!--        <span></span>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
 
-  </section>
-</div>
