@@ -1,14 +1,83 @@
-<div class="modal-header">
-  <h2>Оставьте свои контакты</h2>
-  <h4>Для уточнения деталей</h4>
-</div>
-<div class="modal-body">
-  <span>Здесь типа модалка</span>
-</div>
-<div class="modal-footer">
-  <button class="btn"
-          ngbautofocus
-          (click)="onClickCancel()">
-    Отмена
-  </button>
+<div class="est">
+  <div class="d-flex flex-column modal-body black-bg-main justify-content-center align-items-center">
+    <h2>оставьте свои контакты</h2>
+    <h5>Для уточнения деталей</h5>
+  </div>
+  <div class="modal-body d-flex flex-column black-bg-main">
+    <div class="d-flex">
+  <!--    ДОБАВИТЬ ФОРМ ФОРМГРУПП-->
+      <div class="d-flex flex-column me-4 flex-grow-1">
+        <label for="name">Имя</label>
+        <div class="form-group input-group mb-1">
+          <input class="form-control border-dark grey-bg-main"
+                 id="name"
+                 formControlName="firstName"
+                 autocomplete="off"
+                 type="text">
+<!--          <button class="btn btn-light border-dark">-->
+<!--            <i class="bi bi-x-lg"></i>-->
+<!--          </button>-->
+        </div>
+      </div>
+
+      <div class="d-flex flex-column flex-grow-1">
+        <label for="email">Email</label>
+        <div class="form-group input-group mb-1">
+          <input class="form-control border-dark grey-bg-main"
+                 id="email"
+                 formControlName="email"
+                 autocomplete="off"
+                 type="text">
+<!--          <button class="btn btn-light border-dark">-->
+<!--            <i class="bi bi-x-lg"></i>-->
+<!--          </button>-->
+        </div>
+      </div>
+    </div>
+
+    <label for="themeQuestion">Тема вопроса</label>
+    <div class="form-group input-group mb-1">
+      <input class="form-control border-dark grey-bg-main"
+             id="themeQuestion"
+             formControlName="themeQuestion"
+             autoComplete="off"
+             type="text">
+<!--      <button class="btn btn-light border-dark">-->
+<!--        <i class="bi bi-x-lg"></i>-->
+<!--      </button>-->
+    </div>
+
+     <label for="comment">Комментарий</label>
+    <div class="form-group input-group mb-1">
+      <textarea class="form-control border-dark grey-bg-main"
+             id="comment"
+             formControlName="comment"
+             autoComplete="off"
+             type="text">
+      </textarea>
+<!--      <button class="btn btn-light border-dark">-->
+<!--        <i class="bi bi-x-lg"></i>-->
+<!--      </button>-->
+    </div>
+
+  </div>
+  <div class="modal-body black-bg-main">
+    <div class="d-flex justify-content-between">
+      <button class="btn"
+              ngbautofocus>
+        Отправить
+      </button>
+      <button class="btn "
+              ngbautofocus
+              (click)="onClickCancel()">
+        Отмена
+      </button>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <div>
+        <i class="bi bi-envelope-fill me-3 bi-class"></i>
+        <i class="bi bi-telegram bi-class"></i>
+      </div>
+    </div>
+  </div>
 </div>

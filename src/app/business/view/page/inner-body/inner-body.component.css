@@ -77,7 +77,7 @@ span{
   margin: 0 20px;
 }
 .gap-nav-divs{
-  gap: 20px;
+  /*gap: 10px;*/
 }
 /*деление места на странице навигационных кнопок и карточек*/
 .column-nav-resume{
@@ -92,14 +92,18 @@ span{
   /*min-height: 500px;*/
   background-color: #100e0f;
 }
-/*карточка*/
+/*карточка*        короче в чем прикол, это будет див карточки о внутри надо создать уже конкретно карточку*/
 .current-card{
-  flex: 1 0 400px; /*@@@@@@@@@@@@@@@@@@@тут медиа запрос нужон*/
+  flex: 0 0 50%; /*@@@@@@@@@@@@@@@@@@@тут медиа запрос нужон*/
   height: 100%;
   width: auto;
-  background-color: #ec5051;
+  background-color: #575757;
 }
-
+.inner-card-info{
+  height: 100px;
+  background-color: #ec5051;
+  margin: 10px 10px;
+}
 
 
 

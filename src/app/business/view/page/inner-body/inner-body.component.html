@@ -90,7 +90,9 @@
            *ngSwitchDefault>
         <div *ngFor="let skillCards of resumeCards[0]"
              class="current-card">
+          <div class="inner-card-info">
             <span>{{skillCards[0]}}</span>
+          </div>
         </div>
       </div>
       <!-- _______ОБРАЗОВАНИЕ карточки-->
@@ -98,7 +100,9 @@
            *ngSwitchCase="'educationses'">
         <div *ngFor="let skillCards of resumeCards[1]"
              class="current-card">
-          <span>{{skillCards[0]}}</span>
+          <div class="inner-card-info">
+            <span>{{skillCards[0]}}</span>
+          </div>
         </div>
       </div>
       <!-- _______ОПЫТ карточки-->
@@ -106,7 +110,9 @@
            *ngSwitchCase="'expirienceses'">
         <div *ngFor="let skillCards of resumeCards[2]"
              class="current-card">
-          <span>{{skillCards[0]}}</span>
+          <div class="inner-card-info">
+            <span>{{skillCards[0]}}</span>
+          </div>
         </div>
 
       </div>

@@ -4,7 +4,7 @@ export const RESUME_CARDS = [
                                 ['SQL', 'Различные СУБД', 'phpMyAdmin', 'mySQL', 'sqLite', 'postgreSQL'],
                                 ['JavaScript/TypeScript', 'Angular', 'RxJs'],
                                 ['HTML5', 'Верстка'],
-                                ['CSS3', 'Bootstrap', 'TailWind', 'Flex, Grid'],['Server', 'Ubuntu 20.04', 'PuTTY']
+                                ['CSS3', 'Bootstrap', 'TailWind', 'Flex, Grid'],['Server', 'Ubuntu 20.04', 'PuTTY', 'Swagger']
                               ],
                               [
                                 ['ПГНИУ', 'Пермский Государственный Национально Исследовательский Университет', '2018', '2022', 'Информационные Системы и Программирование'],
@@ -12,8 +12,10 @@ export const RESUME_CARDS = [
                               ],
                               [
                                 ['Фриланс Телеграм Боты', 'Написание телеграмм ботов на python3 и фреймворке aiogram', '2021', '2022'],
-                                ['Техник-программист', 'Фронтенд разработчик на TypeScript и Angular', '2023', '...']]
-                              ];
+                                ['Техник-программист', 'Фронтенд разработчик на TypeScript и Angular', '2023', '...'],
+                                ['тестович']
+                              ]
+                            ];
 
 
 //Считаю что главное умение программиста это умение гуглить
