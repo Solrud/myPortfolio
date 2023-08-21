@@ -1,5 +1,5 @@
 app-header{
-  background-color: var(--grey-for-bg-color);
+  background-color: var(--first-red-color);
 }
 app-footer{
   background-color: var(--second-blue-color);

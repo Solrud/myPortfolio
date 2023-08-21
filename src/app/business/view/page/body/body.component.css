@@ -11,9 +11,9 @@
 }
 
 app-aside{
-  background-color: var(--grey-for-bg-color);
+  background-color: var(--first-red-color);
 }
 
 app-inner-body{
-  background-color: var(--grey-for-bg-color);
+  background-color:var(--first-red-color);
 }

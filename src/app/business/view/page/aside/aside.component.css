@@ -1,0 +1,10 @@
+.first-vh{
+  height: calc(100vh - 84px);
+}
+.second-vh{
+  min-height: 100vh;
+  background-color: var(--black-color);
+}
+.third-vh{
+ min-height: 100vh;
+}

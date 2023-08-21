@@ -10,7 +10,7 @@ h2{
   font-size: 50px;
   transition: 0.15s;
   cursor: pointer;
-  color: #212529;
+  color: var(--black-color);
   -webkit-text-stroke: 1px  var(--trird-vanilla-color-or-txt);
 }.bi-class:hover{
  color: var(--second-blue-color);
@@ -35,7 +35,7 @@ h2{
 .form-control{
   background-color: var(--darker-grey-for-bg-color);
   color:var(--trird-vanilla-color-or-txt);
-  border-radius: 0;
+  /*border-radius: 0;*/
 }
 .form-control:focus{
   color:var(--trird-vanilla-color-or-txt);

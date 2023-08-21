@@ -59,23 +59,29 @@ span{
 
 
 
+
+
+
+
 /* --3-- НАВЫКИ СТРАНИЦА*/
 /*Кнопки нав-бара выбора навыков, образования, опыта*/
 .btn{
   border: 0 !important;
   border-radius: 0 !important;
-  background-color: var(--second-blue-color) ;
+  background-color: var(--deep-dark-blue);
+  color: var(--trird-vanilla-color-or-txt);
+  padding: 15px 50px;
 }.btn:hover{
   background-color: #7eaebb;
 }.btn:active{
    background-color: var(--second-blue-color);
 }.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
-   color: var(--trird-vanilla-color-or-txt);
-   background-color: var(--first-red-color);
+   color: var(--deep-dark-blue);
+   background-color: var(--second-blue-color) ;
 }
 .btn-nav-resume{
-  width: 200px;
-  height: 30px;
+  /*width: 200px;*/
+  /*height: 30px;*/
   margin: 0 20px;
 }
 .gap-nav-divs{
@@ -92,24 +98,94 @@ span{
 .card-resume{
   width: 80%;
   /*min-height: 500px;*/
-  background-color: #100e0f;
 }
 /*карточка*        короче в чем прикол, это будет див карточки о внутри надо создать уже конкретно карточку*/
 .current-card{
   flex: 0 0 50%; /*@@@@@@@@@@@@@@@@@@@тут медиа запрос нужон*/
   height: 100%;
   width: auto;
-  background-color: #575757;
+  background-color: var(--first-red-color);
 }
 .inner-card-info{
-  height: 160px;
-  background-color: var(--first-red-color);
+  height: 180px;
+  background-color: var(--deep-dark-blue);
   margin: 15px 20px;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 .super-inner-div{
   margin: 20px 14px;
 }
+.text-label-card{
+  font-size: 25px;
+  font-weight: 500;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: var(--trird-vanilla-color-or-txt)
+}
+.bi-icon-card-skills{
+  position:absolute;
+  right: 20px;
+  top: 20px;
 
+  font-size: 30px;
+  color: var(--second-blue-color);
+}
+.first-card-title{
+  flex-basis: 43%;
+}
+.second-card-text{
+  flex-basis: 57%;
+  margin: 0 20px;
+}
+
+.first-card-title-EDU{
+  flex-basis: 43%;
+}
+.second-card-title-EDU{
+  flex-basis: 27%;
+  margin: 0 20px;
+}
+.third-card-title-EDU{
+  flex-basis: 30%;
+  margin: 0 1rem;
+}
+
+
+.span-of-text-really{
+  color: var(--second-blue-color);
+}
+.title-experience{
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+.years-experience{
+  font-size: 1.1rem;
+  color: var(--second-blue-color);
+  padding: 6px 10px;
+  border: 1px solid var(--second-blue-color);
+  background-color: rgb(52, 69, 109);
+  border-radius: 16px;
+
+  max-height: 50%;
+}
+.experience-text{
+  color: var(--second-trird-vanilla-color-or-txt)
+}
+.education-name{
+  font-size: 0.7rem;
+  color: var(--second-blue-color)
+}
+.odd-text{
+  color: var(--second-blue-color)
+}
+.my-resume-main-label{
+  color: var(--trird-vanilla-color-or-txt);
+  font-weight: 500;
+  font-size: 2rem;
+}
 
 
 

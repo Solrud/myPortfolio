@@ -21,12 +21,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /*.black-main{color: #212529;}.black-bg-main{background-color: #212529;}*/
 
 :root{
-  --first-red-color: #ec5051;
-  --second-blue-color: #97c9d7;
-  --trird-vanilla-color-or-txt: #fcf1ed;
-  --grey-for-bg-color: #495458;
-  --darker-grey-for-bg-color: #353c3e;
-  --black-color: #212529;
+  /*--first-red-color: #ec5051;*/
+  /*--second-blue-color: #97c9d7;*/
+  /*--trird-vanilla-color-or-txt: #fcf1ed;*/
+  /*--grey-for-bg-color: #495458;*/
+  /*--darker-grey-for-bg-color: #353c3e;*/
+  /*--black-color: #212529;*/
+  --first-red-color: #3C517C;
+  --second-blue-color: #98d5db;
+  --trird-vanilla-color-or-txt: #f7f8f9;
+  --second-trird-vanilla-color-or-txt: #ddddde;
+  --third-trird-vanilla-color-or-txt: #c7c7c7;
+  --grey-for-bg-color: #B6B4B3;
+  --darker-grey-for-bg-color: #89908F;
+  --black-color: rgb(22, 29, 42);
+
+  --deep-dark-blue: rgb(46, 59, 87);
+
 }
 
 .max-width-1920{
