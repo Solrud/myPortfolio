@@ -1,0 +1,14 @@
+i{
+  color: var(--black-color);
+  font-size: 2.5rem;
+}
+.div-bi{
+  gap: 1rem;
+}
+button{
+  padding: 10px 30px;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  background-color: var(--deep-dark-blue);
+  color: var(--trird-vanilla-color-or-txt)
+}

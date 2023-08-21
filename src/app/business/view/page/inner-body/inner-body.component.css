@@ -5,7 +5,7 @@ span{
 /*-- 1 -- ГЛАВНАЯ СТРАНИЦА */
 /*вовсю страницу главное окно минус хедер*/
 .vertical{
-  height: calc(100vh - 84px);
+  height: calc(100vh - 83px);
 }
 /*колонки главной страницы*/
 .col-1-my{
@@ -55,8 +55,11 @@ span{
 .div-text-about-me{
   height: 400px;
 }
-
-
+.img-selfie{
+  width: 100%;
+  max-height: calc(100vh - 120px);
+  object-fit: cover;
+}
 
 
 
@@ -121,19 +124,22 @@ span{
   font-size: 25px;
   font-weight: 500;
   position: absolute;
-  top: 20px;
+  top: 18px;
   left: 20px;
   color: var(--trird-vanilla-color-or-txt)
 }
 .bi-icon-card-skills{
   position:absolute;
   right: 20px;
-  top: 20px;
+  top: 14px;
 
   font-size: 30px;
   color: var(--second-blue-color);
 }
 .first-card-title{
+  background-color: var(--black-color);
+  border-radius: 10px;
+  margin-bottom: 15px;
   flex-basis: 43%;
 }
 .second-card-text{
@@ -142,6 +148,9 @@ span{
 }
 
 .first-card-title-EDU{
+  background-color: var(--black-color);
+  border-radius: 10px;
+  margin-bottom: 14px;
   flex-basis: 43%;
 }
 .second-card-title-EDU{
@@ -158,10 +167,12 @@ span{
   color: var(--second-blue-color);
 }
 .title-experience{
+  margin-top: 1.25rem;
   font-weight: 500;
   font-size: 1.4rem;
 }
 .years-experience{
+  margin-top: 1.15rem;
   font-size: 1.1rem;
   color: var(--second-blue-color);
   padding: 6px 10px;
@@ -186,8 +197,13 @@ span{
   font-weight: 500;
   font-size: 2rem;
 }
-
-
+.btn-footer{
+  position: absolute;
+  bottom: 0;
+}
+.third-section-page{
+  position: relative;
+}
 
 
 /*Адаптивные медиа-запросы*/
