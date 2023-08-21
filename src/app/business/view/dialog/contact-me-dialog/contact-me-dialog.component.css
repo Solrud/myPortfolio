@@ -7,7 +7,7 @@ h2{
 }
 
 .bi-class{
-  font-size: 50px;
+  font-size: 40px;
   transition: 0.15s;
   cursor: pointer;
   color: var(--black-color);
@@ -15,6 +15,7 @@ h2{
 }.bi-class:hover{
  color: var(--second-blue-color);
    -webkit-text-stroke: 1px  var(--second-blue-color);
+   font-size: 50px;
 }
 
 .light-border{
@@ -22,8 +23,10 @@ h2{
 }
 
 .btn {
-  border-radius: 0 !important;
+  border-radius: 4px !important;
   background-color: var(--second-blue-color);
+  height: 40px;
+  width: 150px;
 }.btn:active{
   background-color: #8db6c2;
  }
@@ -33,13 +36,13 @@ h2{
 }
 
 .form-control{
-  background-color: var(--darker-grey-for-bg-color);
+  background-color: var(--deep-dark-blue);
   color:var(--trird-vanilla-color-or-txt);
   /*border-radius: 0;*/
 }
 .form-control:focus{
   color:var(--trird-vanilla-color-or-txt);
-  background-color: var(--darker-grey-for-bg-color);
+  background-color: var(--deep-dark-blue);
   border-color:#86b7fe;outline:0;
   box-shadow:0 0 0 .25rem var(--second-blue-color);
 }
