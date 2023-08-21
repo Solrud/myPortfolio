@@ -1,1 +1,6 @@
-
+app-header{
+  background-color: var(--grey-for-bg-color);
+}
+app-footer{
+  background-color: var(--second-blue-color);
+}

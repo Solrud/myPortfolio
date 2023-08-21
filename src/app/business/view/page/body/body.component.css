@@ -9,3 +9,11 @@
 .max-width{
   max-width: 1266px;
 }
+
+app-aside{
+  background-color: var(--grey-for-bg-color);
+}
+
+app-inner-body{
+  background-color: var(--grey-for-bg-color);
+}

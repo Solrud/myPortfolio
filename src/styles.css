@@ -8,19 +8,29 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /*Главные цвета проекта*/
-.red-main{color: #ec5051;}.red-bg-main{background-color: #ec5051;}
+/*.red-main{color: #ec5051;}.red-bg-main{background-color: #ec5051;}*/
 
-.blue-main{color: #97c9d7;}.blue-bg-main{background-color: #97c9d7;}
+/*.blue-main{color: #97c9d7;}.blue-bg-main{background-color: #97c9d7;}*/
 
-.vanilla-main{color: #fcf1ed;}.vanilla-bg-main{background-color: #fcf1ed;}
+/*.vanilla-main{color: #fcf1ed;}.vanilla-bg-main{background-color: #fcf1ed;}*/
 
-.grey-main{color: #495458;}.grey-bg-main{background-color: #495458;}
+/*.grey-main{color: #495458;}.grey-bg-main{background-color: #495458;}*/
 
-.sec-grey-main{color: #353c3e;}  .sec-grey-bg-main{background-color: #353c3e;}
+/*.sec-grey-main{color: #353c3e;}  .sec-grey-bg-main{background-color: #353c3e;}*/
 
-.black-main{color: #212529;}.black-bg-main{background-color: #212529;}
+/*.black-main{color: #212529;}.black-bg-main{background-color: #212529;}*/
 
+:root{
+  --first-red-color: #ec5051;
+  --second-blue-color: #97c9d7;
+  --trird-vanilla-color-or-txt: #fcf1ed;
+  --grey-for-bg-color: #495458;
+  --darker-grey-for-bg-color: #353c3e;
+  --black-color: #212529;
+}
 
 .max-width-1920{
   max-width: 1920px;
 }
+
+/*#2a95ff красивый голубой цвет*/

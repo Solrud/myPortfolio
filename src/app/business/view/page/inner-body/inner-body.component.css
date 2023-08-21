@@ -1,6 +1,6 @@
 
 span{
-  color: #fcf1ed;
+  color: var(--trird-vanilla-color-or-txt);
 }
 /*-- 1 -- ГЛАВНАЯ СТРАНИЦА */
 /*вовсю страницу главное окно минус хедер*/
@@ -24,29 +24,32 @@ span{
 /*кнопка связаться*/
 .button-config{
   font-size: 1.4rem;
-  color: #fcf1ed;
-  background-color: #ec5051;
+  color: var(--trird-vanilla-color-or-txt);
+  background-color: var(--first-red-color);
   border: 0;
   border-radius: 0.3rem;
   transition: 0.2s;
 }.button-config:hover{
-   background-color: #97c9d7;
+   background-color: var(--second-blue-color);
  }
  /*пример фотографи*/
 .div-photo{
   width: 354px;
   height: 472px;
-  background-color: #97c9d7;
+  background-color: var(--second-blue-color);
 }
 
 
 
 /*-- 2 -- ОБО МНЕ СТРАНИЦА*/
+#about{
+  background-color: var(--black-color);
+}
 /*пример фотки*/
 .div-photo-sec{
   width: 600px;
   height: 572px;
-  background-color: #97c9d7;
+  background-color: var(--second-blue-color);
 }
 /*текст обо мне ПЕЕДЕЛАТЬ В МЕДИА ЗАПРОСАХ*/
 .div-text-about-me{
@@ -61,15 +64,14 @@ span{
 .btn{
   border: 0 !important;
   border-radius: 0 !important;
-  background-color: #97c9d7 ;
+  background-color: var(--second-blue-color) ;
 }.btn:hover{
   background-color: #7eaebb;
 }.btn:active{
-   background-color: #97c9d7;
+   background-color: var(--second-blue-color);
 }.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
-   color: #fcf1ed;
-   background-color: #ec5051;
-  border-color: green !important;
+   color: var(--trird-vanilla-color-or-txt);
+   background-color: var(--first-red-color);
 }
 .btn-nav-resume{
   width: 200px;
@@ -100,11 +102,13 @@ span{
   background-color: #575757;
 }
 .inner-card-info{
-  height: 100px;
-  background-color: #ec5051;
-  margin: 10px 10px;
+  height: 160px;
+  background-color: var(--first-red-color);
+  margin: 15px 20px;
 }
-
+.super-inner-div{
+  margin: 20px 14px;
+}
 
 
 
@@ -129,7 +133,6 @@ span{
     flex: 1 0 200px;
     height: 100%;
     width: auto;
-    background-color: #680001
   }
   .nav-button-resume{
   }

@@ -1,9 +1,9 @@
 h5, label, span {
-  color: #fcf1ed;
+  color: var(--trird-vanilla-color-or-txt);
 }
 
 h2{
-  color: #97c9d7;
+  color: var(--second-blue-color);
 }
 
 .bi-class{
@@ -11,21 +11,44 @@ h2{
   transition: 0.15s;
   cursor: pointer;
   color: #212529;
-  -webkit-text-stroke: 1px  #fcf1ed;
+  -webkit-text-stroke: 1px  var(--trird-vanilla-color-or-txt);
 }.bi-class:hover{
- color: #97c9d7;
-   -webkit-text-stroke: 1px  #97c9d7;
+ color: var(--second-blue-color);
+   -webkit-text-stroke: 1px  var(--second-blue-color);
 }
 
-.est{
- border: 3px solid #97c9d7;
+.light-border{
+ border: 3px solid var(--second-blue-color);
 }
 
 .btn {
   border-radius: 0 !important;
-  background-color: #97c9d7;
+  background-color: var(--second-blue-color);
+}.btn:active{
+  background-color: #8db6c2;
+ }
+
+.modal-body{
+  background-color: var(--black-color);
 }
 
-.btn-close{
-  border: 1px solid #97c9d7 !important;
+.form-control{
+  background-color: var(--darker-grey-for-bg-color);
+  color:var(--trird-vanilla-color-or-txt);
+  border-radius: 0;
+}
+.form-control:focus{
+  color:var(--trird-vanilla-color-or-txt);
+  background-color: var(--darker-grey-for-bg-color);
+  border-color:#86b7fe;outline:0;
+  box-shadow:0 0 0 .25rem var(--second-blue-color);
+}
+
+textarea{
+  resize: none;
+}
+.btn-closed {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border: 2px solid var(--second-blue-color);
+  color: var(--trird-vanilla-color-or-txt)
 }

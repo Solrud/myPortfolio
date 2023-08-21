@@ -3,13 +3,13 @@
 }
 
 span{
-  color: #fcf1ed;
+  color: var(--trird-vanilla-color-or-txt);
   font-size: 1.1rem;
   cursor: pointer;
   transition: 0.2s;
 }
 span:hover{
-  color: #97c9d7;
+  color: var(--second-blue-color);
 }
 
 .container-header {

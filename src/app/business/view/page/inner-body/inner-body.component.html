@@ -14,14 +14,14 @@
   </div>
   <!--фотография-->
   <div class="col-7-my d-flex  justify-content-center align-items-center">
-    <div class="div-photo"></div>
+    <div class="div-photo"></div>-
   </div>
 </section>
 
 
 
 <!--2 секция обо мне-->
-<section id="about" class="black-bg-main min-vh-100">
+<section id="about" class="min-vh-100">
   <!--  лейбл-->
   <div class="d-flex justify-content-center align-items-center">
     <h1 class="vanilla-main mb-5 mt-4">Кто я такой?</h1>
@@ -91,7 +91,9 @@
         <div *ngFor="let skillCards of resumeCards[0]"
              class="current-card">
           <div class="inner-card-info">
-            <span>{{skillCards[0]}}</span>
+            <div class="super-inner-div">
+              <span>{{skillCards[0]}}</span>
+            </div>
           </div>
         </div>
       </div>
