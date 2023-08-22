@@ -4,8 +4,8 @@ import {
   EDUCATION_NAMES,
   EDUCATION_SPECIALIZATION,
   EDUCATION_TITLE,
-  EDUCATION_YEARS, EXPERIENCE_NAME, EXPERIENCE_TITLE, EXPERIENCE_YEARS,
-  RESUME_CARDS, SKILLS_NAMES, SKILLS_TITLE
+  EDUCATION_YEARS, EXPERIENCE_NAME, EXPERIENCE_TITLE,
+  EXPERIENCE_YEARS, SKILLS_NAMES, SKILLS_TITLE
 } from "../../../../app.constant";
 import {OpenDialogService} from "../../../data/service/OptionalService/open-dialog.service";
 
@@ -18,7 +18,6 @@ export class InnerBodyComponent implements OnInit{
   //Навыки
   skills_title = SKILLS_TITLE;
   skills_names = SKILLS_NAMES;
-  resumeCards = RESUME_CARDS;
 
 
   //Обучение
@@ -36,7 +35,7 @@ export class InnerBodyComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log(this.resumeCards[0])
+    console.log()
   }
 
   onContactMe(){
@@ -44,13 +43,30 @@ export class InnerBodyComponent implements OnInit{
   }
 }
 
-
-//ToDo СДЕЛАТЬ ПО БОКАМ У НАВЫКОВ ПОЛОСКИ ВНИЗ И ОТ "МОЕ РЕЗЮМЕ" ТОЖЕ ПОЛОСКИ ВНИЗ
-// Сделать фотографии
+// СДЕЛАТЬ ПО БОКАМ У НАВЫКОВ ПОЛОСКИ ВНИЗ И ОТ "МОЕ РЕЗЮМЕ" ТОЖЕ ПОЛОСКИ ВНИЗ
+//ToDo ЛИЦЕВАЯ ЧАСТЬ - ДИЗАЙН
+// Сделать фотографии, фотку обтеать текстом , т.е. basis не подходит
 // Сделать первую страницу красивой
 // Сделать на первой странице на заднем фоне типа матрицы или чето такое, чтоб не пусто было
 // Убрать бордеры с эсайдов
-// Написать текст второй страницы( и сделать красиво)
-// почистить css
+// Написать текст(рерайт од AI) второй страницы( и сделать красиво)
 // футер дурацкий, нужен красивый
-// переопределить шрифт
+//  сделать лого solrud
+//  ну и конечно адаптировать
+
+//ToDo ТЕХНИЧЕСКАЯ ЧАСТЬ
+// почистить css
+// переопределить шрифт Перевести все в словарь(транслита) сделать перевод
+// в html -> head настроить название, заставку, и прочее
+
+
+// Кто я ?
+// Привет, меня зовут Матвей Ильин
+// и я начинающий веб-разработчик.
+// Раньше я разрабатывал телеграм ботов на фрилансе
+// но решил пойти в веб и мне понравилось!
+// Я каждый день учу что нибудь новое..
+// На данный момент я пиу на фрейморке Angular с помощью языка TypeScript..
+// В дизайне я предпочитаю минималистичность и практичность
+// Напишите мне, либо оставьте свои контакты и мы создадим с вами сайт,
+// который будет вдохновлять людей вашей идеей!

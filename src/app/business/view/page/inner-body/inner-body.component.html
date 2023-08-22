@@ -4,8 +4,8 @@
   <div class="col-1-my"></div>
   <div class="col-4-my d-flex justify-content-center align-items-center">
     <div class="d-flex flex-column"> <!-- Приветствие  -->
-      <span class="main-label">Привет 👋<span class="border-dark">!</span></span>
-      <span class="col main-label">Я, Матвей</span>
+      <span class="main-label">Привет 👋<span class="">!</span></span>
+      <span class="col main-label"><span class="">я,</span> Матвей<span class="mark-blue">.</span></span>
       <div>
         <button (click)="onContactMe()"
                 class="button-config">СВЯЗАТЬСЯ</button>
@@ -27,57 +27,86 @@
 <!--    <h1 class="vanilla-main mb-5 mt-4">Кто я такой?</h1>-->
 <!--  </div>-->
 
-  <div class="d-flex">
-    <!--    левая часть (фото)-->
-    <div class="col-5 d-flex justify-content-center align-items-center">
-      <img class="img-selfie" src="assets/imgs/selfieMain.jpeg">
-    </div>
-    <!--    правая часть (обо мне)-->
-    <div class="col-7 d-flex flex-column">
-      <h3 class="text-white"> Меня зовут Матвей Ильин</h3>
-      <div class="d-flex justify-content-center align-items-center div-text-about-me">
-        <div>
-          <span class="">Monotonectally orchestrate professionals supply chains whereas are metrics.
-            Globally procrastinate backward-compatible application the action items. Collaboratively
-            enhance extensibl collaboration and it's through interdependent opportunities. </span>
-          <br>
-          <span>Ну и все в таком духе свяжитесь со мной</span>
+<!--  <div class="d-flex">-->
+<!--    &lt;!&ndash;    левая часть (фото)&ndash;&gt;-->
+<!--    <div class="col-5 d-flex justify-content-center align-items-center">-->
+<!--&lt;!&ndash;      <img class="img-selfie" src="assets/imgs/selfieMain.jpeg">&ndash;&gt;-->
+<!--    </div>-->
+<!--    &lt;!&ndash;    правая часть (обо мне)&ndash;&gt;-->
+<!--    <div class="col-7 d-flex flex-column">-->
+<!--      <h3 class="text-white"> Меня зовут Матвей Ильин</h3>-->
+<!--      <div class="d-flex justify-content-center align-items-center div-text-about-me">-->
+<!--        <div>-->
+<!--          <span class="">Monotonectally orchestrate professionals supply chains whereas are metrics.-->
+<!--            Globally procrastinate backward-compatible application the action items. Collaboratively-->
+<!--            enhance extensibl collaboration and it's through interdependent opportunities. </span>-->
+<!--          <br>-->
+<!--          <span>Ну и все в таком духе свяжитесь со мной</span>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <div class="container-my">
+    <h2 class="about-title">Обо мне</h2>
+    <div class="about-inner">
+      <div class="about-content">
+        <div class="about-text">
+          <p>Monotonectally orchestrate professionals supply chains whereas are metrics.
+            Globally procrastinate backward-compatible application the action items. Collaboratively</p>
+          <p>Globally procrastinate backward-compatible application the action items. Collaboratively
+            enhance extensibl collaboration and it's through interdependent opportunities. </p>
+          <p>Свяжитесь со мной!</p>
         </div>
+<!--        <img class="img-selfie" src="assets/imgs/selfieMain.jpeg" alt="моё фото">-->
       </div>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
 </section>
 
 
 <!--3 секция навки-->
 <section id="skills"
-         class="third-section-page min-vh-100 d-flex flex-column ">
+         class="third-section-page min-vh-100 d-flex flex-column mb-5">
   <input type="hidden" #selectResume>
 
   <div class="d-flex flex-column justify-content-center align-items-center column-nav-resume">
-    <div class="mt-5 mb-5">
+    <div class="mt-5 position-relative div-main-label">
       <span class="my-resume-main-label">Моё резюме</span>
     </div>
 <!--    кнопки выбра навыки, образование, опыт-->
-    <div class="d-flex justify-content-center gap-nav-divs flex-wrap ">
+    <div class=" gap-nav-divs flexible-buttons-nav-resume ">
       <!--НАВЫКИ-->
-      <div class="nav-button-resume">
+<!--      <div class="btn-group" role="group" aria-label="Базовая группа переключателей радио">-->
+      <div class="nav-button-resume ">
         <input (click)="selectResume.value = 'skillses'"
                type="radio" class="btn-check" name="btnradio" id="skillsRadio" autocomplete="off" checked>
         <label class="btn btn-nav-resume" for="skillsRadio">Навыки</label>
       </div>
       <!--ОБРАЗОВАНИЕ-->
-      <div class="nav-button-resume">
+      <div class="nav-button-resume ">
         <input (click)="selectResume.value = 'educationses'"
                type="radio" class="btn-check" name="btnradio" id="educationRadio" autocomplete="off">
         <label class="btn btn-nav-resume" for="educationRadio">Образование</label>
       </div>
       <!--ОПЫТ-->
-      <div class="nav-button-resume">
+      <div class="nav-button-resume ">
         <input (click)="selectResume.value = 'expirienceses'"
                type="radio" class="btn-check" name="btnradio" id="expirienceRadio" autocomplete="off">
         <label class="btn btn-nav-resume" for="expirienceRadio">Опыт</label>
       </div>
+<!--      </div>-->
     </div>
   </div>
 
@@ -85,7 +114,7 @@
   <div class="d-flex column-cards-resume justify-content-center align-items-start">
     <div class="card-resume" [ngSwitch]="selectResume.value">
       <!-- _________________________________________________НАВЫКИ карточки-->
-      <div class="d-flex gap-nav-divs flex-wrap "
+      <div class="d-flex  flex-wrap "
            *ngSwitchDefault>
         <div *ngFor="let skillCards of skills_title"
              class="current-card">
@@ -130,12 +159,16 @@
         </div>
       </div>
       <!-- ______________________________________________ОБРАЗОВАНИЕ карточки-->
-      <div class="d-flex gap-nav-divs flex-wrap "
+      <div class="d-flex  flex-wrap "
            *ngSwitchCase="'educationses'">
         <div *ngFor="let eduCard of education_title"
              class="current-card">
-          <div class="d-flex flex-column inner-card-info">
-            <div class="d-flex first-card-title-EDU justify-content-between">
+          <div class="d-flex flex-column"
+               [class.none-card]="eduCard == ''"
+               [class.inner-card-info]="eduCard != ''"
+          >
+            <div class="d-flex justify-content-between"
+                 [class.first-card-title-EDU]="eduCard != ''">
               <span class="ms-4 title-experience">{{eduCard}}</span>
               <span *ngIf="eduCard == 'ПГНИУ'"
                     class=" me-4 years-experience">
@@ -179,12 +212,16 @@
         </div>
       </div>
       <!-- ______________________________________________ОПЫТ карточки-->
-      <div class="d-flex gap-nav-divs flex-wrap "
+      <div class="d-flex flex-wrap "
            *ngSwitchCase="'expirienceses'">
         <div *ngFor="let expCard of experience_title"
              class="current-card">
-          <div class="d-flex flex-column inner-card-info">
-            <div class="d-flex first-card-title justify-content-between">
+          <div class="d-flex flex-column"
+               [class.none-card]="expCard == ''"
+               [class.inner-card-info]="expCard != ''"
+          >
+            <div class="d-flex justify-content-between"
+                 [class.first-card-title]="expCard != ''">
               <span class=" ms-4 title-experience">{{expCard}}</span>
               <span *ngIf="expCard == 'Фриланс Телеграм Боты'"
                     class=" me-4 years-experience">
@@ -212,13 +249,13 @@
     </div>
 
   </div>
-  <div class="align-self-center btn-footer">
-    <button (click)="onContactMe()"
-            class="btn"
-            >
-      Связаться
-    </button>
-  </div>
+<!--  <div class="align-self-center btn-footer">-->
+<!--    <button (click)="onContactMe()"-->
+<!--            class="btn"-->
+<!--            >-->
+<!--      Связаться-->
+<!--    </button>-->
+<!--  </div>-->
 </section>
 
 
@@ -239,4 +276,3 @@
 <!--      </div>-->
 <!--    </div>-->
 <!--  </section>-->
-

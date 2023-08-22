@@ -23,14 +23,17 @@ span{
 }
 /*кнопка связаться*/
 .button-config{
+  margin-top: 1.1rem;
   font-size: 1.4rem;
   color: var(--trird-vanilla-color-or-txt);
-  background-color: var(--first-red-color);
+  background-color: var(--deep-dark-blue);
+  padding: 10px 30px;
   border: 0;
-  border-radius: 0.3rem;
+  border-radius: 0.2rem;
   transition: 0.2s;
 }.button-config:hover{
    background-color: var(--second-blue-color);
+   color: var(--black-color);
  }
  /*пример фотографи*/
 .div-photo{
@@ -38,7 +41,9 @@ span{
   height: 472px;
   background-color: var(--second-blue-color);
 }
-
+.mark-blue{
+  color: var(--second-blue-color);
+}
 
 
 /*-- 2 -- ОБО МНЕ СТРАНИЦА*/
@@ -56,10 +61,53 @@ span{
   height: 400px;
 }
 .img-selfie{
+  max-width: 400px;
   width: 100%;
-  max-height: calc(100vh - 120px);
-  object-fit: cover;
+  /*width: 100%;*/
+  /*max-height: calc(100vh - 120px);*/
+  /*object-fit: cover;*/
 }
+
+.container-my{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.about-title{
+  /*margin-bottom: -90px;*/
+  text-transform: uppercase;
+  font-size: 40px;
+  color: var(--trird-vanilla-color-or-txt);
+  font-weight: 500;
+}
+.about-inner{
+  text-align: center;
+  position: relative;
+}
+.about-content{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 250px;
+}
+.about-text{
+  text-align: start;
+  max-width: 500px;
+  width: 100%;
+}
+p{
+  color: var(--second-trird-vanilla-color-or-txt)
+}
+
+
+
 
 
 
@@ -74,6 +122,8 @@ span{
   background-color: var(--deep-dark-blue);
   color: var(--trird-vanilla-color-or-txt);
   padding: 15px 50px;
+  width: 100%;
+  margin: 0;
 }.btn:hover{
   background-color: #7eaebb;
 }.btn:active{
@@ -85,10 +135,10 @@ span{
 .btn-nav-resume{
   /*width: 200px;*/
   /*height: 30px;*/
-  margin: 0 20px;
+  margin: 0;
 }
 .gap-nav-divs{
-  /*gap: 10px;*/
+  gap: 10px;
 }
 /*деление места на странице навигационных кнопок и карточек*/
 .column-nav-resume{
@@ -100,8 +150,35 @@ span{
 /*поле на котором карточки*/
 .card-resume{
   width: 80%;
+  position: relative;
   /*min-height: 500px;*/
 }
+.card-resume:before{
+  content: '';
+  display: flex;
+  flex-direction: column;
+  /*flex-basis: 400px;*/
+  width: 7px;
+  height: 100%;
+  background-color: var(--second-blue-color);
+  border-radius: 3px;
+  position: absolute;
+}
+
+.card-resume:after{
+  content: '';
+  display: flex;
+  flex-direction: column;
+  /*flex-basis: 400px;*/
+  width: 7px;
+  height: 100%;
+  background-color: var(--second-blue-color);
+  border-radius: 3px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 /*карточка*        короче в чем прикол, это будет див карточки о внутри надо создать уже конкретно карточку*/
 .current-card{
   flex: 0 0 50%; /*@@@@@@@@@@@@@@@@@@@тут медиа запрос нужон*/
@@ -195,7 +272,21 @@ span{
 .my-resume-main-label{
   color: var(--trird-vanilla-color-or-txt);
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 2.3rem;
+}.my-resume-main-label:after{
+  content: '';
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  width: 5px;
+  height: 50px;
+  background-color: var(--second-blue-color);
+  border-radius: 3px;
+ }
+.div-main-label{
+  margin-bottom: 5.2rem;
 }
 .btn-footer{
   position: absolute;
@@ -204,6 +295,28 @@ span{
 .third-section-page{
   position: relative;
 }
+.none-card{
+  background-color: rgb(39, 51, 76) !important;
+  /*border: 2px solid var(--deep-dark-blue)*/
+  height: 180px;
+  /*background-color: var(--deep-dark-blue);*/
+  margin: 15px 20px;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.flexible-buttons-nav-resume{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /*flex-direction: column;*/
+}
+
+
+
+
+
+
 
 
 /*Адаптивные медиа-запросы*/
@@ -213,20 +326,66 @@ span{
     flex:0 0 auto;width:16.66666667%
   }
   .col-4-my{
-    flex:0 0 auto;width:33.33333333%
-  }
-  .col-7-my{
     flex:0 0 auto;width:50%
   }
+  .col-7-my{
+    flex:0 0 auto;width:33.33333333%
+  }
 }
-@media (max-width: 525px){ /* ------------>  width: 525px*/
+
+@media (max-width: 768px){
+  /*Главная страница навигационная панель*/
+
+
+  /*Главная страница разметка*/
+  .col-1-my{
+    flex:0 0 auto;width:16.66666667%
+  }
+  .col-4-my{
+    flex:0 0 auto;width:58.33333333%
+  }
+  .col-7-my{
+    flex:0 0 auto;width:25%
+  }
+  .nav-button-resume{
+    flex: 1 1 600px;
+  }
+  .btn-nav-resume{
+    /*flex-grow: 1;*/
+  }
+  .btn{
+    /*width: 600px;*/
+    margin-bottom: 10px;
+  }
+  .main-label{
+    /*font-size: 3rem;*/
+    line-height: 130%
+  }
+  /*.nav-button-resume{*/
+  /*  width: 100vh!important;*/
+  /*  !*width: 100%;*!*/
+  /*}*/
+  /*.btn-nav-resume{*/
+  /*  width: 100%;*/
+  /*}*/
+  /*.flexible-buttons-nav-resume{*/
+  /*  flex-direction: column;*/
+  /*}*/
+}
+@media (max-width: 582px){ /* ------------>  width: 525px*/
   /*карточка 2стр*/
+  .btn{
+    /*width: 100vh;*/
+    margin-left: 0;
+    margin-right: 0;
+    /*max-width: 500px;*/
+    margin-bottom: 10px;
+
+  }
   .current-card {
     flex: 1 0 200px;
     height: 100%;
     width: auto;
-  }
-  .nav-button-resume{
   }
   /*колонки главной страницы*/
   .col-1-my{
@@ -238,8 +397,18 @@ span{
   .col-7-my{
     flex:0 0 0
   }
+  /*исчезают пустые карточки*/
+  .none-card{
+    display: none !important;
+  }
 }
 
+@media (max-width: 352px){
+  .main-label{
+    font-size: 3rem;
+    line-height: 110%
+  }
+}
 
 /*таблица колонок (для себя)*/
 .col{flex:1 0 0%}
