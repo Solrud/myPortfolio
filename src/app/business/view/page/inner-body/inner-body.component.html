@@ -148,15 +148,15 @@
                  [class.first-card-title]="eduCard != ''">
               <span class="ms-4 title-experience">{{eduCard}}</span>
               <span *ngIf="eduCard == 'ПГНИУ'"
-                    class=" me-4 years-experience">
+                    class=" me-4 years-education">
                 {{education_years[0]}}
               </span>
               <span *ngIf="eduCard == 'ПНИПУ'"
-                    class=" me-4 years-experience">
+                    class=" me-4 years-education">
                 {{education_years[1]}}
               </span>
               <span *ngIf="eduCard == 'Курсы'"
-                    class=" me-4 years-experience">
+                    class=" me-4 years-education">
                 {{education_years[2]}}
               </span>
             </div>
@@ -192,15 +192,17 @@
       <div class="d-flex flex-wrap "
            *ngSwitchCase="'expirienceses'">
         <div *ngFor="let expCard of experience_title"
-             class="current-card">
+             class="experience__current-card">
           <div class="d-flex flex-column"
                [class.none-card]="expCard == ''"
-               [class.inner-card-info]="expCard != ''"
+               [class.experience__inner-card-info]="expCard != ''"
           >
             <div class="experience-upper-card-content"
-                 [class.first-card-title]="expCard != ''">
-              <span class=" ms-4 title-experience">{{expCard}}</span>
-              <span *ngIf="expCard == 'Фриланс Телеграм Боты'"
+                 [class.experience__first-card-title]="expCard != ''">
+              <span class="title-experience" style="margin-bottom: 10px;">
+                {{expCard}}
+              </span>
+              <span *ngIf="expCard == 'Telegram Боты'"
                     class=" me-4 years-experience">
                 {{experience_years[0]}}
               </span>
@@ -211,7 +213,7 @@
             </div>
             <div class="second-card-text">
               <span class="experience-text"
-                    *ngIf="expCard == 'Фриланс Телеграм Боты'">
+                    *ngIf="expCard == 'Telegram Боты'">
                 {{experience_names[0]}}
               </span>
               <span class="experience-text"

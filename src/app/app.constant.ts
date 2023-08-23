@@ -40,7 +40,7 @@ export const EDUCATION_SPECIALIZATION = ['Информационные Сист�
                                          'Информационные Системы и Технологии', 'Python Beginners, OOP, BeeGeek, GeekBrains']
 
 //Experience
-export const EXPERIENCE_TITLE = ['Фриланс Телеграм Боты', 'Техник-программист', 'Здесь могла быть ваша работа)', '', '', ''];
+export const EXPERIENCE_TITLE = ['Telegram Боты', 'Техник-программист', 'Здесь могла быть ваша работа)', '', '', ''];
 export const EXPERIENCE_NAME = ['Написание телеграм ботов на python3 и фреймворке aiogram',
                                 'Фронтенд разработчик на TypeScript и Angular'];
 export const EXPERIENCE_YEARS = ['2021 - 2022', '2023 - . . .']

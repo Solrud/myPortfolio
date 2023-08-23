@@ -89,6 +89,7 @@ p{
 }
 /* Стили для текстового контента */
 .about-me__content {
+
   /*height: 100%;*/
   height: 550px;
   display: flex;
@@ -224,7 +225,9 @@ p{
 }
 /*Образование главный лейбл заголовок*/
 .title-experience{
+  margin-left: 1.5rem;
   margin-top: 1.25rem;
+  margin-right: 0.5rem;
   font-weight: 500;
   font-size: 1.4rem;
 }
@@ -244,6 +247,16 @@ p{
 }
 /*Опыт года текст*/
 .years-experience{
+  margin-top: 1.15rem;
+  font-size: 1.1rem;
+  color: var(--second-blue-color);
+  padding: 6px 10px 25px;
+  border: 1px solid var(--second-blue-color);
+  background-color: rgb(52, 69, 109);
+  border-radius: 16px;
+  max-height: 50%;
+}
+.years-education{
   margin-top: 1.15rem;
   font-size: 1.1rem;
   color: var(--second-blue-color);
@@ -291,7 +304,7 @@ p{
 }
 /*карточка*/
 .current-card{
-  flex: 0 0 50%; /*@@@@@@@@@@@@@@@@@@@тут медиа запрос нужон*/
+  flex: 0 0 50%;
   height: 100%;
   width: auto;
   background-color: var(--first-red-color);
@@ -336,6 +349,65 @@ p{
 
 
 
+
+
+
+
+
+
+
+.experience__current-card{
+  flex: 0 0 50%;
+  height: 100%;
+  width: auto;
+  background-color: var(--first-red-color);
+}
+.experience__inner-card-info{
+  height: 180px;
+  background-color: var(--deep-dark-blue);
+  margin: 15px 20px;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.experience__first-card-title{
+  background-color: var(--black-color);
+  border-radius: 10px;
+  margin-bottom: 15px;
+  flex-basis: 43%;
+}
+.experience__second-card-text{
+  flex-basis: 57%;
+  margin: 0 20px;
+}
+.experience__years-experience{
+  margin-top: 1.15rem;
+  font-size: 1.1rem;
+  color: var(--second-blue-color);
+  padding: 6px 10px 25px;
+  border: 1px solid var(--second-blue-color);
+  background-color: rgb(52, 69, 109);
+  border-radius: 16px;
+  max-height: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*//////////////////////////////////////////////////*/
 /*//////////------@Адаптивные медиа-запросы---//////*/
 /*//////////////////////////////////////////////////*/
@@ -369,10 +441,18 @@ p{
   }
 }
 
+@media (max-width: 1043px) and (min-width: 768px){
+
+}
+
 @media (max-width: 768px){ /* -------> width: 768px*/
   .current-card {
     flex: 0 0 100%; /*@@@@@@@@@@@@@@@@@@@тут медиа запрос нужон*/
   }
+  .experience__current-card {
+    flex: 0 0 100%; /*@@@@@@@@@@@@@@@@@@@тут медиа запрос нужон*/
+  }
+
   /*исчезают пустые карточки*/
   .none-card{
     display: none !important;
@@ -465,7 +545,19 @@ p{
     font-size: 0.9rem;
   }
   .years-experience{
-    margin: 1.15rem;
+    margin: 0 1.15rem 0.9rem 1.15rem;
+    font-size: 1.1rem;
+    color: var(--second-blue-color);
+    padding: 6px 10px;
+    border: 1px solid var(--second-blue-color);
+    background-color: rgb(52, 69, 109);
+    border-radius: 16px;
+    max-height: 50%;
+    width: 116px;
+  }
+  .years-education{
+    margin-top: 1.15rem;
+
     font-size: 1.1rem;
     color: var(--second-blue-color);
     padding: 6px 10px;
@@ -479,6 +571,11 @@ p{
     flex: 0 0 100%;
     height: 100%;
   }
+  .experience__current-card {
+    flex: 0 0 100% !important;
+    height: 100%;
+  }
+
   .inner-card-info{
     height: 200px;
     background-color: var(--deep-dark-blue);
@@ -487,6 +584,15 @@ p{
     border-radius: 8px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   }
+  .experience__inner-card-info{
+    height: 200px;
+    background-color: var(--deep-dark-blue);
+    margin: 15px 20px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+
   .education-name{
     font-size: 0.65rem;
     color: var(--second-blue-color)
@@ -548,9 +654,55 @@ p{
   #about {
     padding: 50px 20px 115px 20px; /* Добавляем немного отступов для красоты */
   }
+  .title-experience{
+    margin-top: 1.25rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+  .years-education{
+    font-size: 0.9rem;
+    /*margin: 0.5rem 1.15rem 0.9rem 1.15rem;*/
+    width: 98px;
+    height: 43%;
+  }
 }
 
+
+@media (max-width: 363px) {  /* -------> width: 352px*/
+  .experience__inner-card-info{
+    height: 250px;
+    background-color: var(--deep-dark-blue);
+    margin-top: 1.15rem;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .years-education{
+    margin: 1.15rem;
+    /*font-size: 1.1rem;*/
+    color: var(--second-blue-color);
+    padding: 6px 10px;
+    border: 1px solid var(--second-blue-color);
+    background-color: rgb(52, 69, 109);
+    border-radius: 16px;
+    /*max-height: 50%;*/
+    /*width: 116px;*/
+  }
+}
 @media (max-width: 352px){ /* -------> width: 352px*/
+  .years-education{
+    font-size: 0.9rem;
+    margin: 0.5rem 1.15rem 0.9rem 1.15rem;
+  }
+  .experience__inner-card-info{
+    height: 250px;
+    background-color: var(--deep-dark-blue);
+    margin: 15px 20px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
   .education-upper-card-content{
     flex-direction: column;
   }
@@ -571,6 +723,32 @@ p{
     line-height: 110%
   }
 }
+
+
+
+
+
+
+
+
+
+
+/*короче, сделать меньше шрифт у карточек в опыте, у карточек в образовании надо центрировать названия учебы и увеличить сами карточки*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 325px){
   #about {
