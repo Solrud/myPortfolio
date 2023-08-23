@@ -140,11 +140,11 @@
            *ngSwitchCase="'educationses'">
         <div *ngFor="let eduCard of education_title"
              class="current-card">
-          <div class="d-flex flex-column"
+          <div class="d-flex flex-column "
                [class.none-card]="eduCard == ''"
                [class.inner-card-info]="eduCard != ''"
           >
-            <div class="d-flex justify-content-between"
+            <div class="education-upper-card-content"
                  [class.first-card-title]="eduCard != ''">
               <span class="ms-4 title-experience">{{eduCard}}</span>
               <span *ngIf="eduCard == 'ПГНИУ'"
@@ -197,7 +197,7 @@
                [class.none-card]="expCard == ''"
                [class.inner-card-info]="expCard != ''"
           >
-            <div class="d-flex justify-content-between"
+            <div class="experience-upper-card-content"
                  [class.first-card-title]="expCard != ''">
               <span class=" ms-4 title-experience">{{expCard}}</span>
               <span *ngIf="expCard == 'Фриланс Телеграм Боты'"

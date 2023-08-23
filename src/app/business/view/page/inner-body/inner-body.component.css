@@ -233,6 +233,10 @@ p{
   font-size: 0.7rem;
   color: var(--second-blue-color)
 }
+.education-upper-card-content{
+  display: flex;
+  justify-content: space-between;
+}
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-------------------Опыт EXPERIENCE style*/
 /*Опыт текст span*/
 .experience-text{
@@ -243,11 +247,15 @@ p{
   margin-top: 1.15rem;
   font-size: 1.1rem;
   color: var(--second-blue-color);
-  padding: 6px 10px;
+  padding: 6px 10px 25px;
   border: 1px solid var(--second-blue-color);
   background-color: rgb(52, 69, 109);
   border-radius: 16px;
   max-height: 50%;
+}
+.experience-upper-card-content{
+  display: flex;
+  justify-content: space-between;
 }
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-------------------КАРТОЧКА и ее стили*/
 /*поле на котором карточки*/
@@ -362,6 +370,13 @@ p{
 }
 
 @media (max-width: 768px){ /* -------> width: 768px*/
+  .current-card {
+    flex: 0 0 100%; /*@@@@@@@@@@@@@@@@@@@тут медиа запрос нужон*/
+  }
+  /*исчезают пустые карточки*/
+  .none-card{
+    display: none !important;
+  }
   /*Главная страница навигационная панель*/
   #about{
     flex-direction: column;
@@ -438,6 +453,44 @@ p{
   }
 }
 @media (max-width: 582px){ /* ------------>  width: 582px*/
+  .experience-upper-card-content{
+    flex-direction: column;
+  }
+  .span-of-text-really{
+    color: var(--third-trird-vanilla-color-or-txt);
+    font-size: 1.0rem;
+  }
+  .experience-text{
+    color: var(--second-trird-vanilla-color-or-txt);
+    font-size: 0.9rem;
+  }
+  .years-experience{
+    margin: 1.15rem;
+    font-size: 1.1rem;
+    color: var(--second-blue-color);
+    padding: 6px 10px;
+    border: 1px solid var(--second-blue-color);
+    background-color: rgb(52, 69, 109);
+    border-radius: 16px;
+    max-height: 50%;
+    width: 116px;
+  }
+  .current-card {
+    flex: 0 0 100%;
+    height: 100%;
+  }
+  .inner-card-info{
+    height: 200px;
+    background-color: var(--deep-dark-blue);
+    margin: 15px 20px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+  .education-name{
+    font-size: 0.65rem;
+    color: var(--second-blue-color)
+  }
   #about {
     padding: 50px 20px 55px 20px; /* Добавляем немного отступов для красоты */
   }
@@ -474,11 +527,11 @@ p{
     margin-bottom: 10px;
 
   }
-  .current-card {
-    flex: 1 0 200px;
-    height: 100%;
-    width: auto;
-  }
+  /*.current-card {*/
+  /*  flex: 1 0 200px;*/
+  /*  height: 100%;*/
+  /*  width: auto;*/
+  /*}*/
   /*колонки главной страницы сужаются*/
   .col-1-my{
     flex:0 0 0
@@ -489,10 +542,7 @@ p{
   .col-7-my{
     flex:0 0 0
   }
-  /*исчезают пустые карточки*/
-  .none-card{
-    display: none !important;
-  }
+
 }
 @media(max-width: 410px) {
   #about {
@@ -501,6 +551,9 @@ p{
 }
 
 @media (max-width: 352px){ /* -------> width: 352px*/
+  .education-upper-card-content{
+    flex-direction: column;
+  }
   #about {
     padding: 50px 20px 115px 20px; /* Добавляем немного отступов для красоты */
   }

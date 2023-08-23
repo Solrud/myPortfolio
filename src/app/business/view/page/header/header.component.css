@@ -50,7 +50,7 @@ span:hover{
   }
 }
 
-@media (max-width: 310px){
+@media (max-width: 340px){
   span{
     font-size: 0.9rem;
   }
