@@ -12,3 +12,6 @@ button{
   background-color: var(--deep-dark-blue);
   color: var(--trird-vanilla-color-or-txt)
 }
+.btn{
+  text-transform: uppercase;
+}

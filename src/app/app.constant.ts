@@ -22,7 +22,7 @@
 export const SKILLS_TITLE = ['Python 3', 'SQL', 'JS/TS', 'HTML5', 'CSS3', 'Server'];
 export const SKILLS_NAMES = [
   ['ООП ', 'Requests ', 'AsyncIo', 'PyQt5', 'Pandas', 'NumPy', 'BeautifulSoup'],
-  ['СУБД', 'phpMyAdmin', 'mySQL', 'sqLite', 'postgreSQL'],
+  ['СУБД', 'phpMyAdmin', 'mySQL', 'sqLite', 'PostgreSQL'],
   ['Angular', 'JQuery', 'RxJs', 'ООП'],
   ['DOM', 'Адаптивная верстка'],
   ['Bootstrap', 'TailWind', 'Flex, Grid'],

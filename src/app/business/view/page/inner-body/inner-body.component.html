@@ -20,15 +20,22 @@
 
 
 
+
+
+
+
+
+
 <!--2 секция обо мне-->
-<section id="about" class="min-vh-100">
+<section id="about">
 
 <!--ВАРИАНТ-1  то что ниже, как вариант, очень неплохо но текст не обтекает снизу-->
+  <h2 class="about-h2-upper">Обо мне</h2>
   <div class="about-me__image">
     <img class="about-me____photo" src="assets/imgs/selfieMain.jpeg" alt="Моё фото">
   </div>
   <div class="about-me__content">
-    <h2>Обо мне</h2>
+    <h2 class="about-h2-lower">Обо мне</h2>
     <div class="about-text-content">
       <p>Привет, меня зовут Матвей Ильин, и я - веб-разработчик, готовый создавать цифровые миры с бескрайними возможностями. Моя история началась с разработки телеграм-ботов на фрилансе, но моё сердце принадлежит веб-миру.</p>
       <p>Каждый день для меня - новое приключение. Я стремлюсь учиться и развиваться, впитывая знания и техники, которые делают интернет более удивительным местом. В настоящее время моя основная область - фронтенд разработка с использованием фреймворка Angular и магии TypeScript.</p>
@@ -36,15 +43,14 @@
       <p>Если вы разделяете мою страсть к совершенствованию в веб-разработке или хотите обсудить проект, который интересует вас, не стесняйтесь связаться со мной. Давайте сотворим веб-пространство, которое будет вдохновлять идеями и привлекать внимание пользователей!</p>
     </div>
   </div>
-
-
-
-
-
-
-
-
 </section>
+
+
+
+
+
+
+
 
 
 <!--3 секция навки-->
@@ -103,27 +109,27 @@
               <div *ngIf="skillCards == 'Python 3'">
                 <!--[class.odd-text]="index % 2 == 1"-->
                 <span *ngFor="let py of skills_names[0]; let index = index"
-                      class="span-of-text-really">{{py}} | </span>
+                      class="span-of-text-really">{{py}} ▫ </span>
               </div>
               <div *ngIf="skillCards == 'SQL'">
                 <span *ngFor="let sql of skills_names[1]"
-                      class="span-of-text-really">{{sql}} | </span>
+                      class="span-of-text-really">{{sql}} ▫ </span>
               </div>
               <div *ngIf="skillCards == 'JS/TS'">
                 <span *ngFor="let jsts of skills_names[2]"
-                      class="span-of-text-really">{{jsts}} | </span>
+                      class="span-of-text-really">{{jsts}} ▫ </span>
               </div>
               <div *ngIf="skillCards == 'HTML5'">
                 <span *ngFor="let html of skills_names[3]"
-                      class="span-of-text-really">{{html}} | </span>
+                      class="span-of-text-really">{{html}} ▫ </span>
               </div>
               <div *ngIf="skillCards == 'CSS3'">
                 <span *ngFor="let css of skills_names[4]"
-                      class="span-of-text-really">{{css}} | </span>
+                      class="span-of-text-really">{{css}} ▫ </span>
               </div>
               <div *ngIf="skillCards == 'Server'">
                 <span *ngFor="let server of skills_names[5]"
-                      class="span-of-text-really">{{server}} | </span>
+                      class="span-of-text-really">{{server}} ▫ </span>
               </div>
             </div>
           </div>
@@ -139,7 +145,7 @@
                [class.inner-card-info]="eduCard != ''"
           >
             <div class="d-flex justify-content-between"
-                 [class.first-card-title-EDU]="eduCard != ''">
+                 [class.first-card-title]="eduCard != ''">
               <span class="ms-4 title-experience">{{eduCard}}</span>
               <span *ngIf="eduCard == 'ПГНИУ'"
                     class=" me-4 years-experience">
@@ -220,30 +226,4 @@
     </div>
 
   </div>
-<!--  <div class="align-self-center btn-footer">-->
-<!--    <button (click)="onContactMe()"-->
-<!--            class="btn"-->
-<!--            >-->
-<!--      Связаться-->
-<!--    </button>-->
-<!--  </div>-->
 </section>
-
-
-
-
-
-
-
-  <!--третья страница-->
-<!--  <section id="contacts"-->
-<!--           class="grey-bg-main d-flex flex-column vh-100">-->
-<!--    <div class="align-self-center"><span>Контактные данные</span></div>-->
-<!--    <div class="d-flex flex-wrap align-content-between">-->
-<!--      <div class="col-5 div-photo-sec"></div>-->
-<!--      <div class="col-6 d-flex flex-column">-->
-<!--        <span>напиши мне что нибудь</span>-->
-<!--        <span></span>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </section>-->
