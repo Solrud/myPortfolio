@@ -14,4 +14,10 @@ export class FooterComponent {
   onContactMe(){
     this.openDialogService.openDialogContactMe();
   }
+  onClickTelegramIcon(){
+    window.open('https://t.me/rudalsmolyusr');
+  }
+  onClickMailIcon(){
+    window.open('https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=matthew.avid.ng@gmail.com')
+  }
 }

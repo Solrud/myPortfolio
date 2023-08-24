@@ -2,5 +2,5 @@ app-header{
   background-color: var(--first-red-color);
 }
 app-footer{
-  background-color: var(--second-blue-color);
+  background-color: var(--black-color);
 }

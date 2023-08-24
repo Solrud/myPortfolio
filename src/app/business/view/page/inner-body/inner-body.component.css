@@ -6,6 +6,7 @@ span{
 /*вовсю страницу главное окно минус хедер*/
 .vertical{
   height: calc(100vh - 83px);
+  max-height: 1080px;
 }
 .img-main{
   background-image: url('/assets/imgs/main-img2.png');
@@ -44,9 +45,17 @@ span{
 .mark-blue{
   color: var(--second-blue-color);
 }
-
-
-
+.web-dev-txt{
+  color: var(--second-blue-color);
+  font-size: 1.9rem;
+}
+.bi-lower-about{
+  color: var(--second-blue-color);
+  font-size: 1.7rem;
+}
+.mark-darker-blue{
+  color: var(--darker-second-blue-color);
+}
 
 /*//////////////////////////////////////////////////*/
 /*//////////////////////////////////////////////////*/
@@ -132,6 +141,8 @@ p{
 /*Третья секция настройка*/
 .third-section-page{
   position: relative;
+  /*height: 100vh;*/
+  /*max-height: 1080px;*/
 }
 /*>>>>>>>>>>>>>>>>>-------------------------------------НАВ БАР кнопок навыки, образования, опыта*/
 .gap-nav-divs{
@@ -225,6 +236,13 @@ p{
 }
 /*Образование главный лейбл заголовок*/
 .title-experience{
+  margin-left: 1.5rem;
+  margin-top: 1.25rem;
+  margin-right: 0.5rem;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+.title-education{
   margin-left: 1.5rem;
   margin-top: 1.25rem;
   margin-right: 0.5rem;
@@ -394,7 +412,20 @@ p{
 
 
 
-
+.education__current-card{
+  flex: 0 0 50%;
+  height: 100%;
+  width: auto;
+  background-color: var(--first-red-color);
+}
+.education__inner-card-info{
+  height: 180px;
+  background-color: var(--deep-dark-blue);
+  margin: 15px 20px;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
 
 
 
@@ -411,6 +442,15 @@ p{
 /*//////////////////////////////////////////////////*/
 /*//////////------@Адаптивные медиа-запросы---//////*/
 /*//////////////////////////////////////////////////*/
+@media  (max-width: 1041px) {
+  .years-experience{
+    padding-bottom: 3em;
+  }
+  .experience__inner-card-info{
+    height: 230px;
+  }
+}
+
 @media (max-width: 1100px){ /* -------> width: 1100px*/
   /*колонки главной страницы*/
   .col-1-my{
@@ -439,6 +479,9 @@ p{
   #about {
     padding: 70px 20px 85px 20px; /* Добавляем немного отступов для красоты */
   }
+  .education__inner-card-info {
+    height: 250px;
+  }
 }
 
 @media (max-width: 1043px) and (min-width: 768px){
@@ -446,7 +489,22 @@ p{
 }
 
 @media (max-width: 768px){ /* -------> width: 768px*/
+  .web-dev-div{
+    margin-top: 0.5rem;
+  }
+  .experience__inner-card-info{
+    height: 180px;
+  }
+  .years-experience{
+    padding: 6px 10px 25px;
+  }
+  .education__inner-card-info {
+    height: 180px;
+  }
   .current-card {
+    flex: 0 0 100%; /*@@@@@@@@@@@@@@@@@@@тут медиа запрос нужон*/
+  }
+  .education__current-card{
     flex: 0 0 100%; /*@@@@@@@@@@@@@@@@@@@тут медиа запрос нужон*/
   }
   .experience__current-card {
@@ -533,8 +591,16 @@ p{
   }
 }
 @media (max-width: 582px){ /* ------------>  width: 582px*/
-  .experience-upper-card-content{
-    flex-direction: column;
+  .title-experience{
+    font-size: 1.2rem;
+  }
+  .years-experience{
+    padding: 6px 10px 4px;
+    font-size: 0.9rem;
+    /*margin: 0.5rem 1.15rem 0.9rem 1.15rem;*/
+    width: 98px;
+    height: 43%;
+    margin: 1.15rem 1.15rem 0.9rem 1.15rem;
   }
   .span-of-text-really{
     color: var(--third-trird-vanilla-color-or-txt);
@@ -545,15 +611,15 @@ p{
     font-size: 0.9rem;
   }
   .years-experience{
-    margin: 0 1.15rem 0.9rem 1.15rem;
-    font-size: 1.1rem;
-    color: var(--second-blue-color);
-    padding: 6px 10px;
-    border: 1px solid var(--second-blue-color);
-    background-color: rgb(52, 69, 109);
-    border-radius: 16px;
-    max-height: 50%;
-    width: 116px;
+    /*margin: 0 1.15rem 0.9rem 1.15rem;*/
+    /*font-size: 1.1rem;*/
+    /*color: var(--second-blue-color);*/
+    /*padding: 6px 10px;*/
+    /*border: 1px solid var(--second-blue-color);*/
+    /*background-color: rgb(52, 69, 109);*/
+    /*border-radius: 16px;*/
+    /*max-height: 50%;*/
+    /*width: 116px;*/
   }
   .years-education{
     margin-top: 1.15rem;
@@ -584,6 +650,23 @@ p{
     border-radius: 8px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   }
+  .third-card-title-EDU{
+    /*height: 140px;*/
+    flex-basis: 50%;
+  }
+  .education-upper-card-content{
+    margin-bottom: 0.2rem;
+  }
+  .education__inner-card-info{
+    /*height: 250px;*/
+    background-color: var(--deep-dark-blue);
+    margin: 15px 20px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+
+
   .experience__inner-card-info{
     height: 200px;
     background-color: var(--deep-dark-blue);
@@ -648,8 +731,42 @@ p{
   .col-7-my{
     flex:0 0 0
   }
-
+  .title-education{
+    margin-top: 1.5rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+  .years-education{
+    padding: 6px 10px 25px;
+    font-size: 0.9rem;
+    /*margin: 0.5rem 1.15rem 0.9rem 1.15rem;*/
+    width: 98px;
+    height: 43%;
+  }
+  .text-label-card{
+    font-size: 1.2rem;
+    position: absolute;
+    top: 29px;
+    left: 20px;
+    color: var(--trird-vanilla-color-or-txt)
+  }
+  .span-of-text-really{
+    font-size: 14px;
+  }
 }
+
+
+
+@media(max-width: 435px) {
+  .experience-upper-card-content{
+    flex-direction: column;
+  }
+  .years-experience{
+    margin: 0.2rem 1.15rem 0.9rem 1.15rem;
+  }
+}
+
+
 @media(max-width: 410px) {
   #about {
     padding: 50px 20px 115px 20px; /* Добавляем немного отступов для красоты */
@@ -659,18 +776,37 @@ p{
     font-weight: 500;
     font-size: 1.2rem;
   }
-  .years-education{
+  .years-experience{
+    padding: 6px 10px 4px;
     font-size: 0.9rem;
     /*margin: 0.5rem 1.15rem 0.9rem 1.15rem;*/
     width: 98px;
     height: 43%;
+    margin: 0.2rem 1.15rem 0.9rem 1.15rem;
+  }
+  .main-label{
+    font-size: 3rem;
+    line-height: 110%
+  }
+  .web-dev-txt{
+    font-size: 1.3rem;
+  }
+  .button-config {
+    margin-top: 1.1rem;
+    font-size: 0.8rem;
   }
 }
 
 
+@media (max-width: 369px) {
+ .education__inner-card-info{
+   height: 260px;
+ }
+}
+
 @media (max-width: 363px) {  /* -------> width: 352px*/
   .experience__inner-card-info{
-    height: 250px;
+    height: 220px;
     background-color: var(--deep-dark-blue);
     margin-top: 1.15rem;
     position: relative;
@@ -696,7 +832,7 @@ p{
     margin: 0.5rem 1.15rem 0.9rem 1.15rem;
   }
   .experience__inner-card-info{
-    height: 250px;
+    height: 220px;
     background-color: var(--deep-dark-blue);
     margin: 15px 20px;
     position: relative;
@@ -718,12 +854,16 @@ p{
     /*height:100px;*/
     /*width: 20%;*/
   }
-  .main-label{
-    font-size: 3rem;
-    line-height: 110%
-  }
+
 }
 
+
+@media (max-width: 336px) {
+  .education__inner-card-info{
+    height: 290px;
+  }
+
+}
 
 
 
@@ -755,9 +895,12 @@ p{
     padding: 50px 20px 200px 20px; /* Добавляем немного отступов для красоты */
   }
 }
-@media (max-width: 290px){
+@media (max-width: 298px){
   #about {
     padding: 50px 20px 300px 20px; /* Добавляем немного отступов для красоты */
+  }
+  .experience__inner-card-info {
+    height: 270px;
   }
 }
 

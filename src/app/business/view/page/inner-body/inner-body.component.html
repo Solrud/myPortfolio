@@ -4,8 +4,12 @@
   <div class="col-1-my"></div>
   <div class="col-4-my d-flex justify-content-center align-items-center">
     <div class="d-flex flex-column"> <!-- Приветствие  -->
-      <span class="main-label">Привет 👋<span class="">!</span></span>
-      <span class="col main-label"><span class="">я,</span> Матвей<span class="mark-blue">.</span></span>
+      <span class="main-label">Привет 👋<span class="mark-darker-blue">!</span></span>
+      <span class="col main-label"><span class="">я,</span> Матвей<span class="mark-darker-blue"></span></span>
+      <div class="web-dev-div">
+        <span class="web-dev-txt"><span class="mark-darker-blue">&lt;</span>Веб-разработчик<span class="mark-darker-blue">/&gt;</span></span>
+<!--        <i class="bi bi-code-slash bi-lower-about"></i>-->
+      </div>
       <div>
         <button (click)="onContactMe()"
                 class="button-config">СВЯЗАТЬСЯ</button>
@@ -28,8 +32,6 @@
 
 <!--2 секция обо мне-->
 <section id="about">
-
-<!--ВАРИАНТ-1  то что ниже, как вариант, очень неплохо но текст не обтекает снизу-->
   <h2 class="about-h2-upper">Обо мне</h2>
   <div class="about-me__image">
     <img class="about-me____photo" src="assets/imgs/selfieMain.jpeg" alt="Моё фото">
@@ -55,7 +57,7 @@
 
 <!--3 секция навки-->
 <section id="skills"
-         class="third-section-page min-vh-100 d-flex flex-column mb-5">
+         class="third-section-page d-flex flex-column mb-5">
   <input type="hidden" #selectResume>
 
   <div class="d-flex flex-column justify-content-center align-items-center column-nav-resume">
@@ -139,14 +141,14 @@
       <div class="d-flex  flex-wrap "
            *ngSwitchCase="'educationses'">
         <div *ngFor="let eduCard of education_title"
-             class="current-card">
+             class="education__current-card">
           <div class="d-flex flex-column "
                [class.none-card]="eduCard == ''"
-               [class.inner-card-info]="eduCard != ''"
+               [class.education__inner-card-info]="eduCard != ''"
           >
             <div class="education-upper-card-content"
                  [class.first-card-title]="eduCard != ''">
-              <span class="ms-4 title-experience">{{eduCard}}</span>
+              <span class="ms-4 title-education">{{eduCard}}</span>
               <span *ngIf="eduCard == 'ПГНИУ'"
                     class=" me-4 years-education">
                 {{education_years[0]}}

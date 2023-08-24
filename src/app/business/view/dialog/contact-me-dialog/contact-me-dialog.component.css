@@ -61,3 +61,21 @@ textarea{
   top: 50%;
   transform: translate(-50%,-50%);
 }
+
+.warning{
+  color: #e56c71;
+  font-size: 0.6rem;
+}
+
+@media (max-width: 468px){
+  .bi-class{
+    display: none;
+  }
+  h2, h5{
+    /*word-break: break-all;*/
+    text-align: center;
+  }
+  .btn-closed{
+    margin-left: 1rem;
+  }
+}

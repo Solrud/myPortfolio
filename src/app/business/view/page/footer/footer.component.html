@@ -2,8 +2,15 @@
 <h1 class="mt-4">Свяжитесь со мной!</h1>
 <!--<span>Email: matthew.abid.ng@gmail.com</span>-->
 <button (click)="onContactMe()"
-        class="btn mb-3"> Связаться</button>
-<div class="d-flex div-bi">
-  <i class="bi bi-telegram mb-3"></i>
-  <i class="bi bi-envelope-fill mb-3"></i>
+        class="btn mb-3 button-footer"> Связаться</button>
+<div class="div-bi">
+  <div class="d-flex align-items-center">
+    <i class="bi bi-telegram mb-3"
+       (click)="onClickTelegramIcon()"></i>
+    <span class="text-about-bi">@rudalsmolyusr</span>
+  </div>
+  <div class="d-flex align-items-center">
+    <i class="bi bi-envelope-fill mb-3" (click)="onClickMailIcon()"></i>
+    <span class="text-about-bi">matthew.avid.ng@gmail.com</span>
+  </div>
 </div>

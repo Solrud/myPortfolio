@@ -37,7 +37,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --black-color: rgb(22, 29, 42);
 
   --deep-dark-blue: rgb(46, 59, 87);
-
+  --darker-second-blue-color: #05fcff;
 }
 
 .max-width-1920{
