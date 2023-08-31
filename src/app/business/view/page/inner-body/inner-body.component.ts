@@ -8,6 +8,7 @@ import {
   EXPERIENCE_YEARS, SKILLS_NAMES, SKILLS_TITLE
 } from "../../../../app.constant";
 import {OpenDialogService} from "../../../data/service/OptionalService/open-dialog.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-inner-body',
@@ -31,15 +32,17 @@ export class InnerBodyComponent implements OnInit{
   experience_names = EXPERIENCE_NAME;
   experience_years = EXPERIENCE_YEARS;
 
-  constructor(private openDialogService: OpenDialogService) {
+  constructor(private openDialogService: OpenDialogService,
+              private http: HttpClient) {
   }
 
   ngOnInit(): void {
-    console.log()
   }
 
   onContactMe(){
-    this.openDialogService.openDialogContactMe();
+    this.openDialogService.openDialogContactMe().closed.subscribe(result => {
+      this.http.post('http://cg50261.tw1.ru/api/addusercontactstomatthewebrutable', result);
+    });
   }
 }
 
@@ -52,15 +55,18 @@ export class InnerBodyComponent implements OnInit{
 // сделать в секциях vh-100 по другому
 //  ну и конечно адаптировать
 // футер дурацкий, нужен красивый
+// в html -> head настроить название, заставку, и прочее
 
 //ToDo ЛИЦЕВАЯ ЧАСТЬ - ДИЗАЙН
 // сделать лого solrud
+// 1 секция height
+// карточки пустые не расстягиваются медиазапросах
 
 
 //ToDo ТЕХНИЧЕСКАЯ ЧАСТЬ
 // почистить css
 // переопределить шрифт Перевести все в словарь(транслита) сделать перевод
-// в html -> head настроить название, заставку, и прочее
+
 
 
 //текст в вк

@@ -11,6 +11,8 @@ import { HeaderComponent } from './business/view/page/header/header.component';
 import { FooterComponent } from './business/view/page/footer/footer.component';
 import { InnerBodyComponent } from './business/view/page/inner-body/inner-body.component';
 import { ContactMeDialogComponent } from './business/view/dialog/contact-me-dialog/contact-me-dialog.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ContactMeDialogComponent } from './business/view/dialog/contact-me-dial
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
