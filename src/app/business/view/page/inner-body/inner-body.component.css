@@ -7,6 +7,7 @@ span{
 .vertical{
   height: calc(100vh - 83px);
   max-height: 1080px;
+  min-height: 550px;
 }
 .img-main{
   background-image: url('/assets/imgs/main-img2.png');
@@ -481,6 +482,9 @@ p{
   }
   .education__inner-card-info {
     height: 250px;
+  }
+  .none-card{
+    height: 230px;
   }
 }
 

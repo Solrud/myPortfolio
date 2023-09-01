@@ -29,7 +29,7 @@ export class ContactMeDialogComponent implements OnInit{
     this.fgContacts = new FormGroup({
       id: new FormControl({value: this.contacts ? this.contacts.id : null, disabled: false}),
       firstName: new FormControl({value: this.contacts ? this.contacts.firstName : null, disabled: false}, Validators.required),
-      email: new FormControl({value: this.contacts ? this.contacts.email : null, disabled: false},  Validators.required),
+      email: new FormControl({value: this.contacts ? this.contacts.email : null, disabled: false},  Validators.email),
       question: new FormControl({value: this.contacts ? this.contacts.question : null, disabled: false},  Validators.required),
       comment: new FormControl({value: this.contacts ? this.contacts.comment : null, disabled: false}),
     })

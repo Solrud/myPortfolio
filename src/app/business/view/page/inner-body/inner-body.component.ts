@@ -41,7 +41,9 @@ export class InnerBodyComponent implements OnInit{
 
   onContactMe(){
     this.openDialogService.openDialogContactMe().closed.subscribe(result => {
-      this.http.post('http://cg50261.tw1.ru/api/addusercontactstomatthewebrutable', result);
+      this.http.post('http://cg50261.tw1.ru/api/adduser', result).subscribe(res=>{
+        console.log(res)
+      });
     });
   }
 }
@@ -56,11 +58,14 @@ export class InnerBodyComponent implements OnInit{
 //  ну и конечно адаптировать
 // футер дурацкий, нужен красивый
 // в html -> head настроить название, заставку, и прочее
+// карточки пустые не расстягиваются медиазапросах (тяп ляп чето сделелал)
+// 1 секция height (хрен пойм как то сделал, проблема в модалке осталась)
 
 //ToDo ЛИЦЕВАЯ ЧАСТЬ - ДИЗАЙН
 // сделать лого solrud
-// 1 секция height
-// карточки пустые не расстягиваются медиазапросах
+// модалка неподдается , может gpt поможет
+
+
 
 
 //ToDo ТЕХНИЧЕСКАЯ ЧАСТЬ
