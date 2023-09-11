@@ -13,6 +13,8 @@ import { InnerBodyComponent } from './business/view/page/inner-body/inner-body.c
 import { ContactMeDialogComponent } from './business/view/dialog/contact-me-dialog/contact-me-dialog.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {AppRoutingModule} from "./app-routing.module";
+import { ControlPanelComponent } from './business/view/page/control-panel/control-panel.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +25,16 @@ import {HttpClientModule} from "@angular/common/http";
     HeaderComponent,
     FooterComponent,
     InnerBodyComponent,
-    ContactMeDialogComponent
+    ContactMeDialogComponent,
+    ControlPanelComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     NgbModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
