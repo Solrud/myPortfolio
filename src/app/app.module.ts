@@ -15,6 +15,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import { ControlPanelComponent } from './business/view/page/control-panel/control-panel.component';
+import { BodyAdminComponent } from './business/view/page/control-panel/body-admin/body-admin.component';
+import { HeaderAdminComponent } from './business/view/page/control-panel/header-admin/header-admin.component';
+import { FooterAdminComponent } from './business/view/page/control-panel/footer-admin/footer-admin.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { ControlPanelComponent } from './business/view/page/control-panel/contro
     FooterComponent,
     InnerBodyComponent,
     ContactMeDialogComponent,
-    ControlPanelComponent
+    ControlPanelComponent,
+    BodyAdminComponent,
+    HeaderAdminComponent,
+    FooterAdminComponent
   ],
   imports: [
     BrowserModule,

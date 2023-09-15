@@ -3,7 +3,7 @@ import {NgModule} from "@angular/core";
 import {MainComponent} from "./business/view/page/main/main.component";
 import {ControlPanelComponent} from "./business/view/page/control-panel/control-panel.component";
 
-const routes: Routes = [{path: '', component: MainComponent},
+const routes: Routes = [{path: '', component: ControlPanelComponent},
                         {path: 'first-test-page', component: ControlPanelComponent},
                         {path: '**', redirectTo: '/', pathMatch: 'full'}];
 
