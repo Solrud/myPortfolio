@@ -11,6 +11,13 @@ import { HeaderComponent } from './business/view/page/header/header.component';
 import { FooterComponent } from './business/view/page/footer/footer.component';
 import { InnerBodyComponent } from './business/view/page/inner-body/inner-body.component';
 import { ContactMeDialogComponent } from './business/view/dialog/contact-me-dialog/contact-me-dialog.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {AppRoutingModule} from "./app-routing.module";
+import { ControlPanelComponent } from './business/view/page/control-panel/control-panel.component';
+import { BodyAdminComponent } from './business/view/page/control-panel/body-admin/body-admin.component';
+import { HeaderAdminComponent } from './business/view/page/control-panel/header-admin/header-admin.component';
+import { FooterAdminComponent } from './business/view/page/control-panel/footer-admin/footer-admin.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +28,19 @@ import { ContactMeDialogComponent } from './business/view/dialog/contact-me-dial
     HeaderComponent,
     FooterComponent,
     InnerBodyComponent,
-    ContactMeDialogComponent
+    ContactMeDialogComponent,
+    ControlPanelComponent,
+    BodyAdminComponent,
+    HeaderAdminComponent,
+    FooterAdminComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

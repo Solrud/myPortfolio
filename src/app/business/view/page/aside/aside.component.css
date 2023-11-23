@@ -1,6 +1,7 @@
 .first-vh{
   height: calc(100vh - 83px);
   max-height: 1080px;
+  min-height: 550px;
 }
 .second-vh{
   min-height: 750px;
