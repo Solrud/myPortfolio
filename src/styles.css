@@ -38,6 +38,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
   --deep-dark-blue: rgb(46, 59, 87);
   --darker-second-blue-color: #05fcff;
+
+
+  --control-main: rgb(28, 33, 152);
 }
 
 .max-width-1920{
@@ -45,3 +48,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 /*#2a95ff красивый голубой цвет*/
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -45,5 +45,11 @@ export const EXPERIENCE_NAME = ['Написание телеграм ботов 
                                 'Фронтенд разработчик на TypeScript и Angular'];
 export const EXPERIENCE_YEARS = ['2021 - 2022', '2023 - . . .']
 
+export const BASEURL = "http://cg50261.tw1.ru/api";
+
+
+
+
+
 //Считаю что главное умение программиста это умение гуглить
 //Обязательное качество программитса интерес и любознательность

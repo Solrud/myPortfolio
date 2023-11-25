@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiBackendService} from "./business/data/service/OptionalService/api-backend.service";
+import {BASEURL} from "./app.constant";
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,10 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     if(this.isFirstTime){
-      this.apiService.getUserInfo();
+      this.apiService.addVisitorInfo();
       this.isFirstTime = false;
+
+      console.log(BASEURL + '/addallvisitors')
     }
 
   }
