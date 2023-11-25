@@ -1,0 +1,236 @@
+<!--1 главная-первая страница-->
+<section
+  class="d-flex vertical img-main">
+  <div class="col-1-my"></div>
+  <div class="col-4-my d-flex justify-content-center align-items-center">
+    <div class="d-flex flex-column"> <!-- Приветствие  -->
+      <span class="main-label">Привет 👋<span class="mark-darker-blue">!</span></span>
+      <span class="col main-label"><span class="">я</span> Лиза<span class="mark-darker-blue"></span></span>
+      <div class="web-dev-div">
+        <span class="web-dev-txt"><span class="mark-darker-blue">&lt;</span>Пиарщик журналист<span class="mark-darker-blue">/&gt;</span></span>
+        <!--        <i class="bi bi-code-slash bi-lower-about"></i>-->
+      </div>
+      <div>
+        <button
+                class="button-config">Обсудить тоси боси</button>
+      </div>
+    </div>
+  </div>
+  <!--фотография-->
+  <div class="col-7-my d-flex  justify-content-center align-items-center">
+    <!--    <div class="div-photo"></div>- -->
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<!--2 секция обо мне-->
+<section id="about">
+  <h2 class="about-h2-upper">Обо мне</h2>
+  <div class="about-me__image">
+    <img class="about-me____photo" src="assets/imgs/selfie.jpg" alt="Моё фото">
+  </div>
+  <div class="about-me__content">
+    <h2 class="about-h2-lower">Обо мне</h2>
+    <div class="about-text-content">
+      <p>Привет! Я Лиза Пердушка — супер классный пиарщик, журналист и вечный студент в этой сраной жопе мира.</p>
+      <p>Моя страсть к матерщине сравнима с любовью сапожника к своей работе. Пиздец, как я обожаю разрывать свои штаны — это просто мое хобби!</p>
+      <p>Хоть я и курю как паровоз, но мои идеи горят ярче любой сигареты. Мое портфолио — это не просто страница с информацией, это своеобразный калейдоскоп моего творчества и идейного беспорядка. На протяжении своей карьеры я освоила искусство пиара и создания контента, будучи при этом такой же загадочной, смешной, и красивой.</p>
+      <p>Раньше я была преданным поклонником йоги, но потом решила, что натягивать свои штаны на гиперэкстензию — это не мое. Если у вас есть свободные штаны, я готова принять их в подарок. Надеюсь, вы найдете на моем сайте что-то интересное и необычное, как и я сама.</p>
+      <p>Не думайте, что я ебанутая, просто у меня свой взгляд на вещи. Ведь в мире, где все серьезно, нужно иногда добавить немного ебланства.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<!--3 секция навки-->
+<section id="skills">
+  <img class="mt-5 about-me____photo" src="https://media.tenor.com/lvj_I4ugx04AAAAC/happy-birthday-roses.gif" alt="Моё фото">
+</section>
+<!--         class="third-section-page d-flex flex-column mb-5">-->
+<!--  <input type="hidden" #selectResume>-->
+
+<!--  <div class="d-flex flex-column justify-content-center align-items-center column-nav-resume">-->
+<!--    <div class="mt-5 position-relative div-main-label">-->
+<!--      <span class="my-resume-main-label">Моё резюме</span>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;    кнопки выбра навыки, образование, опыт&ndash;&gt;-->
+<!--    <div class=" gap-nav-divs flexible-buttons-nav-resume ">-->
+<!--      &lt;!&ndash;НАВЫКИ&ndash;&gt;-->
+<!--      &lt;!&ndash;      <div class="btn-group" role="group" aria-label="Базовая группа переключателей радио">&ndash;&gt;-->
+<!--      <div class="nav-button-resume ">-->
+<!--        <input (click)="selectResume.value = 'skillses'"-->
+<!--               type="radio" class="btn-check" name="btnradio" id="skillsRadio" autocomplete="off" checked>-->
+<!--        <label class="btn btn-nav-resume" for="skillsRadio">Навыки</label>-->
+<!--      </div>-->
+<!--      &lt;!&ndash;ОБРАЗОВАНИЕ&ndash;&gt;-->
+<!--      <div class="nav-button-resume ">-->
+<!--        <input (click)="selectResume.value = 'educationses'"-->
+<!--               type="radio" class="btn-check" name="btnradio" id="educationRadio" autocomplete="off">-->
+<!--        <label class="btn btn-nav-resume" for="educationRadio">Образование</label>-->
+<!--      </div>-->
+<!--      &lt;!&ndash;ОПЫТ&ndash;&gt;-->
+<!--      <div class="nav-button-resume ">-->
+<!--        <input (click)="selectResume.value = 'expirienceses'"-->
+<!--               type="radio" class="btn-check" name="btnradio" id="expirienceRadio" autocomplete="off">-->
+<!--        <label class="btn btn-nav-resume" for="expirienceRadio">Опыт</label>-->
+<!--      </div>-->
+<!--      &lt;!&ndash;      </div>&ndash;&gt;-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash;карточки с даными по выборке кнопки&ndash;&gt;-->
+<!--  <div class="d-flex column-cards-resume justify-content-center align-items-start">-->
+<!--    <div class="card-resume" [ngSwitch]="selectResume.value">-->
+<!--      &lt;!&ndash; _________________________________________________НАВЫКИ карточки&ndash;&gt;-->
+<!--      <div class="d-flex  flex-wrap "-->
+<!--           *ngSwitchDefault>-->
+<!--        <div *ngFor="let skillCards of skills_title"-->
+<!--             class="current-card">-->
+<!--          <div class="d-flex flex-column inner-card-info">-->
+<!--            <div class="first-card-title">-->
+<!--              <span class="text-label-card">{{skillCards}}</span>-->
+<!--              <i class="bi-icon-card-skills bi " [ngClass]="{'bi-filetype-py': skillCards == 'Python 3',-->
+<!--                                                             'bi-filetype-sql': skillCards == 'SQL',-->
+<!--                                                             'bi-filetype-js': skillCards =='JS/TS',-->
+<!--                                                             'bi-filetype-html': skillCards == 'HTML5',-->
+<!--                                                             'bi-filetype-css': skillCards == 'CSS3',-->
+<!--                                                             'bi-database-add': skillCards == 'Server'}"></i>-->
+<!--            </div>-->
+<!--            <div class="second-card-text">-->
+<!--              <div *ngIf="skillCards == 'Python 3'">-->
+<!--                &lt;!&ndash;[class.odd-text]="index % 2 == 1"&ndash;&gt;-->
+<!--                <span *ngFor="let py of skills_names[0]; let index = index"-->
+<!--                      class="span-of-text-really">{{py}} ▫ </span>-->
+<!--              </div>-->
+<!--              <div *ngIf="skillCards == 'SQL'">-->
+<!--                <span *ngFor="let sql of skills_names[1]"-->
+<!--                      class="span-of-text-really">{{sql}} ▫ </span>-->
+<!--              </div>-->
+<!--              <div *ngIf="skillCards == 'JS/TS'">-->
+<!--                <span *ngFor="let jsts of skills_names[2]"-->
+<!--                      class="span-of-text-really">{{jsts}} ▫ </span>-->
+<!--              </div>-->
+<!--              <div *ngIf="skillCards == 'HTML5'">-->
+<!--                <span *ngFor="let html of skills_names[3]"-->
+<!--                      class="span-of-text-really">{{html}} ▫ </span>-->
+<!--              </div>-->
+<!--              <div *ngIf="skillCards == 'CSS3'">-->
+<!--                <span *ngFor="let css of skills_names[4]"-->
+<!--                      class="span-of-text-really">{{css}} ▫ </span>-->
+<!--              </div>-->
+<!--              <div *ngIf="skillCards == 'Server'">-->
+<!--                <span *ngFor="let server of skills_names[5]"-->
+<!--                      class="span-of-text-really">{{server}} ▫ </span>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; ______________________________________________ОБРАЗОВАНИЕ карточки&ndash;&gt;-->
+<!--      <div class="d-flex  flex-wrap "-->
+<!--           *ngSwitchCase="'educationses'">-->
+<!--        <div *ngFor="let eduCard of education_title"-->
+<!--             class="education__current-card">-->
+<!--          <div class="d-flex flex-column "-->
+<!--               [class.none-card]="eduCard == ''"-->
+<!--               [class.education__inner-card-info]="eduCard != ''"-->
+<!--          >-->
+<!--            <div class="education-upper-card-content"-->
+<!--                 [class.first-card-title]="eduCard != ''">-->
+<!--              <span class="ms-4 title-education">{{eduCard}}</span>-->
+<!--              <span *ngIf="eduCard == 'ПГНИУ'"-->
+<!--                    class=" me-4 years-education">-->
+<!--                {{education_years[0]}}-->
+<!--              </span>-->
+<!--              <span *ngIf="eduCard == 'ПНИПУ'"-->
+<!--                    class=" me-4 years-education">-->
+<!--                {{education_years[1]}}-->
+<!--              </span>-->
+<!--              <span *ngIf="eduCard == 'Курсы'"-->
+<!--                    class=" me-4 years-education">-->
+<!--                {{education_years[2]}}-->
+<!--              </span>-->
+<!--            </div>-->
+<!--            <div class="second-card-title-EDU">-->
+<!--              <span class="experience-text"-->
+<!--                    *ngIf="eduCard == 'ПГНИУ'">-->
+<!--                {{education_specialization[0]}}-->
+<!--              </span>-->
+<!--              <span class="experience-text"-->
+<!--                    *ngIf="eduCard == 'ПНИПУ'">-->
+<!--                {{education_specialization[1]}}-->
+<!--              </span>-->
+<!--              <span class="experience-text"-->
+<!--                    *ngIf="eduCard == 'Курсы'">-->
+<!--                {{education_specialization[2]}}-->
+<!--              </span>-->
+
+<!--            </div>-->
+<!--            <div class="third-card-title-EDU">-->
+<!--              <span *ngIf="eduCard == 'ПГНИУ'"-->
+<!--                    class="education-name">-->
+<!--                *{{education_names[0]}}-->
+<!--              </span>-->
+<!--              <span *ngIf="eduCard == 'ПНИПУ'"-->
+<!--                    class="education-name">-->
+<!--                *{{education_names[1]}}-->
+<!--              </span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; ______________________________________________ОПЫТ карточки&ndash;&gt;-->
+<!--      <div class="d-flex flex-wrap "-->
+<!--           *ngSwitchCase="'expirienceses'">-->
+<!--        <div *ngFor="let expCard of experience_title"-->
+<!--             class="experience__current-card">-->
+<!--          <div class="d-flex flex-column"-->
+<!--               [class.none-card]="expCard == ''"-->
+<!--               [class.experience__inner-card-info]="expCard != ''"-->
+<!--          >-->
+<!--            <div class="experience-upper-card-content"-->
+<!--                 [class.experience__first-card-title]="expCard != ''">-->
+<!--              <span class="title-experience" style="margin-bottom: 10px;">-->
+<!--                {{expCard}}-->
+<!--              </span>-->
+<!--              <span *ngIf="expCard == 'Telegram Боты'"-->
+<!--                    class=" me-4 years-experience">-->
+<!--                {{experience_years[0]}}-->
+<!--              </span>-->
+<!--              <span *ngIf="expCard == 'Техник-программист'"-->
+<!--                    class=" me-4 years-experience">-->
+<!--                {{experience_years[1]}}-->
+<!--              </span>-->
+<!--            </div>-->
+<!--            <div class="second-card-text">-->
+<!--              <span class="experience-text"-->
+<!--                    *ngIf="expCard == 'Telegram Боты'">-->
+<!--                {{experience_names[0]}}-->
+<!--              </span>-->
+<!--              <span class="experience-text"-->
+<!--                    *ngIf="expCard == 'Техник-программист'">-->
+<!--                {{experience_names[1]}}-->
+<!--              </span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </div>-->
+<!--</section>-->

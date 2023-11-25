@@ -64,21 +64,21 @@
     </div>
     <div class="modal-body black-bg-main">
       <div class="d-flex justify-content-between align-items-center">
-        <button class="btn"
-                type="button"
-                [disabled]="fgContacts.invalid"
-                (click)="onClickSendContact()">
-          Отправить
-        </button>
-        <div>
-          <i class="bi bi-envelope-fill me-3 bi-class"></i>
-          <i class="bi bi-telegram bi-class"></i>
-        </div>
         <button class="btn btn-closed"
                 type="button"
                 ngbautofocus
                 (click)="onClickCancel()">
           Отмена
+        </button>
+        <div>
+          <i class="bi bi-envelope-fill me-3 bi-class"></i>
+          <i class="bi bi-telegram bi-class"></i>
+        </div>
+        <button class="btn"
+                type="button"
+                [disabled]="fgContacts.invalid"
+                (click)="onClickSendContact()">
+          Отправить
         </button>
       </div>
   <!--    <span class="warning">*на данный момент отправка формы не работает</span>-->

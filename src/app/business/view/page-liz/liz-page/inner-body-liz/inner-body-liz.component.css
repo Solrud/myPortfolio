@@ -530,7 +530,7 @@ p{
     /*height: auto;*/
     /*height: auto;*/
     height: 350px;
-  /*  overflow: hidden;*/
+    /*  overflow: hidden;*/
   }
   .about-me____photo{
     object-fit: cover;
@@ -541,10 +541,10 @@ p{
 
     /*max-height: 200px;*/
 
-  /*  max-width: none;*/
-  /*  width: 100%; !* Устанавливаем максимальную ширину изображения *!*/
-  /*  height: 100%;*/
-  /*  object-fit: cover;*/
+    /*  max-width: none;*/
+    /*  width: 100%; !* Устанавливаем максимальную ширину изображения *!*/
+    /*  height: 100%;*/
+    /*  object-fit: cover;*/
   }
 
   .about-me__content{
@@ -806,9 +806,9 @@ p{
 
 
 @media (max-width: 369px) {
- .education__inner-card-info{
-   height: 260px;
- }
+  .education__inner-card-info{
+    height: 260px;
+  }
 }
 
 @media (max-width: 363px) {  /* -------> width: 352px*/

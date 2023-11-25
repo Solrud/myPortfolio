@@ -1,0 +1,67 @@
+i{
+  color: var(--trird-vanilla-color-or-txt);
+  font-size: 2.1rem;
+}
+.div-bi{
+  display: flex;
+  gap: 3rem;
+}
+button{
+  padding: 10px 30px;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  background-color: var(--deep-dark-blue);
+  color: var(--trird-vanilla-color-or-txt)
+}
+.btn{
+  text-transform: uppercase;
+}
+.button-footer:hover{
+  background-color: var(--second-blue-color);
+}
+.button-footer:active{
+  background-color: var(--darker-second-blue-color);
+}
+
+h1{
+  color: var(--trird-vanilla-color-or-txt);
+  font-size: 1rem;
+  /*-webkit-text-stroke: 1px #46d2bf;*/
+}
+
+.bi-telegram, .bi-envelope-fill{
+  cursor: pointer;
+  transition: 0.2s;
+}
+.bi-telegram:hover, .bi-envelope-fill:hover{
+  color: var(--second-blue-color);
+}
+.bi-telegram:active, .bi-envelope-fill:active{
+  color: var(--darker-second-blue-color);
+}
+.text-about-bi{
+  color: var(--third-trird-vanilla-color-or-txt);
+  font-size: 1rem;
+  margin: 0 0 1rem 1rem;
+}
+
+@media (max-width: 582px){
+  .div-bi{
+    /*flex-direction: column;*/
+    /*gap: 1.3rem;*/
+  }
+  .text-about-bi{
+    display:none;
+  }
+
+}
+
+@media (max-width: 386px){
+  h1{
+    font-size: 1.0rem;
+  }
+  .button-footer{
+    font-size: 0.8rem;
+    padding: 7px 20px;
+  }
+}

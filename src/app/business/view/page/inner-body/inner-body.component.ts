@@ -32,19 +32,14 @@ export class InnerBodyComponent implements OnInit{
   experience_names = EXPERIENCE_NAME;
   experience_years = EXPERIENCE_YEARS;
 
-  constructor(private openDialogService: OpenDialogService,
-              private http: HttpClient) {
+  constructor(private openDialogService: OpenDialogService) {
   }
 
   ngOnInit(): void {
   }
 
   onContactMe(){
-    this.openDialogService.openDialogContactMe().closed.subscribe(result => {
-      this.http.post('http://cg50261.tw1.ru/api/adduser', result).subscribe(res=>{
-        console.log(res)
-      });
-    });
+    this.openDialogService.openDialogContactMe();
   }
 }
 

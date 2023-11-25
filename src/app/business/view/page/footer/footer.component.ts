@@ -18,6 +18,6 @@ export class FooterComponent {
     window.open('https://t.me/rudalsmolyusr');
   }
   onClickMailIcon(){
-    window.open('https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=matthew.avid.ng@gmail.com')
+    window.open('mailto:matthew.avid.ng@gmail.com')
   }
 }

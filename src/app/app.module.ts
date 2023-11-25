@@ -18,6 +18,8 @@ import { ControlPanelComponent } from './business/view/page/control-panel/contro
 import { BodyAdminComponent } from './business/view/page/control-panel/body-admin/body-admin.component';
 import { HeaderAdminComponent } from './business/view/page/control-panel/header-admin/header-admin.component';
 import { FooterAdminComponent } from './business/view/page/control-panel/footer-admin/footer-admin.component';
+import { LizPageComponent } from './business/view/page-liz/liz-page/liz-page.component';
+import {LizPageModule} from "./business/view/page-liz/liz-page/liz-page.module";
 
 @NgModule({
   declarations: [
@@ -40,9 +42,13 @@ import { FooterAdminComponent } from './business/view/page/control-panel/footer-
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LizPageModule
   ],
   providers: [],
+  exports: [
+    AsideComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

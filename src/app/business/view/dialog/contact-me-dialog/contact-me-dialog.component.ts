@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ContactsDTO} from "../../../data/model/dto/impl/ContactsDTO";
+import {ApiBackendService} from "../../../data/service/OptionalService/api-backend.service";
 
 @Component({
   selector: 'app-contact-me-dialog',
@@ -14,7 +15,8 @@ export class ContactMeDialogComponent implements OnInit{
   fgContacts: FormGroup;
 
   constructor(
-    public activeModal: NgbActiveModal){
+    public activeModal: NgbActiveModal,
+    private apiService: ApiBackendService){
   }
 
   ngOnInit(): void {
@@ -43,7 +45,12 @@ export class ContactMeDialogComponent implements OnInit{
     this.newContacts.question = this.fgContacts.controls['question'].value;
     this.newContacts.comment = this.fgContacts.controls['comment'].value;
 
-    this.activeModal.close(this.newContacts);
+    this.addNewContacts(this.newContacts);
+    this.activeModal.close();
+  }
+
+  addNewContacts(newContacts: ContactsDTO){
+    this.apiService.addNewContactForm(newContacts);
   }
 
   onClickCancel(){

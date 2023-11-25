@@ -1,0 +1,19 @@
+.flex1{
+  flex-grow: 1;
+}
+.flex2{
+  flex-grow: 4;
+}
+
+
+.max-width{
+  max-width: 1266px;
+}
+
+app-aside-liz{
+  background-color: var(--first-red-color);
+}
+
+app-inner-body-liz{
+  background-color:var(--first-red-color);
+}
