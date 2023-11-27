@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {MatDrawer} from "@angular/material/sidenav";
 import {ApiBackendService} from "../../../../data/service/OptionalService/api-backend.service";
+import {VisitorsDTO} from "../../../../data/model/dto/impl/VisitorsDTO";
 
 @Component({
   selector: 'app-side-nav',
@@ -11,6 +12,7 @@ export class SideNavComponent {
   @ViewChild(MatDrawer)
   private readonly drawerComponent?: MatDrawer;
 
+  dataVisitorsList: VisitorsDTO[] | null = null;
   constructor(private apiBackendService: ApiBackendService) {
   }
 
@@ -19,6 +21,7 @@ export class SideNavComponent {
   }
 
   chkapi(){
-    this.apiBackendService.getAllVisitors();
-  }
+    this.apiBackendService.getAllVisitors().subscribe(result =>
+      this.dataVisitorsList = result
+    )}
 }
