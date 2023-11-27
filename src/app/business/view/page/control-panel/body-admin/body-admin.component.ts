@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./body-admin.component.css']
 })
 export class BodyAdminComponent {
+  openSideNav(){
 
+  }
 }

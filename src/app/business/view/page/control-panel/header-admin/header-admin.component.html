@@ -2,7 +2,9 @@
   <button
           mat-icon-button
           class="example-icon"
-          aria-label="Example icon-button with menu icon">
+          aria-label="Example icon-button with menu icon"
+          (click)="onClickOpenSidenav(); $event.stopPropagation()"
+>
     <mat-icon>menu</mat-icon>
   </button>
   <span>Control panel</span>
@@ -14,3 +16,4 @@
     <mat-icon>share</mat-icon>
   </button>
 </mat-toolbar>
+

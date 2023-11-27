@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-header-admin',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./header-admin.component.css']
 })
 export class HeaderAdminComponent {
+  @Output()
+  readonly openSidenav = new EventEmitter<void>();
 
+
+  onClickOpenSidenav(){
+    this.openSidenav.emit();
+  }
 }

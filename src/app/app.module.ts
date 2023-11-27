@@ -22,6 +22,12 @@ import {LizPageModule} from "./business/view/page-liz/liz-page/liz-page.module";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { SideNavComponent } from './business/view/page/control-panel/side-nav/side-nav.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTableModule} from '@angular/material/table';
+import { TableControlComponent } from './business/view/page/control-panel/side-nav/table-control/table-control.component';
+import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +42,9 @@ import {MatButtonModule} from '@angular/material/button';
     ControlPanelComponent,
     BodyAdminComponent,
     HeaderAdminComponent,
-    FooterAdminComponent
+    FooterAdminComponent,
+    SideNavComponent,
+    TableControlComponent
   ],
   imports: [
     BrowserModule,
@@ -48,8 +56,10 @@ import {MatButtonModule} from '@angular/material/button';
     LizPageModule,
     MatIconModule,
     MatToolbarModule,
-    MatButtonModule
-
+    MatButtonModule,
+    MatSidenavModule,
+    MatTableModule,
+    MatInputModule
   ],
   providers: [],
   exports: [

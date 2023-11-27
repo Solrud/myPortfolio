@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/purple-green.css';
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
@@ -40,7 +40,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --darker-second-blue-color: #05fcff;
 
 
-  --control-main: rgb(28, 33, 152);
+  --control-main: #7b1fa2;
+  --control-black-bg: #303030;
+
+
+}
+
+.control-main-bg{
+  background-color: var(--control-main);
 }
 
 .max-width-1920{
