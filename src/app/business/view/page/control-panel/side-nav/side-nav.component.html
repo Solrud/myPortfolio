@@ -1,19 +1,18 @@
 <mat-drawer-container autosize class="example-container">
   <mat-drawer mode="side" class="example-sidenav">
-    <p>Auto-resizing sidenav</p>
+    <p>update soon! see you</p>
+    <p class="control-accent">control version 1</p>
   </mat-drawer>
 
   <div class="example-sidenav-content">
     <div>
-      <button type="button" mat-button (click)="chkapi()">
-        check api
+      <button type="button" mat-button class="m-3" (click)="updateAndGetVisitors()">
+        update visitors
       </button>
 
       <app-table-control [dataFromAllVisitorsList]="dataVisitorsList"></app-table-control>
 
+
     </div>
-
-
-
   </div>
 </mat-drawer-container>

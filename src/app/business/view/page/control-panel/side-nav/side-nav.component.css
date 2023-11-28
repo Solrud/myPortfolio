@@ -6,9 +6,26 @@
 
 .example-sidenav-content {
   display: flex;
+  justify-content: center;
   height: 100%;
 }
 
 .example-sidenav {
-  padding: 20px;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-evenly !important;
+  padding: 20px !important;
+}
+
+app-table-control{
+
+  /*width: 1000px;*/
+}
+
+@media (max-width: 599.98px) and (orientation: portrait){
+  .example-container {
+    width: 100%;
+    height: calc(100vh - 96px);
+    /*border: 1px solid rgba(0, 0, 0, 0.5);*/
+  }
 }

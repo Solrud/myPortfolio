@@ -20,9 +20,8 @@ export class ApiBackendService {
 
   addVisitorInfo(){
     let currentPath = window.location.pathname;
-    // this.http.get(BASEURL + '/addnewuserinfo').subscribe(result => {
-    this.http.get(BASEURL + '/getuserinfo', {params: {referrer: currentPath}}).subscribe(result => {
-      console.log(result);
+    this.http.get(BASEURL + '/addnewvisitorinfo', {params: {referrer: currentPath}}).subscribe(result => {
+      // console.log(result);
     })
   }
 
@@ -30,5 +29,3 @@ export class ApiBackendService {
     return this.http.get<VisitorsDTO[]>(BASEURL + '/getallvisitors');
   }
 }
-
-

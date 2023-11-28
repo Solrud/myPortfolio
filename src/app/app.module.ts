@@ -27,7 +27,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTableModule} from '@angular/material/table';
 import { TableControlComponent } from './business/view/page/control-panel/side-nav/table-control/table-control.component';
 import {MatInputModule} from '@angular/material/input';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,10 @@ import {MatInputModule} from '@angular/material/input';
     MatButtonModule,
     MatSidenavModule,
     MatTableModule,
-    MatInputModule
+    MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSnackBarModule
   ],
   providers: [],
   exports: [

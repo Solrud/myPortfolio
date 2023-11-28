@@ -43,7 +43,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
   --control-main: #7b1fa2;
   --control-black-bg: #303030;
-
+  --control-accent: #69f0ae;
+  --control-primary: #ff4081;
 
 }
 
@@ -51,11 +52,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: var(--control-main);
 }
 
+.control-primary{
+  color: var(--control-primary);
+}
+
+.control-accent{
+  color: var(--control-accent);
+}
+
 .max-width-1920{
   max-width: 1920px;
 }
 
+.mat-mdc-snack-bar-container {
+  --mat-mdc-snack-bar-button-color: #ff4081 !important;
+  --mdc-snackbar-container-color: #333333 !important;
+  --mdc-snackbar-supporting-text-color: rgba(255, 255, 255, 0.87) !important;
+}
 /*#2a95ff красивый голубой цвет*/
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
