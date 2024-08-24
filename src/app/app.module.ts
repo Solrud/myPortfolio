@@ -18,7 +18,6 @@ import { ControlPanelComponent } from './business/view/page/control-panel/contro
 import { BodyAdminComponent } from './business/view/page/control-panel/body-admin/body-admin.component';
 import { HeaderAdminComponent } from './business/view/page/control-panel/header-admin/header-admin.component';
 import { FooterAdminComponent } from './business/view/page/control-panel/footer-admin/footer-admin.component';
-import {LizPageModule} from "./business/view/page-liz/liz-page/liz-page.module";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -55,7 +54,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    LizPageModule,
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,

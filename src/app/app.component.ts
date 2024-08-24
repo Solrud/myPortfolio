@@ -18,8 +18,6 @@ export class AppComponent implements OnInit{
     if(this.isFirstTime){
       this.apiService.addVisitorInfo();
       this.isFirstTime = false;
-
-      console.log(BASEURL + '/addallvisitors')
     }
 
   }
