@@ -1,13 +1,13 @@
 <mat-drawer-container autosize class="example-container">
   <mat-drawer mode="side" class="example-sidenav">
-    <p>update soon! see you</p>
-    <p class="control-accent">control version 1</p>
+    <button class="btn btn-dark mb-2" [routerLink]="['/']">На главную</button>
+    <p class="control-accent">Версия 1.1</p>
   </mat-drawer>
 
   <div class="example-sidenav-content">
     <div>
       <button type="button" mat-button class="m-3" (click)="updateAndGetVisitors()">
-        update visitors
+        Обновить посетителей
       </button>
 
       <app-table-control [dataFromAllVisitorsList]="dataVisitorsList"></app-table-control>

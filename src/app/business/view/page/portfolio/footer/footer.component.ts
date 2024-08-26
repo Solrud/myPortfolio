@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {OpenDialogService} from "../../../data/service/OptionalService/open-dialog.service";
+import {OpenDialogService} from "../../../../data/service/OptionalService/open-dialog.service";
 
 @Component({
   selector: 'app-footer',

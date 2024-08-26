@@ -41,7 +41,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --darker-second-blue-color: #05fcff;
 
 
-  --control-main: #7b1fa2;
+  --control-main: #1c1c1c;
   --control-black-bg: #303030;
   --control-accent: #69f0ae;
   --control-primary: #ff4081;
@@ -49,7 +49,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .control-main-bg{
-  background-color: var(--control-main);
+  background-color: var(--control-main) !important;
 }
 
 .control-primary{

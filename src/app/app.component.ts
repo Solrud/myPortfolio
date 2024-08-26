@@ -14,11 +14,13 @@ export class AppComponent implements OnInit{
   }
 
 
+
   ngOnInit() {
+    //ToDo меня менять при разработке
+
     if(this.isFirstTime){
       this.apiService.addVisitorInfo();
       this.isFirstTime = false;
     }
-
   }
 }

@@ -1,0 +1,21 @@
+:host{
+  height: 100%;
+  width: 100%;
+  background: #171717;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-modal-container{
+  width: 400px;
+  height: 200px;
+  background: #ffffff;
+  border-radius: 13px;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-input{
+  border-color: #131313;outline:0;
+}

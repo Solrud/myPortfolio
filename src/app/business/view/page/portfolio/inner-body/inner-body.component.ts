@@ -6,8 +6,8 @@ import {
   EDUCATION_TITLE,
   EDUCATION_YEARS, EXPERIENCE_NAME, EXPERIENCE_TITLE,
   EXPERIENCE_YEARS, SKILLS_NAMES, SKILLS_TITLE
-} from "../../../../app.constant";
-import {OpenDialogService} from "../../../data/service/OptionalService/open-dialog.service";
+} from "../../../../../app.constant";
+import {OpenDialogService} from "../../../../data/service/OptionalService/open-dialog.service";
 import {HttpClient} from "@angular/common/http";
 
 @Component({
