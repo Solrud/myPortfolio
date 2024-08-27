@@ -28,4 +28,8 @@ export class ApiBackendService {
   getAllVisitors(): Observable<VisitorsDTO[]>{
     return this.http.get<VisitorsDTO[]>(BASEURL + '/getallvisitors');
   }
+
+  checkPassword(password: string): Observable<any>{
+    return this.http.post<any>(BASEURL + '/checkpassword', password);
+  }
 }
