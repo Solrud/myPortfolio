@@ -1,12 +1,17 @@
 .example-container {
   width: 100%;
-  height: calc(100vh - 104px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /*height: calc(100vh - 104px);*/
   /*border: 1px solid rgba(0, 0, 0, 0.5);*/
 }
 
 .example-sidenav-content {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+
   height: 100%;
 }
 
@@ -17,10 +22,8 @@
   padding: 20px !important;
 }
 
-app-table-control{
 
-  /*width: 1000px;*/
-}
+
 
 @media (max-width: 599.98px) and (orientation: portrait){
   .example-container {

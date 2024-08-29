@@ -20,7 +20,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   templateUrl: './table-control.component.html',
   styleUrls: ['./table-control.component.css']
 })
-export class TableControlComponent implements OnChanges, OnInit, AfterViewInit{
+export class TableControlComponent implements OnChanges{
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
 
@@ -32,6 +32,7 @@ export class TableControlComponent implements OnChanges, OnInit, AfterViewInit{
 
   displayedColumns = ['id', 'date', 'ip', 'agent', 'path', 'language']
   dataSource: MatTableDataSource<VisitorsDTO[]> | null;
+  dataSourceLength: number = 0;
   inFirstTime = true;
 
   constructor(private snackBar: MatSnackBar) {
@@ -40,6 +41,7 @@ export class TableControlComponent implements OnChanges, OnInit, AfterViewInit{
   ngOnChanges(changes: SimpleChanges) {
     if (changes['dataFromAllVisitorsList']){
       this.dataSource = new MatTableDataSource<VisitorsDTO[]>(changes['dataFromAllVisitorsList'].currentValue?.visitors);
+      this.dataSourceLength =  this.dataSource.data.length
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
 
@@ -50,13 +52,5 @@ export class TableControlComponent implements OnChanges, OnInit, AfterViewInit{
     }
   }
 
-
-  ngOnInit() {
-
-  }
-
-  ngAfterViewInit() {
-
-  }
 }
 

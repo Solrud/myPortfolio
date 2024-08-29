@@ -32,4 +32,8 @@ export class ApiBackendService {
   checkPassword(password: string): Observable<any>{
     return this.http.post<any>(BASEURL + '/checkpassword', password);
   }
+
+  getAllContacts(): Observable<ContactsDTO[]>{
+    return this.http.get<ContactsDTO[]>(BASEURL + '/getallfeedbacks');
+  }
 }

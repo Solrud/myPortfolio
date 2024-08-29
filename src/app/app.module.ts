@@ -30,6 +30,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AuthComponent } from './business/view/page/auth/auth.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { AuthComponent } from './business/view/page/auth/auth.component';
     MatInputModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule
   ],
   providers: [],
   exports: [

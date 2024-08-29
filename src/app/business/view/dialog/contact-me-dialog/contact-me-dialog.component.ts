@@ -30,7 +30,7 @@ export class ContactMeDialogComponent implements OnInit{
   initFormGroup(){
     this.fgContacts = new FormGroup({
       id: new FormControl({value: this.contacts ? this.contacts.id : null, disabled: false}),
-      firstName: new FormControl({value: this.contacts ? this.contacts.firstName : null, disabled: false}, Validators.required),
+      firstName: new FormControl({value: this.contacts ? this.contacts.name : null, disabled: false}, Validators.required),
       email: new FormControl({value: this.contacts ? this.contacts.email : null, disabled: false},  Validators.email),
       question: new FormControl({value: this.contacts ? this.contacts.question : null, disabled: false},  Validators.required),
       comment: new FormControl({value: this.contacts ? this.contacts.comment : null, disabled: false}),
@@ -40,7 +40,7 @@ export class ContactMeDialogComponent implements OnInit{
   onClickSendContact(){
     this.newContacts = new ContactsDTO();
     this.newContacts.id = this.fgContacts.controls['id'].value;
-    this.newContacts.firstName = this.fgContacts.controls['firstName'].value;
+    this.newContacts.name = this.fgContacts.controls['firstName'].value;
     this.newContacts.email = this.fgContacts.controls['email'].value;
     this.newContacts.question = this.fgContacts.controls['question'].value;
     this.newContacts.comment = this.fgContacts.controls['comment'].value;

@@ -1,5 +1,6 @@
-export class VisitorsDTO{
-  id: number;
+import {ABaseDTO} from "../ABaseDTO";
+
+export class VisitorsDTO extends ABaseDTO{
   ip: string;
   agent: string;
   path: string;

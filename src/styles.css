@@ -52,6 +52,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: var(--control-main) !important;
 }
 
+.mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label, .mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label {
+  color: var(--control-primary) !important;
+}
+.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline, .mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
+  border-color: var(--control-primary) !important;
+}
+
 .control-primary{
   color: var(--control-primary);
 }
