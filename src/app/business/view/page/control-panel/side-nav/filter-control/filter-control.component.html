@@ -1,0 +1,24 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Фильтрация
+      </mat-panel-title>
+      <mat-panel-description class="d-flex justify-content-end">
+        <mat-icon>
+          filter_list
+        </mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <form [formGroup]="fgVisitorsFilter">
+      <mat-form-field class="input-ip">
+        <mat-label>ip</mat-label>
+        <input formControlName="ip" type="text" matInput>
+        <button matSuffix mat-icon-button
+                (click)="fgVisitorsFilter.controls['ip'].setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>

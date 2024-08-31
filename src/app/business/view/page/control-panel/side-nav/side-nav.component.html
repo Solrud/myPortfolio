@@ -1,18 +1,48 @@
 <mat-drawer-container autosize class="example-container">
-  <mat-drawer mode="side" class="example-sidenav">
-    <button class="btn btn-dark mb-2" [routerLink]="['/']">На главную</button>
-    <p class="control-accent">Версия 1.1</p>
+  <mat-drawer mode="over" class="example-sidenav" >
+    <div class="container-sidenav">
+      <button class="btn btn-dark " [routerLink]="['/']">На главную страницу</button>
+    </div>
   </mat-drawer>
   <div class="example-sidenav-content">
     <mat-tab-group animationDuration="0ms">
       <mat-tab label="Посетители">
-        <button type="button" color="basic" mat-stroked-button class="m-3" (click)="updateAndGetVisitors()">
-          Обновить посетителей
+        <div class="d-flex flex-column justify-content-between ">
+          <app-filter-control
+            [clickedVisitorIp]="filteredVisitorIp"
+            [filterForTable]="TableType.Visitors"
+
+            (newSearchVisitor)="toSearchVisitors($event)"
+          ></app-filter-control>
+          <button mat-stroked-button
+                  class="btn-mat-update mx-1 my-2"
+                  type="button"
+                  color="basic"
+                  (click)="toSearchVisitors(searchVisitors)">
+            Обновить
+          </button>
+
+        </div>
+
+        <app-table-control [dataSourceFromBackend]="dataVisitorsList"
+                           [displayedColumns]="visitorsFieldList"
+                           [tableForType]="TableType.Visitors"
+
+                           (onClickRow)="onClickVisitorRow($event)"
+        ></app-table-control>
+      </mat-tab>
+
+
+      <mat-tab label="Заявки">
+        <button type="button" color="basic" mat-stroked-button class="m-3" (click)="updateAndGetAllContacts()">
+          Обновить заявки
         </button>
 
-        <app-table-control [dataFromAllVisitorsList]="dataVisitorsList"></app-table-control>
+        <app-table-control [dataSourceFromBackend]="dataContactsList"
+                           [displayedColumns]="contactsFieldList"
+                           [tableForType]="TableType.Contacts"
+        ></app-table-control>
       </mat-tab>
-      <mat-tab label="Заявки">Скоро</mat-tab>
     </mat-tab-group>
   </div>
 </mat-drawer-container>

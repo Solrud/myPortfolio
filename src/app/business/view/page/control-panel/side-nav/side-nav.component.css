@@ -11,18 +11,20 @@
 .example-sidenav-content {
   display: flex;
   flex-direction: column;
-
   height: 100%;
 }
 
 .example-sidenav {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-evenly !important;
+  overflow: hidden;
   padding: 20px !important;
 }
-
-
+.container-sidenav{
+  display: flex !important;
+  justify-content: center !important;
+}
+.btn-mat-update{
+  max-width: 120px !important;
+}
 
 
 @media (max-width: 599.98px) and (orientation: portrait){
@@ -30,5 +32,8 @@
     width: 100%;
     height: calc(100vh - 96px);
     /*border: 1px solid rgba(0, 0, 0, 0.5);*/
+  }
+  .example-sidenav{
+    width: 100%
   }
 }

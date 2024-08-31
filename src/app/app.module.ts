@@ -31,6 +31,10 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AuthComponent } from './business/view/page/auth/auth.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { FilterControlComponent } from './business/view/page/control-panel/side-nav/filter-control/filter-control.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {BASE_URL} from "./app.constant";
+import {environment} from "../environment/environment";
 
 @NgModule({
   declarations: [
@@ -48,7 +52,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     FooterAdminComponent,
     SideNavComponent,
     TableControlComponent,
-    AuthComponent
+    AuthComponent,
+    FilterControlComponent
   ],
   imports: [
     BrowserModule,
@@ -66,9 +71,14 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatExpansionModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: BASE_URL, useValue: environment.backendURL
+    }
+  ],
   exports: [
     AsideComponent
   ],

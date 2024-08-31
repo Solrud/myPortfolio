@@ -1,19 +1,9 @@
-import {
-  AfterViewInit,
-  Component,
-  DoCheck,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChange,
-  SimpleChanges,
-  ViewChild
-} from '@angular/core';
-import {VisitorsDTO} from "../../../../../data/model/dto/impl/VisitorsDTO";
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild} from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from "@angular/material/sort";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {TableType} from "./table-type";
 
 @Component({
   selector: 'app-table-control',
@@ -28,22 +18,29 @@ export class TableControlComponent implements OnChanges{
   sort: MatSort
 
   @Input()
-  dataFromAllVisitorsList: VisitorsDTO[] | null = null;
+  dataSourceFromBackend: any | null = null;
 
-  displayedColumns = ['id', 'date', 'ip', 'agent', 'path', 'language']
-  dataSource: MatTableDataSource<VisitorsDTO[]> | null;
-  dataSourceLength: number = 0;
-  inFirstTime = true;
+  @Input()
+  displayedColumns: string[] | null = null
 
-  constructor(private snackBar: MatSnackBar) {
-  }
+  @Input()
+  tableForType: TableType | null = null
+
+  @Output()
+  onClickRow = new EventEmitter<any>();
+
+  matDataSource: MatTableDataSource<any[]> | null;
+  matDataSourceLength: number = 0;
+
+  constructor(private snackBar: MatSnackBar) {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['dataFromAllVisitorsList']){
-      this.dataSource = new MatTableDataSource<VisitorsDTO[]>(changes['dataFromAllVisitorsList'].currentValue?.visitors);
-      this.dataSourceLength =  this.dataSource.data.length
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
+    let inputDataSourceFromBackend = changes['dataSourceFromBackend']
+    if (inputDataSourceFromBackend){
+      this.matDataSource = new MatTableDataSource<any[]>(inputDataSourceFromBackend.currentValue);
+      this.matDataSourceLength =  this.matDataSource.data?.length
+      this.matDataSource.sort = this.sort;
+      this.matDataSource.paginator = this.paginator;
 
       this.snackBar.open('Обновлено', 'Закрыть', {
         duration: 2000,
@@ -52,5 +49,11 @@ export class TableControlComponent implements OnChanges{
     }
   }
 
-}
+  onClickRowFromTable(row: string): void{
+    this.onClickRow.emit(row);
+  }
 
+  get TableType() {
+    return TableType
+  }
+}

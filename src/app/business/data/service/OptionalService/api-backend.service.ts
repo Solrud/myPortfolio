@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {ContactsDTO} from "../../model/dto/impl/ContactsDTO";
 import {BASEURL} from "../../../../app.constant";
 import {VisitorsDTO} from "../../model/dto/impl/VisitorsDTO";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,7 @@ export class ApiBackendService {
   constructor(private http: HttpClient) { }
 
   addNewContactForm(contactsOfUser: ContactsDTO){
-    this.http.post(BASEURL + '/adduser', contactsOfUser).subscribe(result=>{
-      // console.log(result);
-    });
+    this.http.post(BASEURL + '/adduser', contactsOfUser);
   }
 
   addVisitorInfo(){
@@ -26,7 +24,7 @@ export class ApiBackendService {
   }
 
   getAllVisitors(): Observable<VisitorsDTO[]>{
-    return this.http.get<VisitorsDTO[]>(BASEURL + '/getallvisitors');
+    return this.http.get<any>(BASEURL + '/getallvisitors').pipe( map(result => result.visitors));
   }
 
   checkPassword(password: string): Observable<any>{
@@ -35,5 +33,9 @@ export class ApiBackendService {
 
   getAllContacts(): Observable<ContactsDTO[]>{
     return this.http.get<ContactsDTO[]>(BASEURL + '/getallfeedbacks');
+  }
+
+  searchVisitors(visitorsDTO: VisitorsDTO): Observable<VisitorsDTO[]> {
+    return this.http.post<VisitorsDTO[]>(BASEURL + '/searchvisitors', visitorsDTO);
   }
 }

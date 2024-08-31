@@ -1,8 +1,18 @@
-table {
-  /*width: 100%;*/
-  /*white-space: nowrap !important;*/
-  /*max-width: 100vw;*/
-  /*min-width: 800px;*/
+.flex-container {
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*height: 100vh; !* Высота родительского контейнера *!*/
+}
+
+.table-container{
+  /*max-height: 400px;*/
+  overflow-y: auto; /* Включаем прокрутку по вертикали */
+}
+
+.table {
+  max-height: 100%; /* Высота, после которой появится прокрутка */
+  overflow-y: auto; /* Включаем прокрутку по вертикали */
+  display: block; /* Делаем таблицу блочным элементом */
 }
 
 .mat-form-field {
@@ -37,13 +47,9 @@ tr[mat-row]:hover {
   color: #05fcff;
 }
 
-
-
-
-
 @media(max-width: 500px) {
-  .table-main{
-    width: 300px;
+  .table-container{
+    width: 370px;
     max-width: 100%;
     overflow: auto;
   }

@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  backendURL: "http://127.0.0.1:5000/"
+  backendURL: "http://cg50261.tw1.ru/api"
 }

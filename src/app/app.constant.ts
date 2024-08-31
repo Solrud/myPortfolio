@@ -19,6 +19,8 @@
 //                             ];
 
 //Skills
+import {InjectionToken} from "@angular/core";
+
 export const SKILLS_TITLE = ['Python 3', 'SQL', 'JS/TS', 'HTML5', 'CSS3', 'Server'];
 export const SKILLS_NAMES = [
   ['ООП ', 'Requests ', 'AsyncIo', 'PyQt5', 'Pandas', 'NumPy', 'BeautifulSoup', 'Flask'],
@@ -47,8 +49,11 @@ export const EXPERIENCE_YEARS = ['2021 - 2022', '2023 - . . .']
 
 export const BASEURL = "http://cg50261.tw1.ru/api";
 
+export const visitorsFieldColumnList: string[] = ['id', 'date', 'ip', 'agent', 'path', 'language'];
+export const contactsFieldColumnList: string[] = ['id', 'name', 'email', 'question', 'comment', 'ip', 'device', 'date'];
 
 
+export const BASE_URL: InjectionToken<string> = new InjectionToken<string>('backend url');
 
 
 //Считаю что главное умение программиста это умение гуглить

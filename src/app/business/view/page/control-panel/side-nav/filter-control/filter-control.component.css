@@ -1,0 +1,9 @@
+.input-ip {
+  width: 200px;
+}
+
+@media(max-width: 900px){
+  .input-ip {
+    width: 100%;
+  }
+}
