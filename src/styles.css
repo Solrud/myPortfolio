@@ -77,6 +77,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --mdc-snackbar-supporting-text-color: rgba(255, 255, 255, 0.87) !important;
 }
 /*#2a95ff красивый голубой цвет*/
+.snack-bat-create_contact{
+  --mat-mdc-snack-bar-button-color: #05fcff !important;
+  --mdc-snackbar-container-color: #4d6391 !important;
+  --mdc-snackbar-supporting-text-color: #ffffff !important;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

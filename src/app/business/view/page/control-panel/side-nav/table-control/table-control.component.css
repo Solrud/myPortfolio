@@ -1,7 +1,9 @@
 .flex-container {
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*height: 100vh; !* Высота родительского контейнера *!*/
+  display: flex;
+  flex-direction: column;
+  height: 650px; /* Высота родительского контейнера */
+  overflow: auto;
+  cursor: pointer !important;
 }
 
 .table-container{
@@ -48,8 +50,12 @@ tr[mat-row]:hover {
 }
 
 @media(max-width: 500px) {
+  .flex-container {
+    height: 500px;
+  }
+
   .table-container{
-    width: 370px;
+    width: 100%;
     max-width: 100%;
     overflow: auto;
   }

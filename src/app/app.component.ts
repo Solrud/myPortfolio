@@ -15,13 +15,13 @@ export class AppComponent implements OnInit{
   //ToDo доделать сервис с контактами-заявками
 
   ngOnInit() {
-    //ToDo меня менять при разработке
-    if (this.isFirstTime){
-      this.visitorsService.create().subscribe( result => {
-        if(result){
-          this.isFirstTime = false;
-        }
-      });
-    }
+    //ToDo меня менять при разработкеж
+    // if (this.isFirstTime){
+    //   this.visitorsService.create().subscribe( result => {
+    //     if(result){
+    //       this.isFirstTime = false;
+    //     }
+    //   });
+    // }
   }
 }

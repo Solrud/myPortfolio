@@ -23,17 +23,20 @@
   justify-content: center !important;
 }
 .btn-mat-update{
-  max-width: 120px !important;
+  /*max-width: 160px !important;*/
 }
 
 
 @media (max-width: 599.98px) and (orientation: portrait){
   .example-container {
     width: 100%;
-    height: calc(100vh - 96px);
+    /*height: calc(100vh - 96px);*/
     /*border: 1px solid rgba(0, 0, 0, 0.5);*/
   }
   .example-sidenav{
     width: 100%
+  }
+  .btn-mat-update{
+    width: 100% !important;
   }
 }

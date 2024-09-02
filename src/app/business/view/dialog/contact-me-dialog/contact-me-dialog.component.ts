@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ContactsDTO} from "../../../data/model/dto/impl/ContactsDTO";
-import {ApiBackendService} from "../../../data/service/OptionalService/api-backend.service";
+import {ContactDTO} from "../../../data/model/dto/impl/ContactDTO";
+import {ContactsService} from "../../../data/service/Contacts/contacts.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-contact-me-dialog',
@@ -10,13 +11,14 @@ import {ApiBackendService} from "../../../data/service/OptionalService/api-backe
   styleUrls: ['./contact-me-dialog.component.css']
 })
 export class ContactMeDialogComponent implements OnInit{
-  contacts: ContactsDTO;
-  newContacts: ContactsDTO;
+  contacts: ContactDTO;
+  newContacts: ContactDTO;
   fgContacts: FormGroup;
 
   constructor(
     public activeModal: NgbActiveModal,
-    private apiService: ApiBackendService){
+    private contactsService: ContactsService,
+    private matSnackBat: MatSnackBar){
   }
 
   ngOnInit(): void {
@@ -38,7 +40,7 @@ export class ContactMeDialogComponent implements OnInit{
   }
 
   onClickSendContact(){
-    this.newContacts = new ContactsDTO();
+    this.newContacts = new ContactDTO();
     this.newContacts.id = this.fgContacts.controls['id'].value;
     this.newContacts.name = this.fgContacts.controls['firstName'].value;
     this.newContacts.email = this.fgContacts.controls['email'].value;
@@ -49,8 +51,20 @@ export class ContactMeDialogComponent implements OnInit{
     this.activeModal.close();
   }
 
-  addNewContacts(newContacts: ContactsDTO){
-    this.apiService.addNewContactForm(newContacts);
+  addNewContacts(newContacts: ContactDTO){
+    this.contactsService.create(newContacts).subscribe( result => {
+      if (result == true){
+        this.matSnackBat.open('Контакты отправлены!', null, {
+          duration: 3000,
+          panelClass: 'snack-bat-create_contact'
+        })
+      }else{
+        this.matSnackBat.open('Не удалось отправить контакты(', 'Закрыть', {
+          duration: 5000,
+          panelClass: 'snack-bat-create_contact'
+        })
+      }
+    });
   }
 
   onClickCancel(){

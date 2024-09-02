@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ApiVisitorsService} from "./api-visitors.service";
 import {Observable} from "rxjs";
-import {VisitorsDTO} from "../../model/dto/impl/VisitorsDTO";
+import {VisitorDTO} from "../../model/dto/impl/VisitorDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +13,11 @@ export class VisitorsService {
     return this.apiVisitorsService.create$();
   }
 
-  getAll(): Observable<VisitorsDTO[]>{
+  getAll(): Observable<VisitorDTO[]>{
     return this.apiVisitorsService.getAll$();
   }
 
-  search(searchObj: VisitorsDTO): Observable<VisitorsDTO[]>{
+  search(searchObj: VisitorDTO): Observable<VisitorDTO[]>{
     return this.apiVisitorsService.search$(searchObj);
   }
 }

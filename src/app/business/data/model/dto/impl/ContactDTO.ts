@@ -1,6 +1,6 @@
 import {ABaseDTO} from "../ABaseDTO";
 
-export class ContactsDTO extends ABaseDTO{
+export class ContactDTO extends ABaseDTO{
   name: string;
   email: string;
   question: string;

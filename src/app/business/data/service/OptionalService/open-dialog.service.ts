@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 import {ContactMeDialogComponent} from "../../../view/dialog/contact-me-dialog/contact-me-dialog.component";
-import {ContactsDTO} from "../../model/dto/impl/ContactsDTO";
+import {ContactDTO} from "../../model/dto/impl/ContactDTO";
 
 @Injectable({
   providedIn: 'root'

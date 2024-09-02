@@ -47,9 +47,7 @@ export const EXPERIENCE_NAME = ['Написание телеграм ботов 
                                 'Фронтенд разработчик на TypeScript и Angular'];
 export const EXPERIENCE_YEARS = ['2021 - 2022', '2023 - . . .']
 
-export const BASEURL = "http://cg50261.tw1.ru/api";
-
-export const visitorsFieldColumnList: string[] = ['id', 'date', 'ip', 'agent', 'path', 'language'];
+export const visitorsFieldColumnList: string[] = ['id', 'date', 'ip', 'agent', 'path', 'browser', 'browser_version', 'os', 'os_version', 'device', 'device_type', 'language', 'orientation', 'screen_width', 'screen_height'];
 export const contactsFieldColumnList: string[] = ['id', 'name', 'email', 'question', 'comment', 'ip', 'device', 'date'];
 
 

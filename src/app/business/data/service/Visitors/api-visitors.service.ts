@@ -1,8 +1,8 @@
 import {Inject, Injectable, InjectionToken} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
-import {BASE_URL, BASEURL} from "../../../../app.constant";
-import {VisitorsDTO} from "../../model/dto/impl/VisitorsDTO";
+import {BASE_URL} from "../../../../app.constant";
+import {VisitorDTO} from "../../model/dto/impl/VisitorDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class ApiVisitorsService {
         {params: {referrer: currentPath}})
   }
 
-  getAll$(): Observable<VisitorsDTO[]>{
+  getAll$(): Observable<VisitorDTO[]>{
     return this.httpClient
       .get<any>(this.baseUrl + '/getallvisitors')
       .pipe(
@@ -28,8 +28,8 @@ export class ApiVisitorsService {
       );
   }
 
-  search$(visitorsDTO: VisitorsDTO): Observable<VisitorsDTO[]> {
+  search$(visitorsDTO: VisitorDTO): Observable<VisitorDTO[]> {
     return this.httpClient
-      .post<VisitorsDTO[]>(this.baseUrl + '/searchvisitors', visitorsDTO);
+      .post<VisitorDTO[]>(this.baseUrl + '/searchvisitors', visitorsDTO);
   }
 }

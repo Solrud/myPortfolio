@@ -7,21 +7,39 @@
   <div class="example-sidenav-content">
     <mat-tab-group animationDuration="0ms">
       <mat-tab label="Посетители">
-        <div class="d-flex flex-column justify-content-between ">
+        <div class="d-flex flex-column justify-content-between">
           <app-filter-control
             [clickedVisitorIp]="filteredVisitorIp"
             [filterForTable]="TableType.Visitors"
 
             (newSearchVisitor)="toSearchVisitors($event)"
           ></app-filter-control>
-          <button mat-stroked-button
-                  class="btn-mat-update mx-1 my-2"
-                  type="button"
-                  color="basic"
-                  (click)="toSearchVisitors(searchVisitors)">
-            Обновить
-          </button>
-
+          <div class="d-flex">
+            <button mat-stroked-button
+                    class="btn-mat-update mx-1 my-2"
+                    type="button"
+                    color="basic"
+                    (click)="toSearchVisitors(searchVisitors)">
+              <mat-icon>refresh</mat-icon>
+              Обновить
+            </button>
+            <button mat-stroked-button
+                    class="btn-mat-update mx-1 my-2"
+                    type="button"
+                    color="basic"
+                    [disabled]="true">
+              <mat-icon>toc</mat-icon>
+              Смотреть
+            </button>
+            <button mat-stroked-button
+                    class="btn-mat-update mx-1 my-2"
+                    type="button"
+                    color="basic"
+                    [disabled]="true">
+              <mat-icon>search</mat-icon>
+              Поиск&nbsp;ip
+            </button>
+          </div>
         </div>
 
         <app-table-control [dataSourceFromBackend]="dataVisitorsList"
@@ -34,7 +52,11 @@
 
 
       <mat-tab label="Заявки">
-        <button type="button" color="basic" mat-stroked-button class="m-3" (click)="updateAndGetAllContacts()">
+        <button mat-stroked-button
+                type="button"
+                color="basic"
+                class="m-3"
+                (click)="updateAndGetAllContacts()">
           Обновить заявки
         </button>
 

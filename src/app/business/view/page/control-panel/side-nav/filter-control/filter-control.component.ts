@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {TableType} from "../table-control/table-type";
-import {VisitorsDTO} from "../../../../../data/model/dto/impl/VisitorsDTO";
+import {VisitorDTO} from "../../../../../data/model/dto/impl/VisitorDTO";
 import {Visitor} from "@angular/compiler";
 import {debounceTime} from "rxjs";
 
@@ -12,7 +12,7 @@ import {debounceTime} from "rxjs";
 })
 export class FilterControlComponent implements OnInit, OnChanges{
   @Output()
-  newSearchVisitor = new EventEmitter<VisitorsDTO>();
+  newSearchVisitor = new EventEmitter<VisitorDTO>();
 
   @Input()
   clickedVisitorIp: string;
@@ -66,7 +66,7 @@ export class FilterControlComponent implements OnInit, OnChanges{
   }
 
   onUpdateVisitorSearch(): void {
-    let tempVisitorSearch: VisitorsDTO = new VisitorsDTO();
+    let tempVisitorSearch: VisitorDTO = new VisitorDTO();
     tempVisitorSearch.ip = this.fgVisitorsFilter.controls['ip'].value;
 
     this.newSearchVisitor.emit(tempVisitorSearch);

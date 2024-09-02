@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../../data/service/OptionalService/auth.service";
+import {AuthService} from "../../../data/service/OtherService/auth.service";
 import {Router} from "@angular/router";
-import {ApiBackendService} from "../../../data/service/OptionalService/api-backend.service";
 
 @Component({
   selector: 'app-auth',
@@ -10,14 +9,10 @@ import {ApiBackendService} from "../../../data/service/OptionalService/api-backe
   styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent implements OnInit{
-  private password: string = 'mattheweb'
-
   fgPassword: FormGroup;
-  // fcPassword: FormControl = new FormControl({value: null}, Validators.required);
 
   constructor(private authService: AuthService,
-              private routerService: Router,
-              private apiService: ApiBackendService) {
+              private routerService: Router,) {
   }
 
   public get Validators(){
@@ -34,7 +29,7 @@ export class AuthComponent implements OnInit{
 
   onClickLogin():void {
     const tryPassword = this.fgPassword.controls['password'].value
-    this.apiService.checkPassword(tryPassword).subscribe( result => {
+    this.authService.checkPassword(tryPassword).subscribe( result => {
       if (result.result)
         this.authService.loginAuthAdmin();
 

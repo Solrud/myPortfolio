@@ -1,11 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDrawer} from "@angular/material/sidenav";
-import {ApiBackendService} from "../../../../data/service/OptionalService/api-backend.service";
-import {VisitorsDTO} from "../../../../data/model/dto/impl/VisitorsDTO";
+import {VisitorDTO} from "../../../../data/model/dto/impl/VisitorDTO";
 import {TableType} from "./table-control/table-type";
 import {contactsFieldColumnList, visitorsFieldColumnList} from "../../../../../app.constant";
-import {ContactsDTO} from "../../../../data/model/dto/impl/ContactsDTO";
+import {ContactDTO} from "../../../../data/model/dto/impl/ContactDTO";
 import {VisitorsService} from "../../../../data/service/Visitors/visitors.service";
+import {ContactsService} from "../../../../data/service/Contacts/contacts.service";
+import {DeviceDetectorService} from "ngx-device-detector";
 
 @Component({
   selector: 'app-side-nav',
@@ -14,15 +15,16 @@ import {VisitorsService} from "../../../../data/service/Visitors/visitors.servic
 })
 export class SideNavComponent implements OnInit{
   contactsFieldList = contactsFieldColumnList;
-  dataContactsList: ContactsDTO[] | null = null;
+  dataContactsList: ContactDTO[] | null = null;
 
-  searchVisitors: VisitorsDTO | null = null
-  dataVisitorsList: VisitorsDTO[] | null = null;
+  searchVisitors: VisitorDTO | null = null
+  dataVisitorsList: VisitorDTO[] | null = null;
   visitorsFieldList = visitorsFieldColumnList;
   filteredVisitorIp: string;
 
-  constructor(private apiBackendService: ApiBackendService,
-              private visitorService: VisitorsService) {
+  constructor(private contactsService: ContactsService,
+              private visitorService: VisitorsService,
+              private deviceDetectorService: DeviceDetectorService) {
   }
 
   @ViewChild(MatDrawer)
@@ -33,14 +35,23 @@ export class SideNavComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    if (!this.searchVisitors){
-      this.searchVisitors = new VisitorsDTO();
-    }
+    this.initDefault();
+
     this.toSearchVisitors(this.searchVisitors);
     this.updateAndGetAllContacts();
   }
 
-  toSearchVisitors(searchObj: VisitorsDTO): void {
+  initDefault(): void {
+    console.log(this.deviceDetectorService.getDeviceInfo())
+    console.log(window.innerWidth)
+    console.log(window.innerHeight)
+
+
+    if (!this.searchVisitors)
+      this.searchVisitors = new VisitorDTO();
+  }
+
+  toSearchVisitors(searchObj: VisitorDTO): void {
     if(searchObj != this.searchVisitors){
       this.toSetNewSearchFromPage(searchObj, this.searchVisitors)
     }
@@ -51,12 +62,12 @@ export class SideNavComponent implements OnInit{
   }
 
   updateAndGetAllContacts() {
-    this.apiBackendService.getAllContacts().subscribe( result => {
+    this.contactsService.getAll().subscribe( result => {
       this.dataContactsList = result
     })
   }
 
-  onClickVisitorRow(row: VisitorsDTO) {
+  onClickVisitorRow(row: VisitorDTO) {
     this.filteredVisitorIp = row.ip;
   }
 
@@ -65,7 +76,7 @@ export class SideNavComponent implements OnInit{
   }
 
   // присваивает к существующему search object пагинаторные свойства
-  toSetNewSearchFromPage(newSearchPage: VisitorsDTO | ContactsDTO, oldSearch: VisitorsDTO | ContactsDTO){
+  toSetNewSearchFromPage(newSearchPage: VisitorDTO | ContactDTO, oldSearch: VisitorDTO | ContactDTO){
     Object.keys(newSearchPage).forEach(key => {
       if (oldSearch.hasOwnProperty(key)) {
         oldSearch[key] = newSearchPage[key];

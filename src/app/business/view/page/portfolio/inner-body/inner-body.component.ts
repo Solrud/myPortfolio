@@ -9,6 +9,7 @@ import {
 } from "../../../../../app.constant";
 import {OpenDialogService} from "../../../../data/service/OptionalService/open-dialog.service";
 import {HttpClient} from "@angular/common/http";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-inner-body',
@@ -67,6 +68,3 @@ export class InnerBodyComponent implements OnInit{
 // почистить css
 // переопределить шрифт Перевести все в словарь(транслита) сделать перевод
 
-
-
-//текст в вк
