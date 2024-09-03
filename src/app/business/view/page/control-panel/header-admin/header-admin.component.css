@@ -2,11 +2,11 @@
   flex: 1 1 auto;
 }
 .header-label{
-  font-size: 20px;
+  font-size: 19px !important;
 }
 
-@media(max-width: 350px) {
+@media(max-width: 500px) {
   .header-label{
-    font-size: 14px;
+    font-size: 17px !important;
   }
 }

@@ -9,8 +9,8 @@ import {VisitorDTO} from "../../model/dto/impl/VisitorDTO";
 export class VisitorsService {
   constructor(private apiVisitorsService: ApiVisitorsService) { }
 
-  create(): Observable<boolean>{
-    return this.apiVisitorsService.create$();
+  create(visitor: VisitorDTO): Observable<boolean>{
+    return this.apiVisitorsService.create$(visitor);
   }
 
   getAll(): Observable<VisitorDTO[]>{

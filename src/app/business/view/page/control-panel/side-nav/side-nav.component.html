@@ -15,29 +15,30 @@
             (newSearchVisitor)="toSearchVisitors($event)"
           ></app-filter-control>
           <div class="d-flex">
-            <button mat-stroked-button
+            <button mat-button
                     class="btn-mat-update mx-1 my-2"
                     type="button"
                     color="basic"
                     (click)="toSearchVisitors(searchVisitors)">
               <mat-icon>refresh</mat-icon>
-              Обновить
+              <span *ngIf="!isMobile">Обновить</span>
             </button>
-            <button mat-stroked-button
+            <button mat-button
                     class="btn-mat-update mx-1 my-2"
                     type="button"
-                    color="basic"
-                    [disabled]="true">
-              <mat-icon>toc</mat-icon>
-              Смотреть
-            </button>
-            <button mat-stroked-button
-                    class="btn-mat-update mx-1 my-2"
-                    type="button"
-                    color="basic"
-                    [disabled]="true">
+                    color="accent"
+                    [disabled]="!chosenVisitorRow"
+                    (click)="toSearchByVisitorIp()">
               <mat-icon>search</mat-icon>
-              Поиск&nbsp;ip
+              <span *ngIf="!isMobile">Поиск&nbsp;ip</span>
+            </button>
+            <button mat-button
+                    class="btn-mat-update mx-1 my-2"
+                    type="button"
+                    color="accent"
+                    [disabled]="!chosenVisitorRow" (click)="toOpenModalForInfoOfVisitor()">
+              <mat-icon>toc</mat-icon>
+              <span *ngIf="!isMobile">Запись</span>
             </button>
           </div>
         </div>

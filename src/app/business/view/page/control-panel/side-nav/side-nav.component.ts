@@ -7,6 +7,8 @@ import {ContactDTO} from "../../../../data/model/dto/impl/ContactDTO";
 import {VisitorsService} from "../../../../data/service/Visitors/visitors.service";
 import {ContactsService} from "../../../../data/service/Contacts/contacts.service";
 import {DeviceDetectorService} from "ngx-device-detector";
+import {OpenDialogService} from "../../../../data/service/OptionalService/open-dialog.service";
+import {DialogResult} from "../../../../shared/dialog-result";
 
 @Component({
   selector: 'app-side-nav',
@@ -21,10 +23,14 @@ export class SideNavComponent implements OnInit{
   dataVisitorsList: VisitorDTO[] | null = null;
   visitorsFieldList = visitorsFieldColumnList;
   filteredVisitorIp: string;
+  chosenVisitorRow: VisitorDTO;
+
+  isMobile: boolean;
 
   constructor(private contactsService: ContactsService,
               private visitorService: VisitorsService,
-              private deviceDetectorService: DeviceDetectorService) {
+              private deviceDetectorService: DeviceDetectorService,
+              private openDialogService: OpenDialogService) {
   }
 
   @ViewChild(MatDrawer)
@@ -42,16 +48,15 @@ export class SideNavComponent implements OnInit{
   }
 
   initDefault(): void {
-    console.log(this.deviceDetectorService.getDeviceInfo())
-    console.log(window.innerWidth)
-    console.log(window.innerHeight)
-
+    this.isMobile = this.deviceDetectorService.isMobile();
 
     if (!this.searchVisitors)
       this.searchVisitors = new VisitorDTO();
   }
 
   toSearchVisitors(searchObj: VisitorDTO): void {
+    this.chosenVisitorRow = null;
+    this.filteredVisitorIp = null;
     if(searchObj != this.searchVisitors){
       this.toSetNewSearchFromPage(searchObj, this.searchVisitors)
     }
@@ -68,7 +73,20 @@ export class SideNavComponent implements OnInit{
   }
 
   onClickVisitorRow(row: VisitorDTO) {
-    this.filteredVisitorIp = row.ip;
+    this.chosenVisitorRow = row;
+    // this.filteredVisitorIp = row.ip;
+  }
+
+  toSearchByVisitorIp() {
+    this.filteredVisitorIp = this.chosenVisitorRow.ip;
+  }
+
+  toOpenModalForInfoOfVisitor() {
+    this.openDialogService.openDialogVisitor(this.chosenVisitorRow).afterClosed().subscribe(resultDialog => {
+      if (resultDialog == DialogResult.EDIT){
+          this.toSearchVisitors(this.searchVisitors);
+        }
+    });
   }
 
   toggleSidenavOpened(){

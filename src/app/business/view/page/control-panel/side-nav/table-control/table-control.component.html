@@ -5,6 +5,8 @@
       mat-table
       [dataSource]="matDataSource"
       matSort
+      matSortActive="id"
+      matSortDirection="desc"
       class="mat-elevation-z8">
 
       <div *ngIf="TableType.Visitors == tableForType">
@@ -127,10 +129,15 @@
       </div>
 
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onClickRowFromTable(row)"></tr>
+      <tr mat-header-row
+          *matHeaderRowDef="displayedColumns"
+      ></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          [class.highlight-row]="row.ip_description"
+          [class.chosen-row]="row == chosenRow"
+          (click)="onClickRowFromTable(row)"
+      ></tr>
     </table>
-
 
     <mat-paginator [pageSizeOptions]="[10, 20, 50, 100, matDataSourceLength]" showFirstLastButtons [pageSize]="10"></mat-paginator>
   </div>

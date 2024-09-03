@@ -26,7 +26,12 @@
   /*max-width: 160px !important;*/
 }
 
-
+mat-icon{
+  margin: 0 !important;
+}
+button span {
+  margin-left: 5px;
+}
 @media (max-width: 599.98px) and (orientation: portrait){
   .example-container {
     width: 100%;

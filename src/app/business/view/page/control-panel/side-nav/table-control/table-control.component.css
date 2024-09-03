@@ -7,7 +7,6 @@
 }
 
 .table-container{
-  /*max-height: 400px;*/
   overflow-y: auto; /* Включаем прокрутку по вертикали */
 }
 
@@ -21,14 +20,6 @@
   font-size: 14px;
   width: 100%;
 }
-
-td, th {
-  /*width: 25%;*/
-}
-
-/*th.mat-sort-header-sorted {*/
-/*  color: black;*/
-/*}*/
 
 td[mat-cell]{
   font-size: 13px;
@@ -47,6 +38,14 @@ tr[mat-row]:hover {
 .snack-bar{
   background-color: #7b1fa2;
   color: #05fcff;
+}
+
+.highlight-row {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.chosen-row {
+  background-color: rgba(255, 78, 138, 0.22) !important;
 }
 
 @media(max-width: 500px) {

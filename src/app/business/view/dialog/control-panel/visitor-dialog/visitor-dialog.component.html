@@ -1,0 +1,44 @@
+<!--<h1 mat-dialog-title>Информация о посетителе <span class="control-accent">{{visitor.ip}}</span> <span> {{visitor.date}}</span></h1>-->
+<h1 mat-dialog-title>Информация о посетителе <span class="control-accent">{{visitor.ip}}</span> <br *ngIf="isMobile"> <span class="control-primary"> {{visitor.date}}</span></h1>
+<!--<div mat-dialog-title class="d-flex flex-wrap">-->
+<!--  <span>Информация о посетителе</span>-->
+<!--  <span class="control-accent ms-2">{{visitor.ip}}</span>-->
+<!--  <span class="ms-2"> {{visitor.date}}</span>-->
+<!--</div>-->
+<form mat-dialog-content
+      [formGroup]="fgVisitor">
+  <h3>Данные к записи</h3>
+  <p>Ip: <span>{{visitor.ip}}</span></p>
+  <p>Путь URL: <span>{{visitor.path}}</span></p>
+  <p>Дата: <span>{{visitor.date}}</span></p>
+  <p>Браузер: <span>{{visitor.browser}}</span></p>
+  <p>Браузер версия: <span>{{visitor.browser_version}}</span></p>
+  <p>ОС: <span>{{visitor.os}}</span></p>
+  <p>ОС версия: <span>{{visitor.os_version}}</span></p>
+  <p>Девайс: <span>{{visitor.device}}</span></p>
+  <p>Девайс тип: <span>{{visitor.device_type}}</span></p>
+  <p>Разрешение: <span>{{visitor.orientation}} {{visitor.screen_width}}x{{visitor.screen_height}}</span></p>
+  <p>Язык: <span>{{visitor.language}}</span></p>
+  <p>User Agent: <span>{{visitor.agent}}</span></p>
+  <p>Описание к IP адресу:</p>
+  <mat-form-field class="text-mat-form-field">
+    <mat-label>Заметка:</mat-label>
+    <textarea
+      matInput
+      formControlName="ipDescription"
+      placeholder="Что это за айпи?"></textarea>
+  </mat-form-field>
+</form>
+<div mat-dialog-actions
+     align="end">
+  <button mat-button
+          (click)="onClickCloseDialog()">
+    Назад
+  </button>
+  <button mat-button
+          color="accent"
+          [disabled]="!isIpDescriptionChanged"
+          (click)="onClickSaveIpDescription()"
+  >Сохранить
+  </button>
+</div>

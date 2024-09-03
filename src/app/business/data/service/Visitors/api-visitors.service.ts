@@ -12,12 +12,10 @@ export class ApiVisitorsService {
               @Inject(BASE_URL) private baseUrl: InjectionToken<string>) {
   }
 
-  create$(): Observable<boolean>{
+  create$(visitor: VisitorDTO): Observable<boolean>{
     //ToDo через роутинг сервис потом взять путь
-    let currentPath = window.location.pathname;
     return this.httpClient
-      .get<boolean>(this.baseUrl + '/addnewvisitorinfo',
-        {params: {referrer: currentPath}})
+      .post<boolean>(this.baseUrl + '/addnewvisitorinfo', visitor)
   }
 
   getAll$(): Observable<VisitorDTO[]>{
