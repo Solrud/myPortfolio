@@ -5,6 +5,9 @@
   overflow: auto;
   cursor: pointer !important;
 }
+.mat-row {
+  border-top: 2px rgba(151, 255, 77, 0.4) solid;
+}
 
 .table-container{
   overflow-y: auto; /* Включаем прокрутку по вертикали */

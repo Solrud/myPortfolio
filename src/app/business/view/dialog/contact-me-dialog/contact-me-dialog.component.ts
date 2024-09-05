@@ -51,6 +51,13 @@ export class ContactMeDialogComponent implements OnInit{
     this.activeModal.close();
   }
 
+  onClickTelegramIcon(){
+    window.open('https://t.me/rudalsmolyusr');
+  }
+  onClickMailIcon(){
+    window.open('mailto:matthew.avid.ng@gmail.com')
+  }
+
   addNewContacts(newContacts: ContactDTO){
     this.contactsService.create(newContacts).subscribe( result => {
       if (result == true){

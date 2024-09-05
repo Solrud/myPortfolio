@@ -49,7 +49,7 @@
 
   <div class="d-flex flex-column justify-content-center align-items-center column-nav-resume">
     <div class="mt-5 position-relative div-main-label">
-      <span class="my-resume-main-label">Моё резюме</span>
+      <h2 class="my-resume-main-label">Моё резюме</h2>
     </div>
 <!--    кнопки выбра навыки, образование, опыт-->
     <div class=" gap-nav-divs flexible-buttons-nav-resume ">
@@ -98,27 +98,27 @@
               <div *ngIf="skillCards == 'Python 3'">
                 <!--[class.odd-text]="index % 2 == 1"-->
                 <span *ngFor="let py of skills_names[0]; let index = index"
-                      class="span-of-text-really">{{py}} ▫ </span>
+                      class="span-of-text-really">{{py}} <span *ngIf="index != skills_names[0].length-1">• </span></span>
               </div>
               <div *ngIf="skillCards == 'SQL'">
-                <span *ngFor="let sql of skills_names[1]"
-                      class="span-of-text-really">{{sql}} ▫ </span>
+                <span *ngFor="let sql of skills_names[1]; let index = index"
+                      class="span-of-text-really">{{sql}} <span *ngIf="index != skills_names[1].length-1">• </span></span>
               </div>
               <div *ngIf="skillCards == 'JS/TS'">
-                <span *ngFor="let jsts of skills_names[2]"
-                      class="span-of-text-really">{{jsts}} ▫ </span>
+                <span *ngFor="let jsts of skills_names[2]; let index = index"
+                      class="span-of-text-really">{{jsts}} <span *ngIf="index != skills_names[2].length-1">• </span></span>
               </div>
               <div *ngIf="skillCards == 'HTML5'">
-                <span *ngFor="let html of skills_names[3]"
-                      class="span-of-text-really">{{html}} ▫ </span>
+                <span *ngFor="let html of skills_names[3]; let index = index"
+                      class="span-of-text-really">{{html}} <span *ngIf="index != skills_names[3].length-1">• </span></span>
               </div>
               <div *ngIf="skillCards == 'CSS3'">
-                <span *ngFor="let css of skills_names[4]"
-                      class="span-of-text-really">{{css}} ▫ </span>
+                <span *ngFor="let css of skills_names[4]; let index = index"
+                      class="span-of-text-really">{{css}} <span *ngIf="index != skills_names[4].length-1">• </span></span>
               </div>
               <div *ngIf="skillCards == 'Server'">
-                <span *ngFor="let server of skills_names[5]"
-                      class="span-of-text-really">{{server}} ▫ </span>
+                <span *ngFor="let server of skills_names[5]; let index = index"
+                      class="span-of-text-really">{{server}} <span *ngIf="index != skills_names[5].length-1">• </span></span>
               </div>
             </div>
           </div>

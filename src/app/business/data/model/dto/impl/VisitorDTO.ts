@@ -5,7 +5,7 @@ export class VisitorDTO extends ABaseDTO{
   agent: string;
   path: string;
   language: string;
-  date: string;
+  date: any;
   ip_description: string;
   browser: string;
   browser_version: string;

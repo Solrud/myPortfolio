@@ -37,6 +37,8 @@ import {BASE_URL} from "./app.constant";
 import {environment} from "../environment/environment";
 import {VisitorDialogComponent} from './business/view/dialog/control-panel/visitor-dialog/visitor-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ScrollListenerDirective } from './business/shared/ScrollListener/scroll-listener.directive';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     TableControlComponent,
     AuthComponent,
     FilterControlComponent,
-    VisitorDialogComponent
+    VisitorDialogComponent,
+    ScrollListenerDirective
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {VisitorsService} from "./business/data/service/Visitors/visitors.service";
 import {DeviceDetectorService} from "ngx-device-detector";
 import {VisitorDTO} from "./business/data/model/dto/impl/VisitorDTO";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent implements OnInit{
   title = 'myPortfolio';
   isFirstTime = true;
   constructor(private visitorsService: VisitorsService,
-              private deviceDetectorService: DeviceDetectorService) {
+              private deviceDetectorService: DeviceDetectorService,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -23,7 +25,6 @@ export class AppComponent implements OnInit{
       const screen_width = window.innerWidth
       const screen_height = window.innerHeight
       const currentPath = window.location.pathname;
-      console.log(deviceInfo)
 
       let newVisitor = new VisitorDTO();
       newVisitor.path = currentPath;

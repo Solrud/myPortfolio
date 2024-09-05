@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {ViewportScroller} from "@angular/common";
 import {
   EDUCATION_NAMES,
@@ -16,7 +16,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   templateUrl: './inner-body.component.html',
   styleUrls: ['./inner-body.component.css']
 })
-export class InnerBodyComponent implements OnInit{
+export class InnerBodyComponent{
   //Навыки
   skills_title = SKILLS_TITLE;
   skills_names = SKILLS_NAMES;
@@ -33,11 +33,30 @@ export class InnerBodyComponent implements OnInit{
   experience_names = EXPERIENCE_NAME;
   experience_years = EXPERIENCE_YEARS;
 
-  constructor(private openDialogService: OpenDialogService) {
+  constructor(private openDialogService: OpenDialogService,
+              private elementRef: ElementRef) {
   }
 
-  ngOnInit(): void {
-  }
+  // ngAfterViewInit(): void {
+  //   const contentElement = this.elementRef.nativeElement;
+  //   const scrollHeight = contentElement.scrollHeight;
+  //   const clientHeight = contentElement.clientHeight;
+  //
+  //   window.addEventListener('scroll', () => {
+  //     const scrollTop = window.scrollY;
+  //
+  //     console.log('scrollTop = ' + scrollTop)
+  //     console.log('clientHeight = ' + clientHeight)
+  //     const scrollBottom = scrollTop + clientHeight;
+  //
+  //     console.log('scrollBottom = ' + scrollBottom)
+  //     console.log('scrollHeight = ' + scrollHeight)
+  //     console.log('allScrollHeight - bottomScrollView ' + (scrollHeight-scrollBottom))
+  //     if (scrollBottom >= scrollHeight){
+  //       console.log('до конца')
+  //     }
+  //   })
+  // }
 
   onContactMe(){
     this.openDialogService.openDialogContactMe();

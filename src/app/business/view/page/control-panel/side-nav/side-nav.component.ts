@@ -63,6 +63,24 @@ export class SideNavComponent implements OnInit{
 
     this.visitorService.search(this.searchVisitors).subscribe( result => {
       this.dataVisitorsList = result;
+
+      for(let i = 0; i < this.dataVisitorsList.length; i++){
+        const parts = (this.dataVisitorsList[i].date).split(' ')
+        const dateParts = parts[0].split('.');
+        const timeParts = parts[1].split(':');
+        const utc = parseInt(parts[2].split('+')[1]);
+
+        const date = new Date(Date.UTC(
+          parseInt(dateParts[2]),
+          parseInt(dateParts[1]) - 1,
+          parseInt(dateParts[0]),
+          parseInt(timeParts[0]) - utc,
+          parseInt(timeParts[1]),
+          parseInt(timeParts[2])
+        ));
+
+        this.dataVisitorsList[i].date = date;
+      }
     })
   }
 
