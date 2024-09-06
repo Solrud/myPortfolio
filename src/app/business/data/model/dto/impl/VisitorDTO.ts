@@ -16,4 +16,5 @@ export class VisitorDTO extends ABaseDTO{
   orientation: string;
   screen_width: number;
   screen_height: number;
+  hasIpDesc: boolean = null;
 }

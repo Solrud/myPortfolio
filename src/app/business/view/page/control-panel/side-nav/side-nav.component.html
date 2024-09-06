@@ -11,6 +11,7 @@
           <app-filter-control
             [clickedVisitorIp]="filteredVisitorIp"
             [filterForTable]="TableType.Visitors"
+            [searchObj]="searchVisitors"
 
             (newSearchVisitor)="toSearchVisitors($event)"
           ></app-filter-control>
@@ -36,7 +37,8 @@
                     class="btn-mat-update mx-1 my-2"
                     type="button"
                     color="accent"
-                    [disabled]="!chosenVisitorRow" (click)="toOpenModalForInfoOfVisitor()">
+                    [disabled]="!chosenVisitorRow"
+                    (click)="toOpenModalForInfoOfVisitor()">
               <mat-icon>toc</mat-icon>
               <span *ngIf="!isMobile">Запись</span>
             </button>

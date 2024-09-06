@@ -18,6 +18,8 @@ export class FilterControlComponent implements OnInit, OnChanges{
   clickedVisitorIp: string;
   @Input()
   filterForTable: TableType;
+  @Input()
+  searchObj: any;
 
   fgVisitorsFilter: FormGroup;
 
@@ -63,6 +65,22 @@ export class FilterControlComponent implements OnInit, OnChanges{
     subscribe( input => {
       this.onUpdateVisitorSearch();
     })
+  }
+
+  onClickChangeIpDescFilter(){
+    let tempVisitorSearch: VisitorDTO = new VisitorDTO();
+
+    if(this.searchObj.hasIpDesc == null){
+      tempVisitorSearch.hasIpDesc = true;
+    }
+    if(this.searchObj.hasIpDesc == true){
+      tempVisitorSearch.hasIpDesc = false;
+    }
+    if(this.searchObj.hasIpDesc == false){
+      tempVisitorSearch.hasIpDesc = null;
+    }
+
+    this.newSearchVisitor.emit(tempVisitorSearch)
   }
 
   onUpdateVisitorSearch(): void {
