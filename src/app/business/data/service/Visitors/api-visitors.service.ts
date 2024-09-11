@@ -1,5 +1,5 @@
 import {Inject, Injectable, InjectionToken} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {BASE_URL} from "../../../../app.constant";
 import {VisitorDTO} from "../../model/dto/impl/VisitorDTO";
@@ -29,5 +29,13 @@ export class ApiVisitorsService {
   search$(visitorsDTO: VisitorDTO): Observable<VisitorDTO[]> {
     return this.httpClient
       .post<VisitorDTO[]>(this.baseUrl + '/searchvisitors', visitorsDTO);
+  }
+
+  delete$(id: number): Observable<any>{
+    const headers = {
+      headers: new HttpHeaders({'Token': 'token-mattheweb@$'})
+    }
+    return this.httpClient
+      .post<any>(this.baseUrl + '/deletevisitor', id, headers);
   }
 }

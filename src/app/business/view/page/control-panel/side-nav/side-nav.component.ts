@@ -95,12 +95,29 @@ export class SideNavComponent implements OnInit{
     // this.filteredVisitorIp = row.ip;
   }
 
+  onClickDeleteVisitorRow(){
+    const row = this.chosenVisitorRow;
+    this.openDialogService.openConfirmDialog(row, 'Вы точно хотите удалить строку с id:')
+      .afterClosed()
+      .subscribe( dialogResult => {
+      if (dialogResult === DialogResult.ACCEPT && row.id){
+        this.visitorService.delete(row.id).subscribe( result => {
+          if (result === true){
+            this.toSearchVisitors(this.searchVisitors);
+          }
+        })
+      }
+    })
+  }
+
   toSearchByVisitorIp() {
     this.filteredVisitorIp = this.chosenVisitorRow.ip;
   }
 
   toOpenModalForInfoOfVisitor() {
-    this.openDialogService.openDialogVisitor(this.chosenVisitorRow).afterClosed().subscribe(resultDialog => {
+    this.openDialogService.openDialogVisitor(this.chosenVisitorRow)
+      .afterClosed()
+      .subscribe(resultDialog => {
       if (resultDialog == DialogResult.EDIT){
           this.toSearchVisitors(this.searchVisitors);
         }

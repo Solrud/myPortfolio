@@ -20,4 +20,8 @@ export class VisitorsService {
   search(searchObj: VisitorDTO): Observable<VisitorDTO[]>{
     return this.apiVisitorsService.search$(searchObj);
   }
+
+  delete(id: number): Observable<any>{
+    return this.apiVisitorsService.delete$(id);
+  }
 }

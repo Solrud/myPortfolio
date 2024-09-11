@@ -4,8 +4,7 @@ import {ContactMeDialogComponent} from "../../../view/dialog/contact-me-dialog/c
 import {MatDialog} from "@angular/material/dialog";
 import {VisitorDialogComponent} from "../../../view/dialog/control-panel/visitor-dialog/visitor-dialog.component";
 import {VisitorDTO} from "../../model/dto/impl/VisitorDTO";
-import {DialogResult} from "../../../shared/dialog-result";
-import {Observable} from "rxjs";
+import {ConfirmDialogComponent} from "../../../view/dialog/confirm-dialog/confirm-dialog.component";
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +32,19 @@ export class OpenDialogService {
       .open(VisitorDialogComponent, {data: {'visitor': visitor}});
 
     return openDialogVisitorRef;
+  }
+
+  openConfirmDialog(row: any, dialogTitle: string = 'Без Заголовка', dialogDescription: string = ''): any{
+    const openConfirmDialog = this.matModalService
+      .open(ConfirmDialogComponent, {data:
+          {
+            'dialogTitle': dialogTitle,
+            'dialogDescription': dialogDescription,
+            'row': row
+          }
+      })
+
+    return openConfirmDialog;
   }
 }
 

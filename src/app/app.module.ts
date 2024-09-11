@@ -38,7 +38,8 @@ import {environment} from "../environment/environment";
 import {VisitorDialogComponent} from './business/view/dialog/control-panel/visitor-dialog/visitor-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ScrollListenerDirective } from './business/shared/ScrollListener/scroll-listener.directive';
-
+import { ConfirmDialogComponent } from './business/view/dialog/confirm-dialog/confirm-dialog.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { ScrollListenerDirective } from './business/shared/ScrollListener/scroll
     AuthComponent,
     FilterControlComponent,
     VisitorDialogComponent,
-    ScrollListenerDirective
+    ScrollListenerDirective,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +81,8 @@ import { ScrollListenerDirective } from './business/shared/ScrollListener/scroll
     MatSnackBarModule,
     MatTabsModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   providers: [
     {

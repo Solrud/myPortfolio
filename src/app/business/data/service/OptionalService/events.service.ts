@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
 
-  constructor() { }
+  isDontShowAgainForDelete = new BehaviorSubject(false);
 }
 
-
-
-
-//Сервис дя обьектов observable RxJs

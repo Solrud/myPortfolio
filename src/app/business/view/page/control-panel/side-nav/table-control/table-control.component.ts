@@ -20,6 +20,8 @@ export class TableControlComponent implements OnChanges{
 
   @Output()
   onClickRow = new EventEmitter<any>();
+  @Output()
+  onClickDeleteRow = new EventEmitter<any>();
 
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
@@ -53,9 +55,13 @@ export class TableControlComponent implements OnChanges{
     }
   }
 
-  onClickRowFromTable(row: string | null): void{
+  onClickRowFromTable(row: any | null): void{
     if (this.chosenRow == row || row === null) row = null;
     this.chosenRow = row;
     this.onClickRow.emit(row);
   }
+
+  // onClickDelete(row: any): any{
+  //   this.onClickDeleteRow.emit(row);
+  // }
 }

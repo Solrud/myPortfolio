@@ -50,7 +50,9 @@ tr[mat-row]:hover {
 .chosen-row {
   background-color: rgba(255, 78, 138, 0.22) !important;
 }
-
+.btn-delete{
+  color: #878787;
+}
 @media(max-width: 500px) {
   .flex-container {
     height: 500px;

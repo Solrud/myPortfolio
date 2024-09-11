@@ -84,6 +84,16 @@
           <th mat-header-cell mat-sort-header class="control-accent" *matHeaderCellDef> y </th>
           <td mat-cell *matCellDef="let element"> {{element.screen_height}} </td>
         </ng-container>screen_width
+<!--        <ng-container matColumnDef="delete">-->
+<!--          <th mat-header-cell mat-sort-header class="control-accent" *matHeaderCellDef> delete </th>-->
+<!--          <td mat-cell *matCellDef="let element">-->
+<!--            <button mat-button-->
+<!--                    class="btn-delete"-->
+<!--                    (click)="$event.stopImmediatePropagation(); onClickDelete(element)">-->
+<!--              удалить-->
+<!--            </button>-->
+<!--          </td>-->
+<!--        </ng-container>screen_width-->
       </div>
 
       <div *ngIf="TableType.Contacts === tableForType">

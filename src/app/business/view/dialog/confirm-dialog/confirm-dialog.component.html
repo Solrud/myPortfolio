@@ -1,0 +1,18 @@
+<h1 mat-dialog-title class="text-warning">{{dialogTitle}} {{row?.id}}?</h1>
+<div mat-dialog-content>
+  <p>{{dialogDescription}}</p>
+  <p>{{row?.date | date: 'dd.MM.yyyy HH:mm:ss'}}</p>
+  <p>{{row?.ip}}</p>
+  <p>{{row?.agent}}</p>
+  <mat-checkbox
+    class=""
+    (change)="onChangeCheckBoxDontShow()"
+    [checked]="isCheckboxChecked"
+    [labelPosition]="'after'">
+    Не показывать снова
+  </mat-checkbox>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button cdkFocusInitial (click)="onClickCloseDialog()">Нет</button>
+  <button mat-button (click)="onClickAccept()">Да</button>
+</div>
