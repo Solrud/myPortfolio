@@ -20,29 +20,29 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     //ToDo комментить менять при разработке
 
-    if (this.isFirstTime){
-      const deviceInfo = this.deviceDetectorService.getDeviceInfo()
-      const screen_width = window.innerWidth
-      const screen_height = window.innerHeight
-      const currentPath = window.location.pathname;
 
-      let newVisitor = new VisitorDTO();
-      newVisitor.path = currentPath;
-      newVisitor.browser = deviceInfo.browser;
-      newVisitor.browser_version = deviceInfo.browser_version;
-      newVisitor.os = deviceInfo.os;
-      newVisitor.os_version = deviceInfo.os_version;
-      newVisitor.device = deviceInfo.device;
-      newVisitor.device_type = deviceInfo.deviceType;
-      newVisitor.orientation = deviceInfo.orientation;
-      newVisitor.screen_width = screen_width;
-      newVisitor.screen_height = screen_height;
+    const deviceInfo = this.deviceDetectorService.getDeviceInfo()
+    const screen_width = window.innerWidth
+    const screen_height = window.innerHeight
+    const currentPath = window.location.pathname;
 
-      this.visitorsService.create(newVisitor).subscribe( result => {
-        if(result){
-          this.isFirstTime = false;
-        }
-      });
-    }
+    let newVisitor = new VisitorDTO();
+    newVisitor.path = currentPath;
+    newVisitor.browser = deviceInfo.browser;
+    newVisitor.browser_version = deviceInfo.browser_version;
+    newVisitor.os = deviceInfo.os;
+    newVisitor.os_version = deviceInfo.os_version;
+    newVisitor.device = deviceInfo.device;
+    newVisitor.device_type = deviceInfo.deviceType;
+    newVisitor.orientation = deviceInfo.orientation;
+    newVisitor.screen_width = screen_width;
+    newVisitor.screen_height = screen_height;
+
+    this.visitorsService.create(newVisitor).subscribe( result => {
+      if(result){
+        this.isFirstTime = false;
+      }
+    });
+
   }
 }

@@ -9,6 +9,9 @@ import {ContactsService} from "../../../../data/service/Contacts/contacts.servic
 import {DeviceDetectorService} from "ngx-device-detector";
 import {OpenDialogService} from "../../../../data/service/OptionalService/open-dialog.service";
 import {DialogResult} from "../../../../shared/dialog-result";
+import {EventsService} from "../../../../data/service/OptionalService/events.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {coerceBooleanProperty} from "@angular/cdk/coercion";
 
 @Component({
   selector: 'app-side-nav',
@@ -27,10 +30,13 @@ export class SideNavComponent implements OnInit{
 
   isMobile: boolean;
 
+  isCheckedCheckboxForDelete: boolean;
+
   constructor(private contactsService: ContactsService,
               private visitorService: VisitorsService,
               private deviceDetectorService: DeviceDetectorService,
-              private openDialogService: OpenDialogService) {
+              private openDialogService: OpenDialogService,
+              private eventsService: EventsService) {
   }
 
   @ViewChild(MatDrawer)
@@ -45,6 +51,8 @@ export class SideNavComponent implements OnInit{
 
     this.toSearchVisitors(this.searchVisitors);
     this.updateAndGetAllContacts();
+
+    this._subscribeForCheckboxForDelete();
   }
 
   initDefault(): void {
@@ -95,19 +103,34 @@ export class SideNavComponent implements OnInit{
     // this.filteredVisitorIp = row.ip;
   }
 
+  _subscribeForCheckboxForDelete(): void{
+    this.eventsService.isDontShowAgainForDelete.subscribe( resultDontShow => {
+      this.isCheckedCheckboxForDelete = resultDontShow;
+    })
+  }
+
   onClickDeleteVisitorRow(){
     const row = this.chosenVisitorRow;
-    this.openDialogService.openConfirmDialog(row, 'Вы точно хотите удалить строку с id:')
-      .afterClosed()
-      .subscribe( dialogResult => {
-      if (dialogResult === DialogResult.ACCEPT && row.id){
+      if(!this.isCheckedCheckboxForDelete){
+        this.openDialogService.openConfirmDialog(row, 'Вы точно хотите удалить строку с id:')
+          .afterClosed()
+          .subscribe( dialogResult => {
+            if (dialogResult === DialogResult.ACCEPT && row.id){
+              this.visitorService.delete(row.id).subscribe( result => {
+                if (result === true){
+                  this.toSearchVisitors(this.searchVisitors);
+                }
+              })
+            }
+          })
+      }
+      if(this.isCheckedCheckboxForDelete){
         this.visitorService.delete(row.id).subscribe( result => {
           if (result === true){
             this.toSearchVisitors(this.searchVisitors);
           }
         })
       }
-    })
   }
 
   toSearchByVisitorIp() {

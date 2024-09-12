@@ -8,10 +8,10 @@ import {EventsService} from "../../../data/service/OptionalService/events.servic
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.css']
 })
-export class ConfirmDialogComponent implements OnInit{
+export class ConfirmDialogComponent{
   dialogTitle: string;
   dialogDescription: string;
-  isCheckboxChecked: boolean;
+  isCheckboxChecked: boolean = false;
   row: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -20,16 +20,6 @@ export class ConfirmDialogComponent implements OnInit{
     this.dialogTitle = data.dialogTitle;
     this.dialogDescription = data.dialogDescription;
     this.row = data.row;
-  }
-
-  ngOnInit(): void {
-    this.eventsService.isDontShowAgainForDelete.subscribe( result => {
-      this.isCheckboxChecked = result;
-    })
-
-    //ToDo Сделать чтоб галочка отрабатывала но это уже надо проверять в sidenav при вызове
-    // if (this.isCheckboxChecked)
-    //   this.dialogRef.close(DialogResult.ACCEPT);
   }
 
   onChangeCheckBoxDontShow(){
