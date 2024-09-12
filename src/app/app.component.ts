@@ -20,7 +20,6 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     //ToDo комментить менять при разработке
 
-
     const deviceInfo = this.deviceDetectorService.getDeviceInfo()
     const screen_width = window.innerWidth
     const screen_height = window.innerHeight
@@ -43,6 +42,5 @@ export class AppComponent implements OnInit{
         this.isFirstTime = false;
       }
     });
-
   }
 }

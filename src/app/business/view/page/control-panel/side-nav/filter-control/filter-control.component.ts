@@ -23,6 +23,11 @@ export class FilterControlComponent implements OnInit, OnChanges{
 
   fgVisitorsFilter: FormGroup;
 
+  selectDescriptionObject = [
+    {viewValue: 'Все', value: [null, 'null']},
+    {viewValue: 'С описанием', value: [true, 'true']},
+    {viewValue: 'Без описания', value: [false, 'false']},
+  ]
 
   ngOnInit() {
     this.initDefaultValues();
@@ -67,18 +72,9 @@ export class FilterControlComponent implements OnInit, OnChanges{
     })
   }
 
-  onClickChangeIpDescFilter(){
+  onClickChangeIpDescFilter(optionDesc: any){
     let tempVisitorSearch: VisitorDTO = new VisitorDTO();
-
-    if(this.searchObj.hasIpDesc == null){
-      tempVisitorSearch.hasIpDesc = true;
-    }
-    if(this.searchObj.hasIpDesc == true){
-      tempVisitorSearch.hasIpDesc = false;
-    }
-    if(this.searchObj.hasIpDesc == false){
-      tempVisitorSearch.hasIpDesc = null;
-    }
+    tempVisitorSearch.hasIpDesc = optionDesc;
 
     this.newSearchVisitor.emit(tempVisitorSearch)
   }

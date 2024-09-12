@@ -10,8 +10,6 @@ import {DeviceDetectorService} from "ngx-device-detector";
 import {OpenDialogService} from "../../../../data/service/OptionalService/open-dialog.service";
 import {DialogResult} from "../../../../shared/dialog-result";
 import {EventsService} from "../../../../data/service/OptionalService/events.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {coerceBooleanProperty} from "@angular/cdk/coercion";
 
 @Component({
   selector: 'app-side-nav',
@@ -69,11 +67,12 @@ export class SideNavComponent implements OnInit{
       this.toSetNewSearchFromPage(searchObj, this.searchVisitors)
     }
 
-    this.visitorService.search(this.searchVisitors).subscribe( result => {
-      this.dataVisitorsList = result;
+    let dataVisitorsList = [];
+    this.visitorService.search(this.searchVisitors).subscribe(result => {
+      dataVisitorsList = result;
 
-      for(let i = 0; i < this.dataVisitorsList.length; i++){
-        const parts = (this.dataVisitorsList[i].date).split(' ')
+      for (let i = 0; i < dataVisitorsList.length; i++) {
+        const parts = (dataVisitorsList[i].date).split(' ')
         const dateParts = parts[0].split('.');
         const timeParts = parts[1].split(':');
         const utc = parseInt(parts[2].split('+')[1]);
@@ -87,10 +86,25 @@ export class SideNavComponent implements OnInit{
           parseInt(timeParts[2])
         ));
 
-        this.dataVisitorsList[i].date = date;
+        dataVisitorsList[i].date = date;
       }
+
+      if(searchObj.hasIpDesc === true){
+        dataVisitorsList = dataVisitorsList.filter(visitor => {
+          return visitor.ip_description !== null
+        });
+      }
+      if(searchObj.hasIpDesc === false){
+        dataVisitorsList = dataVisitorsList.filter(visitor => {
+          return visitor.ip_description == null || visitor.ip_description === ''
+        })
+      }
+
+      this.dataVisitorsList = dataVisitorsList;
     })
   }
+
+
 
   updateAndGetAllContacts() {
     this.contactsService.getAll().subscribe( result => {

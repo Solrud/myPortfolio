@@ -5,9 +5,10 @@
 <!--  <span class="control-accent ms-2">{{visitor.ip}}</span>-->
 <!--  <span class="ms-2"> {{visitor.date}}</span>-->
 <!--</div>-->
+<mat-divider></mat-divider>
 <form mat-dialog-content
       [formGroup]="fgVisitor">
-  <h3>Данные к записи</h3>
+  <h5>Данные к записи</h5>
   <p>🌐 Ip: <span>{{visitor.ip}}</span></p>
   <p>🚷 Путь URL: <span>{{visitor.path}}</span></p>
   <p>🕒 Дата: <span>{{visitor.date}}</span></p>

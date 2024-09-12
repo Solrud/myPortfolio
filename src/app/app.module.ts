@@ -40,6 +40,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ScrollListenerDirective } from './business/shared/ScrollListener/scroll-listener.directive';
 import { ConfirmDialogComponent } from './business/view/dialog/confirm-dialog/confirm-dialog.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTabsModule,
     MatExpansionModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDividerModule,
+    MatSelectModule
   ],
   providers: [
     {

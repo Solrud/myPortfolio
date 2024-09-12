@@ -10,7 +10,7 @@
         </mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <form [formGroup]="fgVisitorsFilter" class="d-flex">
+    <form [formGroup]="fgVisitorsFilter" class="d-flex gap-2">
       <mat-form-field class="input-ip">
         <mat-label>ip</mat-label>
         <input formControlName="ip" type="text" matInput>
@@ -19,15 +19,16 @@
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
-      <button mat-raised-button
-              color="accent"
-              class="ms-3"
-              (click)="onClickChangeIpDescFilter()"
-      >
-        <span *ngIf="searchObj.hasIpDesc == null">С/Без описания</span>
-        <span *ngIf="searchObj.hasIpDesc == true">С описанием</span>
-        <span *ngIf="searchObj.hasIpDesc == false">Без описания</span>
-      </button>
+      <mat-form-field class="select-desc pe-3">
+        <mat-label>Наличие описания</mat-label>
+        <mat-select [value]="selectDescriptionObject[0].value[1]">
+          <mat-option *ngFor="let option of selectDescriptionObject"
+                      (click)="onClickChangeIpDescFilter(option.value[0])"
+                      [value]="option.value[1]">
+            {{option.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </form>
   </mat-expansion-panel>
 </mat-accordion>

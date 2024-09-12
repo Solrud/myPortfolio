@@ -1,9 +1,14 @@
 .input-ip {
   width: 200px;
 }
-
+.select-desc{
+  width: 220px;
+}
 @media(max-width: 900px){
   .input-ip {
-    width: 100%;
+    flex:0 0 auto;width:50%
+  }
+  .select-desc{
+    flex:0 0 auto;width:50%
   }
 }

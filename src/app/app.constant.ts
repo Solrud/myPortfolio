@@ -47,7 +47,7 @@ export const EXPERIENCE_NAME = ['Написание телеграм ботов 
 export const EXPERIENCE_YEARS = ['2021 - 2022', '2023 - . . .']
 
 export const visitorsFieldColumnList: string[] = ['id', 'date', 'ip', 'path', 'agent', 'browser', 'browser_version', 'os', 'os_version', 'device', 'device_type', 'language', 'orientation', 'screen_width', 'screen_height'];
-export const contactsFieldColumnList: string[] = ['id', 'name', 'email', 'question', 'comment', 'ip', 'device', 'date'];
+export const contactsFieldColumnList: string[] = ['id', 'date', 'name', 'email', 'question', 'comment', 'ip', 'device'];
 
 
 export const BASE_URL: InjectionToken<string> = new InjectionToken<string>('backend url');

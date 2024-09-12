@@ -12,7 +12,7 @@
       <div *ngIf="TableType.Visitors == tableForType">
         <ng-container matColumnDef="id">
           <th mat-header-cell mat-sort-header class="control-accent" *matHeaderCellDef> id </th>
-          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          <td mat-cell *matCellDef="let element">{{element.id}}</td>
         </ng-container>
 
         <ng-container matColumnDef="date">
@@ -22,12 +22,15 @@
 
         <ng-container matColumnDef="ip">
           <th mat-header-cell mat-sort-header class="control-accent" *matHeaderCellDef> ip </th>
-          <td mat-cell *matCellDef="let element"> {{element.ip}} </td>
+          <td mat-cell *matCellDef="let element" class="position-relative">
+            <div class="category-div"></div>
+            <span class="position-static">{{element.ip}}</span>
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="agent">
           <th mat-header-cell mat-sort-header class="control-accent" *matHeaderCellDef> agent </th>
-          <td mat-cell *matCellDef="let element"> {{element.agent.slice(0,30)}}... </td>
+          <td mat-cell *matCellDef="let element" class=""> {{element.agent.slice(0,30)}}... </td>
         </ng-container>
 
         <ng-container matColumnDef="path">
