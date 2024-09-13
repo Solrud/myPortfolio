@@ -12,7 +12,7 @@ import {FooterComponent} from './business/view/page/portfolio/footer/footer.comp
 import {InnerBodyComponent} from './business/view/page/portfolio/inner-body/inner-body.component';
 import {ContactMeDialogComponent} from './business/view/dialog/contact-me-dialog/contact-me-dialog.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {ControlPanelComponent} from './business/view/page/control-panel/control-panel.component';
 import {BodyAdminComponent} from './business/view/page/control-panel/body-admin/body-admin.component';
@@ -33,7 +33,6 @@ import {AuthComponent} from './business/view/page/auth/auth.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {FilterControlComponent} from './business/view/page/control-panel/side-nav/filter-control/filter-control.component';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {BASE_URL} from "./app.constant";
 import {environment} from "../environment/environment";
 import {VisitorDialogComponent} from './business/view/dialog/control-panel/visitor-dialog/visitor-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -42,6 +41,8 @@ import { ConfirmDialogComponent } from './business/view/dialog/confirm-dialog/co
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
+import {BASE_URL} from "./business/shared/base-url/base-url.const";
+import {BaseUrlInterceptor} from "./business/shared/base-url/base-url.interceptor";
 
 @NgModule({
   declarations: [
@@ -91,6 +92,9 @@ import {MatSelectModule} from '@angular/material/select';
   providers: [
     {
       provide: BASE_URL, useValue: environment.backendURL
+    },
+    {
+      provide: HTTP_INTERCEPTORS, multi: true, useClass: BaseUrlInterceptor
     }
   ],
   exports: [

@@ -1,6 +1,5 @@
-import {Inject, Injectable, InjectionToken} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {BASE_URL} from "../../../../app.constant";
 import {Observable} from "rxjs";
 import {IpDescriptionDTO} from "../../model/dto/impl/IpDescriptionDTO";
 
@@ -9,12 +8,11 @@ import {IpDescriptionDTO} from "../../model/dto/impl/IpDescriptionDTO";
 })
 export class IpDescriptionService {
 
-  constructor(private httpClient: HttpClient,
-              @Inject(BASE_URL) private baseUrl: InjectionToken<string>)
+  constructor(private httpClient: HttpClient)
   { }
 
   changeIpDescription(ipDesc: IpDescriptionDTO): Observable<boolean> {
     return this.httpClient
-      .post<boolean>(this.baseUrl + '/changeipdescription', ipDesc);
+      .post<boolean>('/changeipdescription', ipDesc);
   }
 }

@@ -1,5 +1,7 @@
 <!--<h1 mat-dialog-title>Информация о посетителе <span class="control-accent">{{visitor.ip}}</span> <span> {{visitor.date}}</span></h1>-->
-<h1 mat-dialog-title>Информация о посетителе <span class="control-accent">{{visitor.ip}}</span> <br *ngIf="isMobile"> <span class="control-primary"> {{visitor.date}}</span></h1>
+<h1 mat-dialog-title>Информация о посетителе <span class="control-accent">{{visitor.ip}}</span>
+  <br *ngIf="isMobile">
+  <span class="control-primary"> {{visitor.date | date: 'dd.MM.yyyy HH:mm:ss'}}</span></h1>
 <!--<div mat-dialog-title class="d-flex flex-wrap">-->
 <!--  <span>Информация о посетителе</span>-->
 <!--  <span class="control-accent ms-2">{{visitor.ip}}</span>-->
