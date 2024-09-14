@@ -29,9 +29,9 @@ export class AuthComponent implements OnInit{
 
   onClickLogin():void {
     const tryPassword = this.fgPassword.controls['password'].value
-    this.authService.checkPassword(tryPassword).subscribe( result => {
-      if (result.result)
-        this.authService.loginAuthAdmin();
+    this.authService.login$(tryPassword).subscribe(result => {
+      if (result)
+        localStorage.setItem('access_token', result);
 
       this.routerService.navigate(['/admin'])
     })

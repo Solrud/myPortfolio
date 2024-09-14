@@ -43,6 +43,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
 import {BASE_URL} from "./business/shared/base-url/base-url.const";
 import {BaseUrlInterceptor} from "./business/shared/base-url/base-url.interceptor";
+import {JwtModule} from "@auth0/angular-jwt";
 
 @NgModule({
   declarations: [
@@ -87,7 +88,16 @@ import {BaseUrlInterceptor} from "./business/shared/base-url/base-url.intercepto
     MatDialogModule,
     MatCheckboxModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        },
+        allowedDomains: ['cg50261.tw1.ru'], // Заменено на ваш бэкенд URL без "https://" и "/api/login"
+        disallowedRoutes: ['cg50261.tw1.ru/api/login']
+      }
+    })
   ],
   providers: [
     {

@@ -1,29 +1,34 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+              private jwtHelper: JwtHelperService) { }
 
-  private isAuthenticated: boolean = false;
-
-  get IsAuthenticated(): boolean {
-    return this.isAuthenticated;
+  private get getAccessToken(): string{
+    return localStorage.getItem('access_token');
   }
 
-  checkPassword(password: string): Observable<any>{
+  IsAuthenticated(): boolean{
+    const token = this.getAccessToken;
+    return token && !this.jwtHelper.isTokenExpired(token)
+  }
+
+  login$(password: string): Observable<any>{
     return this.httpClient
-      .post<any>('/checkpassword', password);
-  }
-
-  loginAuthAdmin(): void{
-    this.isAuthenticated = true;
+      .post<any>('/login', password)
+      .pipe(
+        map( value => (value.result)
+        )
+      )
   }
 
   logoutAdmin(): void {
-    this.isAuthenticated = false;
+    null
   }
 }
