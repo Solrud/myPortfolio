@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import { Observable } from 'rxjs';
 import {AuthService} from "../data/service/OtherService/auth.service";
+import {environment} from "../../../environment/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AdminGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (!this.authService.IsAuthenticated){
+    if (!this.authService.IsAuthenticated && environment.production){
       this.routerService.navigate(['/auth']);
       return false
     }
