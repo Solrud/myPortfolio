@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private httpClient: HttpClient,
               private jwtHelper: JwtHelperService) { }
 
-  private get getAccessToken(): string{
+  get getAccessToken(): string{
     return localStorage.getItem('access_token');
   }
 
