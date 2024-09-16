@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../data/service/OtherService/auth.service";
 import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-auth',
@@ -12,7 +13,8 @@ export class AuthComponent implements OnInit{
   fgPassword: FormGroup;
 
   constructor(private authService: AuthService,
-              private routerService: Router,) {
+              private routerService: Router,
+              private snackBar: MatSnackBar) {
   }
 
   public get Validators(){
@@ -32,6 +34,11 @@ export class AuthComponent implements OnInit{
     this.authService.login$(tryPassword).subscribe(result => {
       if (result)
         localStorage.setItem('access_token', result);
+      else{
+        this.snackBar.open('Неверный пароль', '', {
+          duration: 1500,
+        })
+      }
 
       this.routerService.navigate(['/admin'])
     })

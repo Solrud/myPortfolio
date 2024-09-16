@@ -21,7 +21,7 @@ export class BaseUrlInterceptor implements HttpInterceptor {
       new HttpHeaders(
         {
           'Token': 'token-mattheweb@$',
-          'Authorization': 'Bearer ' + accessToken
+          'Auth': `Bearer ${accessToken}`
         },
       )
 
