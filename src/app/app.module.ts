@@ -44,6 +44,12 @@ import {MatSelectModule} from '@angular/material/select';
 import {BASE_URL} from "./business/shared/base-url/base-url.const";
 import {BaseUrlInterceptor} from "./business/shared/base-url/base-url.interceptor";
 import {JwtModule} from "@auth0/angular-jwt";
+import { NewDatePipePipe } from './business/shared/date-pipe/new-date-pipe.pipe';
+import {SpinnerInterceptor} from "./business/shared/spinner/spinner.interceptor";
+import { ShowSpinnerDirective } from './business/shared/spinner/show-spinner.directive';
+import { SpinnerComponent } from './business/view/page/components/spinner/spinner.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -65,7 +71,10 @@ import {JwtModule} from "@auth0/angular-jwt";
     FilterControlComponent,
     VisitorDialogComponent,
     ScrollListenerDirective,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    NewDatePipePipe,
+    ShowSpinnerDirective,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -97,14 +106,24 @@ import {JwtModule} from "@auth0/angular-jwt";
         allowedDomains: ['cg50261.tw1.ru'], // Заменено на ваш бэкенд URL без "https://" и "/api/login"
         disallowedRoutes: ['cg50261.tw1.ru/api/login']
       }
-    })
+    }),
+    MatMenuModule,
+    MatRadioModule
   ],
   providers: [
     {
-      provide: BASE_URL, useValue: environment.backendURL
+      provide: BASE_URL,
+      useValue: environment.backendURL
     },
     {
-      provide: HTTP_INTERCEPTORS, multi: true, useClass: BaseUrlInterceptor
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: BaseUrlInterceptor
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: SpinnerInterceptor
     }
   ],
   exports: [

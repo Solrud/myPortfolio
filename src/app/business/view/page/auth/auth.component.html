@@ -14,7 +14,10 @@
     </div>
     <div class="modal-footer">
       <button [routerLink]="['/']" class="btn btn-outline-dark">На главную</button>
-      <button class="btn btn-dark m-3" (click)="onClickLogin()" [disabled]="fgPassword.controls['password'].invalid">Войти</button>
+      <button class="btn btn-dark m-3"
+              (click)="onClickLogin()"
+              [disabled]="fgPassword.controls['password'].invalid || isDisabledButtonLogin"
+      >Войти</button>
     </div>
   </div>
 

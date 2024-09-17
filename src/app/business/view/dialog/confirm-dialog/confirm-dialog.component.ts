@@ -24,7 +24,7 @@ export class ConfirmDialogComponent{
 
   onChangeCheckBoxDontShow(){
     const change: boolean = !this.isCheckboxChecked;
-    this.eventsService.isDontShowAgainForDelete.next(change);
+    this.eventsService.isDontShowAgainForDelete$.next(change);
   }
 
   onClickAccept(): any{

@@ -118,7 +118,7 @@ export class SideNavComponent implements OnInit{
   }
 
   _subscribeForCheckboxForDelete(): void{
-    this.eventsService.isDontShowAgainForDelete.subscribe( resultDontShow => {
+    this.eventsService.isDontShowAgainForDelete$.subscribe(resultDontShow => {
       this.isCheckedCheckboxForDelete = resultDontShow;
     })
   }

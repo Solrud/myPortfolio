@@ -36,13 +36,15 @@ export class OpenDialogService {
 
   openConfirmDialog(row: any, dialogTitle: string = 'Без Заголовка', dialogDescription: string = ''): any{
     const openConfirmDialog = this.matModalService
-      .open(ConfirmDialogComponent, {data:
-          {
-            'dialogTitle': dialogTitle,
-            'dialogDescription': dialogDescription,
-            'row': row
-          }
-      })
+      .open(ConfirmDialogComponent, {
+        position: { top: '0'},
+        data:
+            {
+              'dialogTitle': dialogTitle,
+              'dialogDescription': dialogDescription,
+              'row': row
+            }
+        })
 
     return openConfirmDialog;
   }

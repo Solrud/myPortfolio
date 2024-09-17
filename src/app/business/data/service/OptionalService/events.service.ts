@@ -6,6 +6,8 @@ import {BehaviorSubject} from "rxjs";
 })
 export class EventsService {
 
-  isDontShowAgainForDelete = new BehaviorSubject(false);
+  isDontShowAgainForDelete$ = new BehaviorSubject(false);
+
+  spinnerVisibility$ = new BehaviorSubject(false);
 }
 

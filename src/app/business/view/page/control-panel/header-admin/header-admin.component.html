@@ -8,7 +8,34 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span class="header-label">Панель администрирования</span>
-  <span class="example-spacer"></span>
+  <span class="spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon class="me-3">format_color_fill</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" class="d-flex flex-wrap flex-column">
+    <button mat-menu-item>
+      <mat-icon> radio_button_unchecked</mat-icon>
+      <mat-icon>invert_colors</mat-icon>
+      <span>Светлая тема</span>
+    </button>
+
+    <button mat-menu-item>
+      <mat-icon>radio_button_unchecked</mat-icon>
+      <mat-icon>invert_colors_off</mat-icon>
+      <span>Темная тема</span>
+    </button>
+
+<!--    <mat-radio-button value="1">-->
+<!--      <mat-icon>invert_colors_off</mat-icon>-->
+<!--      Option 1-->
+<!--    </mat-radio-button>-->
+<!--    <mat-radio-button value="2">-->
+<!--      <mat-icon>invert_colors_off</mat-icon>-->
+<!--      Option 1-->
+<!--    </mat-radio-button>-->
+  </mat-menu>
+
 </mat-toolbar>
+
 
 

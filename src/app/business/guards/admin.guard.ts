@@ -19,25 +19,30 @@ export class AdminGuard implements CanActivate {
               state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const token = this.authService.getAccessToken;
 
-    if (token && !this.jwtHelper.isTokenExpired(token)) {
-      return this.authService.checkToken$().pipe(
-        map(result => {
-          if (result === true) {
-            return true;
-          } else {
-            this.routerService.navigate(['/auth']);
-            return false;
-          }
-        }),
-        catchError(error => {
-          this.routerService.navigate(['/auth']);
-          return of(false);
-        })
-      );
-    } else {
+    try {
+      if (!token && this.jwtHelper.isTokenExpired(token)) {
+        this.routerService.navigate(['/auth']);
+        return false;
+      }
+    } catch {
       this.routerService.navigate(['/auth']);
-      return of(false);
+      return false;
     }
+
+    return this.authService.checkToken$().pipe(
+      map(result => {
+        if (result === true) {
+          return true;
+        } else {
+          this.routerService.navigate(['/auth']);
+          return false;
+        }
+      }),
+      catchError(error => {
+        this.routerService.navigate(['/auth']);
+        return of(false);
+      })
+    );
   }
 
 }
