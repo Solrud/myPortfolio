@@ -51,6 +51,7 @@ export class TableControlComponent implements OnChanges{
 
       this.snackBar.open('Обновлено', 'Закрыть', {
         duration: 2000,
+        panelClass: 'mat-mdc-snack-bar-container'
       })
     }
   }

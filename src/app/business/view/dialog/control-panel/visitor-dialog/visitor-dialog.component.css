@@ -3,7 +3,9 @@ p{
   margin-bottom: 4px;
 }
 p span{
-  color: #f8f8f8 !important;
+  /*BLACK*/
+  /*color: #f8f8f8 !important;*/
+  color: #282828 !important
 }
 .text-mat-form-field{
   width: 100%;

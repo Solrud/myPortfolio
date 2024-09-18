@@ -5,6 +5,8 @@
 }
 
 .footer-text{
-  color: var(--control-accent);
+  /*BLACK*/
+  /*color: var(--control-accent);*/
+  color: var(--control-white);
   font-size: 13px;
 }
