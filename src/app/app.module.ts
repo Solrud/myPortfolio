@@ -50,6 +50,7 @@ import { ShowSpinnerDirective } from './business/shared/spinner/show-spinner.dir
 import { SpinnerComponent } from './business/view/page/components/spinner/spinner.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
+import { TestComponent } from './business/view/page/test/test.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import {MatRadioModule} from '@angular/material/radio';
     ConfirmDialogComponent,
     NewDatePipePipe,
     ShowSpinnerDirective,
-    SpinnerComponent
+    SpinnerComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

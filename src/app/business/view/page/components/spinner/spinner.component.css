@@ -1,8 +1,11 @@
 .loader {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 48px);
+  z-index: 9999999;
   width: 48px;
   height: 24px;
   display: inline-block;
-  position: relative;
   border: 2px solid var(--darker-second-blue-color);
 }
 .loader::after {
