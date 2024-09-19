@@ -44,11 +44,11 @@ tr[mat-row]:hover {
 }
 
 .highlight-row {
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: rgba(175, 175, 175, 0.04);
 }
 
 .chosen-row {
-  background-color: rgba(255, 78, 138, 0.22) !important;
+  background-color: rgba(98, 255, 135, 0.22) !important;
 }
 .category-div{
   width: 8px;

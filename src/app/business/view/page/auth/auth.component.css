@@ -1,17 +1,21 @@
 :host{
   height: 100%;
   width: 100%;
-  background: #171717;
+  background: rgb(46, 59, 87);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.mat-input{
+  width:100%;
 }
 
 .auth-modal-container{
   width: 400px;
   height: 200px;
   background: #ffffff;
-  border-radius: 13px;
+  border-radius: 7px;
   display: flex;
   flex-direction: column;
 }

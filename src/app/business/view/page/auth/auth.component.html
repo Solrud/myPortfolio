@@ -4,17 +4,28 @@
     </div>
     <div class="modal-body">
       <form class="mx-3" [formGroup]="fgPassword">
-        <label for="password" class="form-label">Введите пароль:</label>
-        <input id="password"
-               autocomplete="off"
-               class="form-control auth-input"
-               formControlName="password"
-               type="password">
+<!--        <label for="password" class="form-label">Введите пароль:</label>-->
+        <mat-form-field class="mat-input">
+          <mat-label>Введите пароль</mat-label>
+          <input matInput
+                 formControlName="password"
+                 id="password"
+                 autocomplete="off"
+                 type="password">
+        </mat-form-field>
+<!--        <input id="password"-->
+<!--               autocomplete="off"-->
+<!--               class="form-control auth-input"-->
+<!--               formControlName="password"-->
+<!--               type="password">-->
       </form>
     </div>
-    <div class="modal-footer">
-      <button [routerLink]="['/']" class="btn btn-outline-dark">На главную</button>
-      <button class="btn btn-dark m-3"
+    <div class="modal-footer mb-4 me-3 gap-2">
+      <button mat-stroked-button
+              [routerLink]="['/']"
+              >На главную</button>
+      <button mat-stroked-button
+              color="primary"
               (click)="onClickLogin()"
               [disabled]="fgPassword.controls['password'].invalid || isDisabledButtonLogin"
       >Войти</button>

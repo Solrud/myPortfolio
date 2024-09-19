@@ -3,6 +3,12 @@
 }
 .header-label{
   font-size: 19px !important;
+
+}
+
+div span {
+  font-size: 16px;
+  height: 23px;
 }
 
 @media(max-width: 500px) {

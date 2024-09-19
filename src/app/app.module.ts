@@ -51,6 +51,7 @@ import { SpinnerComponent } from './business/view/page/components/spinner/spinne
 import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
 import { TestComponent } from './business/view/page/test/test.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -110,7 +111,8 @@ import { TestComponent } from './business/view/page/test/test.component';
       }
     }),
     MatMenuModule,
-    MatRadioModule
+    MatRadioModule,
+    MatBadgeModule
   ],
   providers: [
     {

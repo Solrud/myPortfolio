@@ -16,7 +16,13 @@ export class AppComponent implements OnInit{
               private activatedRoute: ActivatedRoute) {
   }
 
+
   ngOnInit() {
+    let theme = 'purple-green.css'
+    const themeLink = document.getElementById('theme-link') as HTMLLinkElement;
+    themeLink.href = `assets/themes/${theme}`; // путь к файлу темы
+
+
     if(environment.production){
       const deviceInfo = this.deviceDetectorService.getDeviceInfo()
       const screen_width = window.innerWidth

@@ -1,12 +1,12 @@
 .loader {
   position: absolute;
   top: 50%;
-  left: calc(50% - 48px);
+  left: calc(50% - 25px);
   z-index: 9999999;
-  width: 48px;
+  width: 50px;
   height: 24px;
   display: inline-block;
-  border: 2px solid var(--darker-second-blue-color);
+  border: 2px solid var(--spinner-color);
 }
 .loader::after {
   content: '';
@@ -15,7 +15,7 @@
   left: 100%;
   top: 50%;
   transform: translateY(-50%);
-  border: 2px solid var(--darker-second-blue-color);
+  border: 2px solid var(--spinner-color);
   width: 5px;
   height: 12px;
 }
@@ -36,15 +36,15 @@
     box-shadow: 11px 0 rgba(255, 255, 255, 0), 22px 0 rgba(255, 255, 255, 0), 33px 0 rgba(255, 255, 255, 0), 44px 0 rgba(255, 255, 255, 0);
   }
   25% {
-    box-shadow: 11px 0 var(--darker-second-blue-color), 22px 0 rgba(255, 255, 255, 0), 33px 0 rgba(255, 255, 255, 0), 44px 0 rgba(255, 255, 255, 0);
+    box-shadow: 11px 0 var(--spinner-color), 22px 0 rgba(255, 255, 255, 0), 33px 0 rgba(255, 255, 255, 0), 44px 0 rgba(255, 255, 255, 0);
   }
   50% {
-    box-shadow: 11px 0 var(--darker-second-blue-color), 22px 0 #67feff, 33px 0 rgba(255, 255, 255, 0), 44px 0 rgba(255, 255, 255, 0);
+    box-shadow: 11px 0 var(--spinner-color), 22px 0 #ff7aa8, 33px 0 rgba(255, 255, 255, 0), 44px 0 rgba(255, 255, 255, 0);
   }
   75% {
-    box-shadow: 11px 0 var(--darker-second-blue-color), 22px 0 #67feff, 33px 0 #acffff, 44px 0 rgba(255, 255, 255, 0);
+    box-shadow: 11px 0 var(--spinner-color), 22px 0 #ff7aa8, 33px 0 #ff9ec2, 44px 0 rgba(255, 255, 255, 0);
   }
   100% {
-    box-shadow: 11px 0 var(--darker-second-blue-color), 22px 0 #67feff, 33px 0 #acffff, 44px 0 #ebffff;
+    box-shadow: 11px 0 var(--spinner-color), 22px 0 #ff7aa8, 33px 0 #ff9ec2, 44px 0 #ffc3da;
   }
 }

@@ -89,6 +89,8 @@ export class SideNavComponent implements OnInit{
         dataVisitorsList[i].date = date;
       }
 
+      this.eventsService.allDataVisitorList.next(dataVisitorsList);
+
       if(searchObj.hasIpDesc === true){
         dataVisitorsList = dataVisitorsList.filter(visitor => {
           return visitor.ip_description !== null
