@@ -4,7 +4,6 @@ import {MainComponent} from "./business/view/page/portfolio/main/main.component"
 import {ControlPanelComponent} from "./business/view/page/control-panel/control-panel.component";
 import {AuthComponent} from "./business/view/page/auth/auth.component";
 import {AdminGuard} from "./business/guards/admin.guard";
-import {TestComponent} from "./business/view/page/test/test.component";
 
 const routes: Routes = [
             {
@@ -20,10 +19,10 @@ const routes: Routes = [
               component: ControlPanelComponent,
               canActivate: [AdminGuard]
             },
-            // {
-            //   path: 'test',
-            //   component: TestComponent
-            // },
+            {
+              path: 'awstats',  // нужно для фичи awstats от timeweb
+              component: MainComponent
+            },
             {
               path: '**',
               redirectTo: '/',

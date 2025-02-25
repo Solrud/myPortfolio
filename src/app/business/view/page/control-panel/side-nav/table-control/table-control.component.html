@@ -23,7 +23,8 @@
         <ng-container matColumnDef="ip">
           <th mat-header-cell mat-sort-header class="control-accent" *matHeaderCellDef> ip </th>
           <td mat-cell *matCellDef="let element" class="position-relative">
-            <div class="category-div"></div>
+            <div [class.category-desc-mark]="element.ip_description"
+                 [class.category-non-desc-mark]="!element.ip_description"></div>
             <span class="position-static">{{element.ip}}</span>
           </td>
         </ng-container>

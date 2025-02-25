@@ -50,10 +50,20 @@ tr[mat-row]:hover {
 .chosen-row {
   background-color: rgba(98, 255, 135, 0.22) !important;
 }
-.category-div{
+.category-desc-mark{
   width: 8px;
   height: 8px;
   background-color: #69f0ae;
+  border-radius: 14px;
+
+  position: absolute;
+  top: 40%;
+  right: 10px;
+}
+.category-non-desc-mark{
+  width: 8px;
+  height: 8px;
+  background-color: #ff7d6c;
   border-radius: 14px;
 
   position: absolute;
