@@ -15,7 +15,7 @@
 }
 
 .example-sidenav {
-  background-color: var(--control-black-bg) !important;
+  background-color: var(--control-main) !important;
   overflow: hidden;
   padding: 20px !important;
 }

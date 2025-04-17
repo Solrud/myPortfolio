@@ -15,7 +15,6 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {ControlPanelComponent} from './business/view/page/control-panel/control-panel.component';
-import {BodyAdminComponent} from './business/view/page/control-panel/body-admin/body-admin.component';
 import {HeaderAdminComponent} from './business/view/page/control-panel/header-admin/header-admin.component';
 import {FooterAdminComponent} from './business/view/page/control-panel/footer-admin/footer-admin.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -64,7 +63,6 @@ import {MatBadgeModule} from '@angular/material/badge';
     InnerBodyComponent,
     ContactMeDialogComponent,
     ControlPanelComponent,
-    BodyAdminComponent,
     HeaderAdminComponent,
     FooterAdminComponent,
     SideNavComponent,
@@ -106,7 +104,7 @@ import {MatBadgeModule} from '@angular/material/badge';
         tokenGetter: () => {
           return localStorage.getItem('access_token');
         },
-        allowedDomains: ['cg50261.tw1.ru'], // Заменено на ваш бэкенд URL без "https://" и "/api/login"
+        allowedDomains: ['cg50261.tw1.ru'], // Заменено на бэкенд URL без "https://" и "/api/login"
         disallowedRoutes: ['cg50261.tw1.ru/api/login']
       }
     }),

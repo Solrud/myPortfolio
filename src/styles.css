@@ -47,7 +47,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   /*--control-black-bg: #303030;*/
   /*--control-accent: #69f0ae;*/
 
-  --control-main: #9bb2ff;
+  --control-main: #61ce6d;
   --control-black-bg: #c2d0ff;
   --control-accent: #13ec83;
   --control-primary: #ff4081;
@@ -98,7 +98,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --mdc-snackbar-container-color: #4d6391 !important;
   --mdc-snackbar-supporting-text-color: #ffffff !important;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

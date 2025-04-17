@@ -1,14 +1,14 @@
-<mat-drawer-container autosize class="example-container">
-  <mat-drawer mode="over" class="example-sidenav" >
-    <div class="container-sidenav">
+<mat-drawer-container autosize class="example-container overflow-auto">
+  <mat-drawer mode="over" class="example-sidenav overflow-auto" >
+    <div class="container-sidenav ">
 <!--      <button class="btn btn-dark " [routerLink]="['/']">На главную страницу</button>-->
       <button mat-raised-button [routerLink]="['/']" color="accent">На главную страницу</button>
     </div>
   </mat-drawer>
   <div class="example-sidenav-content">
     <mat-tab-group animationDuration="0ms">
-      <mat-tab label="Посетители">
-        <div class="d-flex flex-column justify-content-between">
+      <mat-tab label="Посетители" class="overflow-auto">
+        <div class="d-flex flex-column justify-content-between overflow-auto">
           <app-filter-control
             [clickedVisitorIp]="filteredVisitorIp"
             [filterForTable]="TableType.Visitors"
@@ -55,7 +55,7 @@
           </div>
         </div>
 
-        <app-table-control [dataSourceFromBackend]="dataVisitorsList"
+        <app-table-control class="overflow-auto" [dataSourceFromBackend]="dataVisitorsList"
                            [displayedColumns]="visitorsFieldList"
                            [tableForType]="TableType.Visitors"
 
