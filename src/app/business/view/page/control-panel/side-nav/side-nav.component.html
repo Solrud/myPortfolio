@@ -1,12 +1,13 @@
 <mat-drawer-container autosize class="example-container overflow-auto">
   <mat-drawer mode="over" class="example-sidenav overflow-auto" >
     <div class="container-sidenav ">
-<!--      <button class="btn btn-dark " [routerLink]="['/']">На главную страницу</button>-->
       <button mat-raised-button [routerLink]="['/']" color="accent">На главную страницу</button>
     </div>
   </mat-drawer>
   <div class="example-sidenav-content">
     <mat-tab-group animationDuration="0ms">
+
+<!-- ? //////////////______ ВКЛАДКА "ПОСЕТИТЕЛИ" _____\\\\\\\\\\\\\-->
       <mat-tab label="Посетители" class="overflow-auto">
         <div class="d-flex flex-column justify-content-between overflow-auto">
           <app-filter-control
@@ -63,7 +64,7 @@
         ></app-table-control>
       </mat-tab>
 
-
+      <!-- ? //////////////______ ВКЛАДКА "ЗАЯВКИ" _____\\\\\\\\\\\\\-->
       <mat-tab label="Заявки">
         <button mat-stroked-button
                 type="button"
@@ -76,6 +77,11 @@
                            [displayedColumns]="contactsFieldList"
                            [tableForType]="TableType.Contacts"
         ></app-table-control>
+      </mat-tab>
+
+      <!-- ? //////////////______ ВКЛАДКА "ГРАФИКИ" _____\\\\\\\\\\\\\-->
+      <mat-tab label="Графики">
+
       </mat-tab>
     </mat-tab-group>
   </div>

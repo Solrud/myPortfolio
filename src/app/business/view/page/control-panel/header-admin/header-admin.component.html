@@ -9,7 +9,7 @@
   </button>
   <span class="header-label">Панель администрирования</span>
   <span class="spacer"></span>
-  <div class="d-flex gap-4 h-100 align-items-center">
+  <div class="d-flex gap-4 h-100 align-items-center container-badges">
 <!--    <div class="d-flex gap-2">-->
 <!--      <span>Посетителей </span>-->
 <!--      <span class="control-primary fw-bold">{{countVisitors}}</span>-->
@@ -18,9 +18,11 @@
 <!--      <span>Уникальных </span>-->
 <!--      <span class="control-primary fw-bold">{{countUniqueVisitors}}</span>-->
 <!--    </div>-->
-    <div class="d-flex gap-3 me-3">
-      <mat-icon matBadge="{{countVisitors}}" matBadgeColor="warn">person</mat-icon>
-      <mat-icon matBadge="{{countUniqueVisitors}}" matBadgeColor="warn">person_add</mat-icon>
+    <div class="d-flex gap-3 me-3 ">
+      <span><i class="bi bi-person-check fs-5"></i><span class="badge text-bg-secondary ">{{countVisitors}} </span></span>
+      <span><i class="bi bi-person-plus"></i><span class="badge text-bg-secondary ">{{countUniqueVisitors}} </span></span>
+<!--      <mat-icon matBadge="{{countVisitors}}" matBadgeColor="warn">person</mat-icon>-->
+<!--      <mat-icon matBadge="{{countUniqueVisitors}}" matBadgeColor="warn">person_add</mat-icon>-->
     </div>
   </div>
 

@@ -48,7 +48,7 @@ tr[mat-row]:hover {
 }
 
 .chosen-row {
-  background-color: rgba(98, 255, 135, 0.22) !important;
+  background-color: var(--control-choosen-row) !important;
 }
 .category-desc-mark{
   width: 8px;

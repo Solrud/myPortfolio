@@ -9,7 +9,8 @@ import {filter, map} from "rxjs";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  host: {class: "control-main-bg"}
 })
 export class AppComponent implements OnInit{
   constructor(private visitorsService: VisitorsService,

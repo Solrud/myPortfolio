@@ -11,8 +11,21 @@ div span {
   height: 23px;
 }
 
+.badge {
+  width: 60px !important;
+  font-size: 14px !important;
+}
+
 @media(max-width: 500px) {
   .header-label{
-    font-size: 17px !important;
+    font-size: 14px !important;
+    display: none;
+  }
+  .spacer {
+    display: none;
+  }
+  .container-badges{
+    flex-grow: 1;
+    justify-content: center;
   }
 }

@@ -51,6 +51,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
 import { TestComponent } from './business/view/page/test/test.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import { NgChartsModule } from 'ng2-charts';
+import { BarChartComponent } from './business/view/page/components/bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     NewDatePipePipe,
     ShowSpinnerDirective,
     SpinnerComponent,
-    TestComponent
+    TestComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +113,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     }),
     MatMenuModule,
     MatRadioModule,
-    MatBadgeModule
+    MatBadgeModule,
+    NgChartsModule
   ],
   providers: [
     {

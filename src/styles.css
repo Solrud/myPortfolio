@@ -43,18 +43,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --darker-second-blue-color: #05fcff;
 
   /*BLACK*/
-  /*--control-main: #1c1c1c;*/
-  /*--control-black-bg: #303030;*/
-  /*--control-accent: #69f0ae;*/
+  --control-main: #1c1c1c;
+  --control-black-bg: #303030;
+  --control-accent: #b6ceff;
 
-  --control-main: #61ce6d;
-  --control-black-bg: #c2d0ff;
-  --control-accent: #13ec83;
-  --control-primary: #ff4081;
+  /*--control-main: #265ab9;*/
+  /*--control-black-bg: #c2d0ff;*/
+  /*--control-accent: #265ab9;*/
+  --control-primary: #265ab9;
   --control-white: #ffff;
 
   --spinner-color:  #ff4081;
-
+  --control-choosen-row: rgba(98, 111, 255, 0.22);
 }
 
 .control-main-bg{
@@ -72,7 +72,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .control-primary{
   color: var(--control-primary);
 }
-
 .control-accent{
   color: var(--control-accent);
 }
@@ -82,20 +81,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 /*BLACK THEME*/
-/*.mat-mdc-snack-bar-container {*/
-/*  --mat-mdc-snack-bar-button-color: #ff4081 !important;*/
-/*  --mdc-snackbar-container-color: #333333 !important;*/
-/*  --mdc-snackbar-supporting-text-color: rgba(255, 255, 255, 0.87) !important;*/
-/*}*/
 .mat-mdc-snack-bar-container {
-  --mat-mdc-snack-bar-button-color: var(--control-primary) !important;
-  --mdc-snackbar-container-color: var(--control-main) !important;
-  --mdc-snackbar-supporting-text-color: #ffffff !important;
+  --mat-mdc-snack-bar-button-color: var(--control-accent) !important;
+  --mdc-snackbar-container-color: #333333 !important;
+  --mdc-snackbar-supporting-text-color: rgba(255, 255, 255, 0.87) !important;
 }
+/*.mat-mdc-snack-bar-container {*/
+/*  --mat-mdc-snack-bar-button-color: var(--control-primary) !important;*/
+/*  --mdc-snackbar-container-color: var(--control-main) !important;*/
+/*  --mdc-snackbar-supporting-text-color: #ffffff !important;*/
+/*}*/
 /*#2a95ff красивый голубой цвет*/
 .snack-bat-create_contact{
   --mat-mdc-snack-bar-button-color: #05fcff !important;
   --mdc-snackbar-container-color: #4d6391 !important;
   --mdc-snackbar-supporting-text-color: #ffffff !important;
 }
-
