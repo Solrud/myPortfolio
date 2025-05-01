@@ -11,6 +11,8 @@ export class EventsService {
 
   spinnerVisibility$ = new BehaviorSubject(false);
 
-  allDataVisitorList = new Subject();
+  allDataVisitorList$ = new Subject();
+
+  dataVisitorFilterByYearObj$ = new Subject();
 }
 

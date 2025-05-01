@@ -11,15 +11,21 @@ import {OpenDialogService} from "../../../../data/service/OptionalService/open-d
 import {DialogResult} from "../../../../shared/dialog-result";
 import {EventsService} from "../../../../data/service/OptionalService/events.service";
 
+type YearsObjList = {
+  [key: string]: any[]
+}
+
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent implements OnInit{
+  // contact
   contactsFieldList = contactsFieldColumnList;
   dataContactsList: ContactDTO[] | null = null;
 
+  // visitor
   searchVisitors: VisitorDTO | null = null
   dataVisitorsList: VisitorDTO[] | null = null;
   visitorsFieldList = visitorsFieldColumnList;
@@ -29,6 +35,10 @@ export class SideNavComponent implements OnInit{
   isMobile: boolean;
 
   isCheckedCheckboxForDelete: boolean;
+
+  //for chart
+  // dataVisitorFilterByYearList: VisitorDTO[][] | null;
+  dataVisitorFilterByYearObj: YearsObjList = {};
 
   constructor(private contactsService: ContactsService,
               private visitorService: VisitorsService,
@@ -61,6 +71,8 @@ export class SideNavComponent implements OnInit{
   }
 
   toSearchVisitors(searchObj: VisitorDTO): void {
+    //toDo если фильтр по айпи + фильтр по наличию описания то в обьект поиска попадает последнее свойство (фильтр)
+
     this.chosenVisitorRow = null;
     this.filteredVisitorIp = null;
     if(searchObj != this.searchVisitors){
@@ -87,9 +99,15 @@ export class SideNavComponent implements OnInit{
         ));
 
         dataVisitorsList[i].date = date;
+
+        if (!this.dataVisitorFilterByYearObj[date.getFullYear()]){ // заполняем визиторами обьект по годам, для чартов
+          this.dataVisitorFilterByYearObj[date.getFullYear()] = [];
+        }
+        this.dataVisitorFilterByYearObj[date.getFullYear()].push(dataVisitorsList[i])
       }
 
-      this.eventsService.allDataVisitorList.next(dataVisitorsList);
+      this.eventsService.allDataVisitorList$.next(dataVisitorsList); // тут ВСЕ визиторы
+      this.eventsService.dataVisitorFilterByYearObj$.next(this.dataVisitorFilterByYearObj); // визторы для чартов по годам
 
       if(searchObj.hasIpDesc === true){
         dataVisitorsList = dataVisitorsList.filter(visitor => {
@@ -102,11 +120,9 @@ export class SideNavComponent implements OnInit{
         })
       }
 
-      this.dataVisitorsList = dataVisitorsList;
+      this.dataVisitorsList = dataVisitorsList; // а тут визиторы которые отображаются по фильтру
     })
   }
-
-
 
   updateAndGetAllContacts() {
     this.contactsService.getAll().subscribe( result => {

@@ -17,7 +17,7 @@ export class HeaderAdminComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.eventService.allDataVisitorList.subscribe( (result: any[]) => {
+    this.eventService.allDataVisitorList$.subscribe( (result: any[]) => {
       this.countVisitors = result?.length;
 
       const uniqueIps = new Set(result.map(obj => obj.ip));

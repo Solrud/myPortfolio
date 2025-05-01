@@ -14,7 +14,7 @@
 .auth-modal-container{
   width: 400px;
   height: 200px;
-  background: #ffffff;
+  background: var(--black-color);
   border-radius: 7px;
   display: flex;
   flex-direction: column;
