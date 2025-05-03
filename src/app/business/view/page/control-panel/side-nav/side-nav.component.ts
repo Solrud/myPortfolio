@@ -59,8 +59,10 @@ export class SideNavComponent implements OnInit{
   typeForChartByHours: ChartType = 'bar';
 
   // глобалльные настройки всех chart's
-  backgroundColorChart: string = 'rgb(60,158,255)';
-  borderColorChart: string = 'rgb(60,158,255)';
+  backgroundColorChartWithIpDesc: string = 'rgb(60,158,255)';
+  borderColorChartWithIpDesc: string = 'rgb(60,158,255)';
+  backgroundColorChartNoIpDesc: string = 'rgba(255, 99, 132, 0.8)';
+  borderColorChartNoIpDesc: string = 'rgba(255, 99, 132, 1)';
   borderWidthChart: number = 3;
   tensionLineChart: number = 0.4;
   fillLineChart: boolean = false;
@@ -156,28 +158,50 @@ export class SideNavComponent implements OnInit{
 z
   toCreateBarChartByYears(){
     if (this.dataVisitorFilterByYearObj){
-      //создание списка с данными
+      //создание списков для составных столбцов
+      let dataChartNoIpDesc: number[] = [];
+      let dataChartWithIpDesc: number[] = [];
 
-      const dataChart: number[] = Object.keys(this.dataVisitorFilterByYearObj)
-        .map( key => this.dataVisitorFilterByYearObj[key].length);
+      Object.keys(this.dataVisitorFilterByYearObj)
+        .forEach( key => {
+          let tempCountWithIpDesc = 0;
+          let tempCountNoIpDesc = 0;
+          for (let i = 0; i < this.dataVisitorFilterByYearObj[key].length; i++){
+            if (this.dataVisitorFilterByYearObj[key][i].ip_description){
+              tempCountWithIpDesc ++;
+            } else {
+              tempCountNoIpDesc ++;
+            }
+          }
+          dataChartWithIpDesc.push(tempCountWithIpDesc);
+          dataChartNoIpDesc.push(tempCountNoIpDesc);
+        });
 
       this.datasetsForChartBarByYears = {
         labels: Object.keys(this.dataVisitorFilterByYearObj),
         datasets: [
           {
-            label: 'За все года',
-            data: dataChart,
-            backgroundColor: this.backgroundColorChart,
-            borderColor: this.borderColorChart,
+            label: 'Знакомые IP',
+            data: dataChartWithIpDesc,
+            backgroundColor: this.backgroundColorChartWithIpDesc,
+            borderColor: this.borderColorChartWithIpDesc,
             borderWidth: this.borderWidthChart,
             fill: this.fillLineChart,
             tension: this.tensionLineChart,
+          },
+          {
+            label: 'Незнакомые IP',
+            data: dataChartNoIpDesc,
+            borderWidth: this.borderWidthChart,
+            fill: this.fillLineChart,
+            tension: this.tensionLineChart,
+            backgroundColor: this.backgroundColorChartNoIpDesc,
+            borderColor: this.borderColorChartNoIpDesc
           }
         ]}
 
       this.optionsForChartBarByYears = {
         responsive: true,
-
         scales: {
           x: {
             ticks: {color: 'rgba(90,143,255,0.64)'}, // Цвет подписей оси X
@@ -188,12 +212,21 @@ z
           }
         },
         plugins: {
+          title: {
+            display: true,
+            text: 'За все года',
+            font: {
+              size: 15
+            },
+            color: 'rgba(255,255,255,0.8)',
+            padding: { top: 1, bottom: 7 }
+          },
           legend: {
             display: true,
             position: 'top',
             labels: {
               color: 'rgba(255,255,255,0.63)',
-              font: {size: 13}
+              font: {size: 11}
             }
           },
           colors: {
@@ -225,21 +258,45 @@ z
       this.dataVisitorFilterByMonthsObj[month].push(this.dataVisitorFilterByYearObj[currentYear][i])
     }
 
-    // заполнение chart inputs datasets, options, labels
-    const dataChart = Object.keys(this.dataVisitorFilterByMonthsObj)
-      .map( key => this.dataVisitorFilterByMonthsObj[key].length)
+    //создание списков для составных столбцов
+    let dataChartWithIpDesc: number[] = [];
+    let dataChartNoIpDesc: number[] = [];
+
+    Object.keys(this.dataVisitorFilterByMonthsObj)
+      .forEach( key => {
+        let tempCountWithIpDesc = 0;
+        let tempCountNoIpDesc = 0;
+        for (let i = 0; i < this.dataVisitorFilterByMonthsObj[key].length; i++){
+          if (this.dataVisitorFilterByMonthsObj[key][i].ip_description){
+            tempCountWithIpDesc ++;
+          } else {
+            tempCountNoIpDesc ++;
+          }
+        }
+        dataChartWithIpDesc.push(tempCountWithIpDesc);
+        dataChartNoIpDesc.push(tempCountNoIpDesc);
+      });
 
     this.datasetsForChartBarByMonths = {
       labels: Object.keys(this.dataVisitorFilterByMonthsObj),
       datasets: [
         {
-          label: 'За текущий год (по месяцам)',
-          data: dataChart,
-          backgroundColor: this.backgroundColorChart,
-          borderColor: this.borderColorChart,
+          label: 'Знакомые IP',
+          data: dataChartWithIpDesc,
+          backgroundColor: this.backgroundColorChartWithIpDesc,
+          borderColor: this.borderColorChartWithIpDesc,
           borderWidth: this.borderWidthChart,
           fill: this.fillLineChart,
           tension: this.tensionLineChart,
+        },
+        {
+          label: 'Незнакомые IP',
+          data: dataChartNoIpDesc,
+          borderWidth: this.borderWidthChart,
+          fill: this.fillLineChart,
+          tension: this.tensionLineChart,
+          backgroundColor: this.backgroundColorChartNoIpDesc,
+          borderColor: this.borderColorChartNoIpDesc
         }
       ]}
 
@@ -248,17 +305,30 @@ z
       scales: {
         x: {
           ticks: {
-            color: 'rgba(90,143,255,0.64)'  // Цвет подписей оси X
-          }
+            color: 'rgba(90,143,255,0.64)',  // Цвет подписей оси X
+          },
+          stacked: true
+        },
+        y: {
+          stacked: true
         }
       },
       plugins: {
+        title: {
+          display: true,
+          text: 'За этот год (по месяцам)',
+          font: {
+            size: 15
+          },
+          color: 'rgba(255,255,255,0.8)',
+          padding: { top: 1, bottom: 7 }
+        },
         legend: {
           display: true,
           position: 'top',
           labels: {
             color: 'rgba(255,255,255,0.63)',
-            font: {size: 13}
+            font: {size: 11}
           }
         },
         colors: {
@@ -286,20 +356,45 @@ z
       this.dataVisitorFilterByDaysObj[day].push(this.dataVisitorFilterByMonthsObj[currentMonth][i])
     }
 
-    const dataChart = Object.keys(this.dataVisitorFilterByDaysObj)
-      .map(key => this.dataVisitorFilterByDaysObj[key].length)
+    //создание списков для составных столбцов
+    let dataChartWithIpDesc: number[] = [];
+    let dataChartNoIpDesc: number[] = [];
+
+    Object.keys(this.dataVisitorFilterByDaysObj)
+      .forEach( key => {
+        let tempCountWithIpDesc = 0;
+        let tempCountNoIpDesc = 0;
+        for (let i = 0; i < this.dataVisitorFilterByDaysObj[key].length; i++){
+          if (this.dataVisitorFilterByDaysObj[key][i].ip_description){
+            tempCountWithIpDesc ++;
+          } else {
+            tempCountNoIpDesc ++;
+          }
+        }
+        dataChartWithIpDesc.push(tempCountWithIpDesc);
+        dataChartNoIpDesc.push(tempCountNoIpDesc);
+      });
 
     this.datasetsForChartBarByDays = {
       labels: Object.keys(this.dataVisitorFilterByDaysObj),
       datasets: [
         {
-          label: 'За текущий месяц (по дням)',
-          data: dataChart,
-          backgroundColor: this.backgroundColorChart,
-          borderColor: this.borderColorChart,
+          label: 'Знакомые IP',
+          data: dataChartWithIpDesc,
+          backgroundColor: this.backgroundColorChartWithIpDesc,
+          borderColor: this.borderColorChartWithIpDesc,
           borderWidth: this.borderWidthChart,
           fill: this.fillLineChart,
           tension: this.tensionLineChart,
+        },
+        {
+          label: 'Незнакомые IP',
+          data: dataChartNoIpDesc,
+          borderWidth: this.borderWidthChart,
+          fill: this.fillLineChart,
+          tension: this.tensionLineChart,
+          backgroundColor: this.backgroundColorChartNoIpDesc,
+          borderColor: this.borderColorChartNoIpDesc
         }
       ]}
 
@@ -309,16 +404,29 @@ z
         x: {
           ticks: {
             color: 'rgba(90,143,255,0.64)'  // Цвет подписей оси X
-          }
+          },
+          stacked: true
+        },
+        y: {
+          stacked: true
         }
       },
       plugins: {
+        title: {
+          display: true,
+          text: 'За этот месяц (по дням)',
+          font: {
+            size: 15
+          },
+          color: 'rgba(255,255,255,0.8)',
+          padding: { top: 1, bottom: 7 }
+        },
         legend: {
           display: true,
           position: 'top',
           labels: {
             color: 'rgba(255,255,255,0.63)',
-            font: {size: 13}
+            font: {size: 11}
           }
         },
         colors: {
@@ -348,20 +456,46 @@ z
       this.dataVisitorFilterByHoursObj[hour].push(this.dataVisitorFilterByDaysObj[currentDay][i])
     }
 
-    const dataChart = Object.keys(this.dataVisitorFilterByHoursObj)
+//создание списков для составных столбцов
+    let dataChartWithIpDesc: number[] = [];
+    let dataChartNoIpDesc: number[] = [];
+
+    Object.keys(this.dataVisitorFilterByHoursObj)
       .sort()
-      .map(key => this.dataVisitorFilterByHoursObj[key].length)
+      .forEach( key => {
+        let tempCountWithIpDesc = 0;
+        let tempCountNoIpDesc = 0;
+        for (let i = 0; i < this.dataVisitorFilterByHoursObj[key].length; i++){
+          if (this.dataVisitorFilterByHoursObj[key][i].ip_description){
+            tempCountWithIpDesc ++;
+          } else {
+            tempCountNoIpDesc ++;
+          }
+        }
+        dataChartWithIpDesc.push(tempCountWithIpDesc);
+        dataChartNoIpDesc.push(tempCountNoIpDesc);
+      });
+
     this.datasetsForChartBarByHours = {
       labels: Object.keys(this.dataVisitorFilterByHoursObj).sort(),
       datasets: [
         {
-          label: 'За этот день (по часам)',
-          data: dataChart,
-          backgroundColor: this.backgroundColorChart,
-          borderColor: this.borderColorChart,
+          label: 'Знакомые IP',
+          data: dataChartWithIpDesc,
+          backgroundColor: this.backgroundColorChartWithIpDesc,
+          borderColor: this.borderColorChartWithIpDesc,
           borderWidth: this.borderWidthChart,
           fill: this.fillLineChart,
           tension: this.tensionLineChart,
+        },
+        {
+          label: 'Незнакомые IP',
+          data: dataChartNoIpDesc,
+          borderWidth: this.borderWidthChart,
+          fill: this.fillLineChart,
+          tension: this.tensionLineChart,
+          backgroundColor: this.backgroundColorChartNoIpDesc,
+          borderColor: this.borderColorChartNoIpDesc
         }
       ]}
 
@@ -371,16 +505,36 @@ z
         x: {
           ticks: {
             color: 'rgba(90,143,255,0.64)'  // Цвет подписей оси X
+          },
+          stacked: true
+        },
+        y: {
+          stacked: true,
+          ticks: {
+            stepSize: 1,
+            callback: (value) => {
+              // Если число целое - возвращаем без десятичной части
+              return Number.isInteger(value) ? value.toString() : value;
+            }
           }
         }
       },
       plugins: {
+        title: {
+          display: true,
+          text: 'За этот день (по часам)',
+          font: {
+            size: 15
+          },
+          color: 'rgba(255,255,255,0.8)',
+          padding: { top: 1, bottom: 7 }
+        },
         legend: {
           display: true,
           position: 'top',
           labels: {
             color: 'rgba(255,255,255,0.63)',
-            font: {size: 13}
+            font: {size: 11}
           }
         },
         colors: {
