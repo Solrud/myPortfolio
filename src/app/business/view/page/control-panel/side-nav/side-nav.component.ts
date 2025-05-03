@@ -42,6 +42,7 @@ export class SideNavComponent implements OnInit{
   datasetsForChartBarByYears: ChartData<any>;
   optionsForChartBarByYears: ChartOptions<any>;
   typeForChartByYears: ChartType = 'bar';
+  selectedChartByYear: number;
 
   dataVisitorFilterByMonthsObj: ObjList = {}; // по месяцам в году
   datasetsForChartBarByMonths: ChartData<any>;
@@ -132,6 +133,14 @@ export class SideNavComponent implements OnInit{
           this.dataVisitorFilterByYearObj[date.getFullYear()] = [];
         }
         this.dataVisitorFilterByYearObj[date.getFullYear()].push(dataVisitorsList[i])
+      }
+
+      // ПО УМОЛЧАНИЮ ставится последний год
+      if (!this.selectedChartByYear){
+        this.selectedChartByYear = 0;
+        for (let year of Object.keys(this.dataVisitorFilterByYearObj)){
+          this.selectedChartByYear = Number(year) > this.selectedChartByYear ? Number(year) : this.selectedChartByYear; // получили последний год с визиторами
+        }
       }
 
       this.toCreateBarChartByYears();
@@ -241,12 +250,12 @@ z
     this.typeForChartByYears = this.typeForChartByYears == 'bar' ? 'line' : 'bar';
   }
 
-  toCreateBarChartByMonth(){
-    let currentYear = 0;
-    for (let year of Object.keys(this.dataVisitorFilterByYearObj)){
-      currentYear = Number(year) > currentYear ? Number(year) : currentYear; // получили последний год с визиторами
-    }
+  onClickChartByYears(event: any){
+    console.log(event)
+  }
 
+  toCreateBarChartByMonth(){
+    const currentYear = this.selectedChartByYear;
     for (let i = 1; i <= 12; i++){
       this.dataVisitorFilterByMonthsObj[i] = []; // заполняем обьект пустыми списками по месяцам
     }

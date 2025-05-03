@@ -90,9 +90,12 @@
                       [type]="typeForChartByYears"
                       [data]="datasetsForChartBarByYears"
                       [options]="optionsForChartBarByYears"
+
+                      (chartClick)="onClickChartByYears($event)"
               ></canvas>
               <div>
-                <button class="btn btn-primary m-3" (click)="onToggleTypeCharByYears()"><i class="bi bi-bar-chart"></i></button>
+                <button class="btn btn-primary m-3"
+                        (click)="onToggleTypeCharByYears()"><i class="bi bi-bar-chart"></i></button>
               </div>
             </div>
             <div class="pod-container-charts">
@@ -103,7 +106,8 @@
                       [options]="optionsForChartBarByMonths"
               ></canvas>
               <div>
-                <button class="btn btn-primary m-3" (click)="onToggleTypeCharByMonths()"><i class="bi bi-bar-chart"></i></button>
+                <button class="btn btn-primary m-3"
+                        (click)="onToggleTypeCharByMonths()"><i class="bi bi-bar-chart"></i></button>
               </div>
             </div>
 
@@ -117,7 +121,8 @@
                       [options]="optionsForChartBarByDays"
               ></canvas>
               <div>
-                <button class="btn btn-primary m-3" (click)="onToggleTypeCharByDays()"><i class="bi bi-bar-chart"></i></button>
+                <button class="btn btn-primary m-3"
+                        (click)="onToggleTypeCharByDays()"><i class="bi bi-bar-chart"></i></button>
               </div>
             </div>
             <div class="pod-container-charts">
@@ -128,7 +133,8 @@
                       [options]="optionsForChartBarByHours"
               ></canvas>
               <div>
-                <button class="btn btn-primary m-3" (click)="onToggleTypeCharByHours()"><i class="bi bi-bar-chart"></i></button>
+                <button class="btn btn-primary m-3"
+                        (click)="onToggleTypeCharByHours()"><i class="bi bi-bar-chart"></i></button>
               </div>
             </div>
           </div>
