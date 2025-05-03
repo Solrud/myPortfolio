@@ -5,7 +5,7 @@
     </div>
   </mat-drawer>
   <div class="example-sidenav-content">
-    <mat-tab-group animationDuration="0ms">
+    <mat-tab-group animationDuration="0ms" selectedIndex="2">
 
 <!-- ? //////////////______ ВКЛАДКА "ПОСЕТИТЕЛИ" _____\\\\\\\\\\\\\-->
       <mat-tab label="Посетители" class="overflow-auto">
@@ -81,7 +81,58 @@
 
       <!-- ? //////////////______ ВКЛАДКА "ГРАФИКИ" _____\\\\\\\\\\\\\-->
       <mat-tab label="Графики">
+        <div class="h-100 w-100 d-flex flex-column">
+          <span class="text-center mt-2">Заходы на сайт:</span>
+          <div class="container-charts">
+            <div class="pod-container-charts">
+              <canvas baseChart
+                      class="chart"
+                      [type]="typeForChartByYears"
+                      [data]="datasetsForChartBarByYears"
+                      [options]="optionsForChartBarByYears"
+              ></canvas>
+              <div>
+                <button class="btn btn-primary m-3" (click)="onToggleTypeCharByYears()"><i class="bi bi-bar-chart"></i></button>
+              </div>
+            </div>
+            <div class="pod-container-charts">
+              <canvas baseChart
+                      class="chart"
+                      [type]="typeForChartByMonths"
+                      [data]="datasetsForChartBarByMonths"
+                      [options]="optionsForChartBarByMonths"
+              ></canvas>
+              <div>
+                <button class="btn btn-primary m-3" (click)="onToggleTypeCharByMonths()"><i class="bi bi-bar-chart"></i></button>
+              </div>
+            </div>
 
+          </div>
+          <div class="container-charts">
+            <div class="pod-container-charts">
+              <canvas baseChart
+                      class="chart"
+                      [type]="typeForChartByDays"
+                      [data]="datasetsForChartBarByDays"
+                      [options]="optionsForChartBarByDays"
+              ></canvas>
+              <div>
+                <button class="btn btn-primary m-3" (click)="onToggleTypeCharByDays()"><i class="bi bi-bar-chart"></i></button>
+              </div>
+            </div>
+            <div class="pod-container-charts">
+              <canvas baseChart
+                      class="chart"
+                      [type]="typeForChartByHours"
+                      [data]="datasetsForChartBarByHours"
+                      [options]="optionsForChartBarByHours"
+              ></canvas>
+              <div>
+                <button class="btn btn-primary m-3" (click)="onToggleTypeCharByHours()"><i class="bi bi-bar-chart"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
       </mat-tab>
     </mat-tab-group>
   </div>

@@ -1,22 +1,31 @@
-import {Component, Input} from '@angular/core';
-import {ChartConfiguration, ChartType} from "chart.js";
+import {ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
+import {ChartConfiguration, ChartData, ChartType} from "chart.js";
+import {BaseChartDirective} from "ng2-charts";
 
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.css']
 })
-export class BarChartComponent {
+export class BarChartComponent implements OnChanges{
   @Input('type')
-  type: ChartType;
-
-  @Input('labels')
-  labels: string[];
+  type: any;
 
   @Input('options')
-  options: ChartConfiguration<any>['options'];
+  options: any;
 
-  @Input('datasets')
-  datasets: ChartConfiguration<any>['data']['datasets'];
+  @Input('data')
+  data: any;
 
+  @ViewChild(BaseChartDirective)
+  chart: BaseChartDirective | undefined;
+
+  constructor(private cdr: ChangeDetectorRef) {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+      console.log('chart update')
+      this.chart?.update();
+      this.cdr.detectChanges();
+    }
 }
