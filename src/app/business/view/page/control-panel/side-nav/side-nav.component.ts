@@ -166,20 +166,7 @@ export class SideNavComponent implements OnInit{
         this.dataVisitorFilterByYearObj[date.getFullYear()].push(dataVisitorsList[i])
       }
 
-      // ПО УМОЛЧАНИЮ ставится последний год
-      if (!this.selectedChartByYearKey){
-        this.selectedChartByYearKey = 0;
-        for (let year of Object.keys(this.dataVisitorFilterByYearObj)){
-          this.selectedChartByYearKey = Number(year) > this.selectedChartByYearKey ?
-            Number(year) :
-            this.selectedChartByYearKey; // получили последний год с визиторами
-        }
-      }
-
       this.toCreateBarChartByYears();
-      // this.toCreateBarChartByMonth();
-      // this.toCreateBarChartByDays();
-      this.toCreateBarChartByHours();
       this.isFirstTimeLoaded = false;
 
       this.eventsService.allDataVisitorList$.next(dataVisitorsList); // тут ВСЕ визиторы
@@ -204,6 +191,16 @@ export class SideNavComponent implements OnInit{
   // менять значок при изменить тип диаграммы
 
   toCreateBarChartByYears(){
+    // ПО УМОЛЧАНИЮ ставится последний год
+    if (!this.selectedChartByYearKey){
+      this.selectedChartByYearKey = 0;
+      for (let year of Object.keys(this.dataVisitorFilterByYearObj)){
+        this.selectedChartByYearKey = Number(year) > this.selectedChartByYearKey ?
+          Number(year) :
+          this.selectedChartByYearKey; // получили последний год с визиторами
+      }
+    }
+
     if (this.dataVisitorFilterByYearObj){
       let dataChartNoIpDesc: number[] = []; //создание datasets для составных столбцов
       let dataChartWithIpDesc: number[] = [];
@@ -826,6 +823,10 @@ export class SideNavComponent implements OnInit{
     this.dataVisitorFilterByHoursObj = {}; // по дням в месяце
     this.datasetsForChartBarByHours = null;
     this.optionsForChartBarByHours = [];
+  }
+
+  onClickResetToDefaultDateForCharts(): void {
+
   }
 
   updateAndGetAllContacts() {

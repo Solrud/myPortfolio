@@ -47,6 +47,10 @@ button span {
   flex:0 0 auto;width:50%
 }
 
+.visitors-chart-span{
+  background-color: #232323;
+}
+
 .chart{
   max-width: 100% !important;
   max-height: 500px !important;

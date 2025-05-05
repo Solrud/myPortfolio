@@ -78,11 +78,17 @@
                            [tableForType]="TableType.Contacts"
         ></app-table-control>
       </mat-tab>
-
       <!-- ? //////////////______ ВКЛАДКА "ГРАФИКИ" _____\\\\\\\\\\\\\-->
       <mat-tab label="Графики">
         <div class="h-100 w-100 d-flex flex-column">
-          <span class="text-center mt-2 bg-gradient">Заходы на сайт:</span>
+          <div class="visitors-chart-span d-flex flex-column align-items-center ">
+            <span class=" mt-2 text-center">Заходы на сайт:</span>
+            <div class="my-2">
+              <button class="btn btn-sm btn-outline-primary"
+                      (click)="onClickResetToDefaultDateForCharts()">Вернуть по-умолчанию</button>
+            </div>
+          </div>
+
           <div class="container-charts">
             <div class="pod-container-charts ">
               <canvas baseChart #chartByYears
@@ -94,7 +100,7 @@
                       (chartClick)="onClickChartByYears($event)"
               ></canvas>
               <div *ngIf="datasetsForChartBarByYears" class="d-flex justify-content-center">
-                <button class="btn btn-primary m-3"
+                <button class="btn btn btn-outline-light m-3"
                         [class.btn-sm]="isMobile"
                         (click)="onToggleTypeCharByYears()"
                 >Изменить тип диаграммы "За все года" <i class="bi bi-bar-chart-fill"></i></button>
@@ -110,7 +116,7 @@
                       (chartClick)="onClickChartByMonths($event)"
               ></canvas>
               <div *ngIf="datasetsForChartBarByMonths" class="d-flex justify-content-center">
-                <button class="btn btn-primary m-3"
+                <button class="btn btn btn-outline-light m-3"
                         [class.btn-sm]="isMobile"
                         (click)="onToggleTypeCharByMonths()"
                 >Изменить тип диаграммы "По месяцам" <i class="bi bi-bar-chart-fill"></i></button>
@@ -129,7 +135,7 @@
                       (chartClick)="onClickChartByDays($event)"
               ></canvas>
               <div *ngIf="datasetsForChartBarByDays" class="d-flex justify-content-center">
-                <button class="btn btn-primary m-3"
+                <button class="btn btn btn-outline-light m-3"
                         [class.btn-sm]="isMobile"
                         (click)="onToggleTypeCharByDays()"
                 >Изменить тип диаграммы "По дням" <i class="bi bi-bar-chart-fill"></i></button>
@@ -143,7 +149,7 @@
                       [options]="optionsForChartBarByHours"
               ></canvas>
               <div *ngIf="datasetsForChartBarByHours" class="d-flex justify-content-center">
-                <button class="btn btn-primary m-3"
+                <button class="btn btn btn-outline-light m-3"
                         [class.btn-sm]="isMobile"
                         (click)="onToggleTypeCharByHours()"
                 >Изменить тип диаграммы "По часам" <i class="bi bi-bar-chart-fill"></i></button>
