@@ -130,7 +130,7 @@ import { BarChartComponent } from './business/view/page/components/bar-chart/bar
       provide: HTTP_INTERCEPTORS,
       multi: true,
       useClass: SpinnerInterceptor
-    }
+    },
   ],
   exports: [
     AsideComponent

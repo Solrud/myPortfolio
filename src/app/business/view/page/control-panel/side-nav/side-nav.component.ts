@@ -11,6 +11,7 @@ import {OpenDialogService} from "../../../../data/service/OptionalService/open-d
 import {DialogResult} from "../../../../shared/dialog-result";
 import {EventsService} from "../../../../data/service/OptionalService/events.service";
 import {ChartData, ChartOptions, ChartType} from "chart.js";
+import {BaseChartDirective} from "ng2-charts";
 
 type ObjList = {
   [key: string]: any[]
@@ -38,11 +39,16 @@ export class SideNavComponent implements OnInit{
   isCheckedCheckboxForDelete: boolean;
 
   // chart
+  isFirstTimeLoaded: boolean = true;
+
+  typeForChartByYears: ChartType = 'bar';
   dataVisitorFilterByYearObj: ObjList = {}; // по годам
   datasetsForChartBarByYears: ChartData<any>;
+  labelsForChartBarByYears: any[] = [];
   optionsForChartBarByYears: ChartOptions<any>;
-  typeForChartByYears: ChartType = 'bar';
-  selectedChartByYear: number;
+  backgroundColorListForChartByYears = {ip: [], noIp: []};
+  selectedChartByYearKey: number;
+  selectedChartByYearIndex: number = -1;
 
   dataVisitorFilterByMonthsObj: ObjList = {}; // по месяцам в году
   datasetsForChartBarByMonths: ChartData<any>;
@@ -60,11 +66,12 @@ export class SideNavComponent implements OnInit{
   typeForChartByHours: ChartType = 'bar';
 
   // глобалльные настройки всех chart's
+  backgroundColorSelectedChart: string = 'rgba(155,255,178,0.85)';
   backgroundColorChartWithIpDesc: string = 'rgb(60,158,255)';
   borderColorChartWithIpDesc: string = 'rgb(60,158,255)';
   backgroundColorChartNoIpDesc: string = 'rgba(255, 99, 132, 0.8)';
   borderColorChartNoIpDesc: string = 'rgba(255, 99, 132, 1)';
-  borderWidthChart: number = 3;
+  borderWidthChart: number = 6;
   tensionLineChart: number = 0.4;
   fillLineChart: boolean = false;
 
@@ -78,6 +85,9 @@ export class SideNavComponent implements OnInit{
 
   @ViewChild(MatDrawer)
   private readonly drawerComponent?: MatDrawer;
+
+  @ViewChild('chartByYears', { read: BaseChartDirective })
+  private chartByYear: BaseChartDirective;
 
   get TableType() {
     return TableType
@@ -94,6 +104,8 @@ export class SideNavComponent implements OnInit{
 
   initDefault(): void {
     this.isMobile = this.deviceDetectorService.isMobile();
+
+    if (this.isMobile) this.borderWidthChart = 3;
 
     if (!this.searchVisitors)
       this.searchVisitors = new VisitorDTO();
@@ -136,10 +148,12 @@ export class SideNavComponent implements OnInit{
       }
 
       // ПО УМОЛЧАНИЮ ставится последний год
-      if (!this.selectedChartByYear){
-        this.selectedChartByYear = 0;
+      if (!this.selectedChartByYearKey){
+        this.selectedChartByYearKey = 0;
         for (let year of Object.keys(this.dataVisitorFilterByYearObj)){
-          this.selectedChartByYear = Number(year) > this.selectedChartByYear ? Number(year) : this.selectedChartByYear; // получили последний год с визиторами
+          this.selectedChartByYearKey = Number(year) > this.selectedChartByYearKey ?
+            Number(year) :
+            this.selectedChartByYearKey; // получили последний год с визиторами
         }
       }
 
@@ -147,6 +161,7 @@ export class SideNavComponent implements OnInit{
       this.toCreateBarChartByMonth();
       this.toCreateBarChartByDays();
       this.toCreateBarChartByHours();
+      this.isFirstTimeLoaded = false;
 
       this.eventsService.allDataVisitorList$.next(dataVisitorsList); // тут ВСЕ визиторы
 
@@ -164,15 +179,20 @@ export class SideNavComponent implements OnInit{
       this.dataVisitorsList = dataVisitorsList; // а тут визиторы которые отображаются по фильтру
     })
   }
-z
+  //toDo 1) defaultChartSetting, где инициализируются переменные по-умолчанию,
+  // ISmOBILE BORDERcHART в другой метод
+
   toCreateBarChartByYears(){
     if (this.dataVisitorFilterByYearObj){
-      //создание списков для составных столбцов
-      let dataChartNoIpDesc: number[] = [];
+      let dataChartNoIpDesc: number[] = []; //создание datasets для составных столбцов
       let dataChartWithIpDesc: number[] = [];
 
+      this.labelsForChartBarByYears = [];
+      this.backgroundColorListForChartByYears = {ip: [], noIp: []}
       Object.keys(this.dataVisitorFilterByYearObj)
         .forEach( key => {
+          this.labelsForChartBarByYears.push(key);
+
           let tempCountWithIpDesc = 0;
           let tempCountNoIpDesc = 0;
           for (let i = 0; i < this.dataVisitorFilterByYearObj[key].length; i++){
@@ -184,15 +204,24 @@ z
           }
           dataChartWithIpDesc.push(tempCountWithIpDesc);
           dataChartNoIpDesc.push(tempCountNoIpDesc);
+
+          this.backgroundColorListForChartByYears.ip.push(this.backgroundColorChartWithIpDesc);
+          this.backgroundColorListForChartByYears.noIp.push(this.backgroundColorChartNoIpDesc);
         });
 
+      if (this.isFirstTimeLoaded){
+        const lastIndexBG = this.backgroundColorListForChartByYears.ip.length - 1;
+        this.selectDataChartByYear(lastIndexBG);
+      }
+
+
       this.datasetsForChartBarByYears = {
-        labels: Object.keys(this.dataVisitorFilterByYearObj),
+        labels: this.labelsForChartBarByYears,
         datasets: [
           {
             label: 'Знакомые IP',
             data: dataChartWithIpDesc,
-            backgroundColor: this.backgroundColorChartWithIpDesc,
+            backgroundColor: this.backgroundColorListForChartByYears.ip,
             borderColor: this.borderColorChartWithIpDesc,
             borderWidth: this.borderWidthChart,
             fill: this.fillLineChart,
@@ -204,7 +233,7 @@ z
             borderWidth: this.borderWidthChart,
             fill: this.fillLineChart,
             tension: this.tensionLineChart,
-            backgroundColor: this.backgroundColorChartNoIpDesc,
+            backgroundColor: this.backgroundColorListForChartByYears.noIp,
             borderColor: this.borderColorChartNoIpDesc
           }
         ]}
@@ -251,11 +280,32 @@ z
   }
 
   onClickChartByYears(event: any){
-    console.log(event)
+   if (event.active && event.active.length > 0) {
+     const index = event.active[0].index;
+     const datasetIndex = event.active[0].datasetIndex;
+
+     this.selectDataChartByYear(index);
+    }
+
+  }
+
+  selectDataChartByYear(index: number){
+    if (this.selectedChartByYearIndex !== -1){
+      this.backgroundColorListForChartByYears.ip[this.selectedChartByYearIndex] = this.borderColorChartWithIpDesc;
+      this.backgroundColorListForChartByYears.noIp[this.selectedChartByYearIndex] = this.borderColorChartNoIpDesc;
+    }
+    this.backgroundColorListForChartByYears.ip[index] = this.backgroundColorSelectedChart;
+    this.backgroundColorListForChartByYears.noIp[index] = this.backgroundColorSelectedChart;
+
+    this.selectedChartByYearIndex = index;
+    this.chartByYear.update();
+
+    this.selectedChartByYearKey = Number(Object.keys(this.dataVisitorFilterByYearObj)[index]);
+    this.toCreateBarChartByMonth();
   }
 
   toCreateBarChartByMonth(){
-    const currentYear = this.selectedChartByYear;
+    const currentYear = this.selectedChartByYearKey;
     for (let i = 1; i <= 12; i++){
       this.dataVisitorFilterByMonthsObj[i] = []; // заполняем обьект пустыми списками по месяцам
     }
