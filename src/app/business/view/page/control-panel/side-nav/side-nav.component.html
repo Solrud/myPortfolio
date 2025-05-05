@@ -82,9 +82,9 @@
       <!-- ? //////////////______ ВКЛАДКА "ГРАФИКИ" _____\\\\\\\\\\\\\-->
       <mat-tab label="Графики">
         <div class="h-100 w-100 d-flex flex-column">
-          <span class="text-center mt-2">Заходы на сайт:</span>
+          <span class="text-center mt-2 bg-gradient">Заходы на сайт:</span>
           <div class="container-charts">
-            <div class="pod-container-charts">
+            <div class="pod-container-charts ">
               <canvas baseChart #chartByYears
                       class="chart"
                       [type]="typeForChartByYears"
@@ -93,48 +93,60 @@
 
                       (chartClick)="onClickChartByYears($event)"
               ></canvas>
-              <div>
+              <div *ngIf="datasetsForChartBarByYears" class="d-flex justify-content-center">
                 <button class="btn btn-primary m-3"
-                        (click)="onToggleTypeCharByYears()"><i class="bi bi-bar-chart"></i></button>
+                        [class.btn-sm]="isMobile"
+                        (click)="onToggleTypeCharByYears()"
+                >Изменить тип диаграммы "За все года" <i class="bi bi-bar-chart-fill"></i></button>
               </div>
             </div>
             <div class="pod-container-charts">
-              <canvas baseChart
+              <canvas baseChart #chartByMonths
                       class="chart"
                       [type]="typeForChartByMonths"
                       [data]="datasetsForChartBarByMonths"
                       [options]="optionsForChartBarByMonths"
+
+                      (chartClick)="onClickChartByMonths($event)"
               ></canvas>
-              <div>
+              <div *ngIf="datasetsForChartBarByMonths" class="d-flex justify-content-center">
                 <button class="btn btn-primary m-3"
-                        (click)="onToggleTypeCharByMonths()"><i class="bi bi-bar-chart"></i></button>
+                        [class.btn-sm]="isMobile"
+                        (click)="onToggleTypeCharByMonths()"
+                >Изменить тип диаграммы "По месяцам" <i class="bi bi-bar-chart-fill"></i></button>
               </div>
             </div>
 
           </div>
           <div class="container-charts">
             <div class="pod-container-charts">
-              <canvas baseChart
+              <canvas baseChart #chartByDays
                       class="chart"
                       [type]="typeForChartByDays"
                       [data]="datasetsForChartBarByDays"
                       [options]="optionsForChartBarByDays"
+
+                      (chartClick)="onClickChartByDays($event)"
               ></canvas>
-              <div>
+              <div *ngIf="datasetsForChartBarByDays" class="d-flex justify-content-center">
                 <button class="btn btn-primary m-3"
-                        (click)="onToggleTypeCharByDays()"><i class="bi bi-bar-chart"></i></button>
+                        [class.btn-sm]="isMobile"
+                        (click)="onToggleTypeCharByDays()"
+                >Изменить тип диаграммы "По дням" <i class="bi bi-bar-chart-fill"></i></button>
               </div>
             </div>
             <div class="pod-container-charts">
-              <canvas baseChart
+              <canvas baseChart #chartByHours
                       class="chart"
                       [type]="typeForChartByHours"
                       [data]="datasetsForChartBarByHours"
                       [options]="optionsForChartBarByHours"
               ></canvas>
-              <div>
+              <div *ngIf="datasetsForChartBarByHours" class="d-flex justify-content-center">
                 <button class="btn btn-primary m-3"
-                        (click)="onToggleTypeCharByHours()"><i class="bi bi-bar-chart"></i></button>
+                        [class.btn-sm]="isMobile"
+                        (click)="onToggleTypeCharByHours()"
+                >Изменить тип диаграммы "По часам" <i class="bi bi-bar-chart-fill"></i></button>
               </div>
             </div>
           </div>

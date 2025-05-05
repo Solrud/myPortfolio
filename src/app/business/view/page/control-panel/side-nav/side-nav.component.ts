@@ -12,6 +12,7 @@ import {DialogResult} from "../../../../shared/dialog-result";
 import {EventsService} from "../../../../data/service/OptionalService/events.service";
 import {ChartData, ChartOptions, ChartType} from "chart.js";
 import {BaseChartDirective} from "ng2-charts";
+import { draw, generate } from 'patternomaly';
 
 type ObjList = {
   [key: string]: any[]
@@ -44,29 +45,38 @@ export class SideNavComponent implements OnInit{
   typeForChartByYears: ChartType = 'bar';
   dataVisitorFilterByYearObj: ObjList = {}; // по годам
   datasetsForChartBarByYears: ChartData<any>;
-  labelsForChartBarByYears: any[] = [];
   optionsForChartBarByYears: ChartOptions<any>;
+  labelsForChartBarByYears: any[] = [];
   backgroundColorListForChartByYears = {ip: [], noIp: []};
   selectedChartByYearKey: number;
   selectedChartByYearIndex: number = -1;
 
+  typeForChartByMonths: ChartType = 'bar';
   dataVisitorFilterByMonthsObj: ObjList = {}; // по месяцам в году
   datasetsForChartBarByMonths: ChartData<any>;
   optionsForChartBarByMonths: ChartOptions<any>;
-  typeForChartByMonths: ChartType = 'bar';
+  labelsForChartBarByMonths: any[] = [];
+  backgroundColorListForChartByMonths = {ip: [], noIp: []};
+  selectedChartByMonthKey: number;
+  selectedChartByMonthIndex: number = -1;
 
+  typeForChartByDays: ChartType = 'bar';
   dataVisitorFilterByDaysObj: ObjList = {}; // по дням в месяце
   datasetsForChartBarByDays: ChartData<any>;
   optionsForChartBarByDays: any;
-  typeForChartByDays: ChartType = 'bar';
+  labelsForChartBarByDays: any[] = [];
+  backgroundColorListForChartByDays = {ip: [], noIp: []};
+  selectedChartByDayKey: number;
+  selectedChartByDayIndex: number = -1;
 
+  typeForChartByHours: ChartType = 'bar';
   dataVisitorFilterByHoursObj: ObjList = {}; // по часам в дне
   datasetsForChartBarByHours: ChartData<any>;
   optionsForChartBarByHours: ChartOptions<any>;
-  typeForChartByHours: ChartType = 'bar';
+
 
   // глобалльные настройки всех chart's
-  backgroundColorSelectedChart: string = 'rgba(155,255,178,0.85)';
+  backgroundColorSelectedChart: any = draw('diagonal-right-left', 'rgba(155,255,178,0.85)');
   backgroundColorChartWithIpDesc: string = 'rgb(60,158,255)';
   borderColorChartWithIpDesc: string = 'rgb(60,158,255)';
   backgroundColorChartNoIpDesc: string = 'rgba(255, 99, 132, 0.8)';
@@ -88,6 +98,15 @@ export class SideNavComponent implements OnInit{
 
   @ViewChild('chartByYears', { read: BaseChartDirective })
   private chartByYear: BaseChartDirective;
+
+  @ViewChild('chartByMonths', { read: BaseChartDirective })
+  private chartByMonths: BaseChartDirective;
+
+  @ViewChild('chartByDays', { read: BaseChartDirective })
+  private chartByDays: BaseChartDirective;
+
+  @ViewChild('chartByHours', { read: BaseChartDirective })
+  private chartByHours: BaseChartDirective;
 
   get TableType() {
     return TableType
@@ -158,8 +177,8 @@ export class SideNavComponent implements OnInit{
       }
 
       this.toCreateBarChartByYears();
-      this.toCreateBarChartByMonth();
-      this.toCreateBarChartByDays();
+      // this.toCreateBarChartByMonth();
+      // this.toCreateBarChartByDays();
       this.toCreateBarChartByHours();
       this.isFirstTimeLoaded = false;
 
@@ -181,6 +200,8 @@ export class SideNavComponent implements OnInit{
   }
   //toDo 1) defaultChartSetting, где инициализируются переменные по-умолчанию,
   // ISmOBILE BORDERcHART в другой метод
+  // по нажатиюна лейбл выбирать столбец
+  // менять значок при изменить тип диаграммы
 
   toCreateBarChartByYears(){
     if (this.dataVisitorFilterByYearObj){
@@ -284,9 +305,12 @@ export class SideNavComponent implements OnInit{
      const index = event.active[0].index;
      const datasetIndex = event.active[0].datasetIndex;
 
-     this.selectDataChartByYear(index);
+     if (index !== this.selectedChartByYearIndex){
+       this.toResetDataChartByDays();
+       this.toResetDataChartByHours();
+       this.selectDataChartByYear(index);
+     }
     }
-
   }
 
   selectDataChartByYear(index: number){
@@ -294,8 +318,8 @@ export class SideNavComponent implements OnInit{
       this.backgroundColorListForChartByYears.ip[this.selectedChartByYearIndex] = this.borderColorChartWithIpDesc;
       this.backgroundColorListForChartByYears.noIp[this.selectedChartByYearIndex] = this.borderColorChartNoIpDesc;
     }
-    this.backgroundColorListForChartByYears.ip[index] = this.backgroundColorSelectedChart;
-    this.backgroundColorListForChartByYears.noIp[index] = this.backgroundColorSelectedChart;
+    this.backgroundColorListForChartByYears.ip[index] = draw('diagonal-right-left', this.backgroundColorChartWithIpDesc);
+    this.backgroundColorListForChartByYears.noIp[index] = draw('diagonal-right-left', this.backgroundColorChartNoIpDesc);
 
     this.selectedChartByYearIndex = index;
     this.chartByYear.update();
@@ -321,8 +345,12 @@ export class SideNavComponent implements OnInit{
     let dataChartWithIpDesc: number[] = [];
     let dataChartNoIpDesc: number[] = [];
 
+    this.labelsForChartBarByMonths = [];
+    this.backgroundColorListForChartByMonths = {ip: [], noIp: []}
     Object.keys(this.dataVisitorFilterByMonthsObj)
       .forEach( key => {
+        this.labelsForChartBarByMonths.push(key);
+
         let tempCountWithIpDesc = 0;
         let tempCountNoIpDesc = 0;
         for (let i = 0; i < this.dataVisitorFilterByMonthsObj[key].length; i++){
@@ -334,15 +362,35 @@ export class SideNavComponent implements OnInit{
         }
         dataChartWithIpDesc.push(tempCountWithIpDesc);
         dataChartNoIpDesc.push(tempCountNoIpDesc);
+
+        this.backgroundColorListForChartByMonths.ip.push(this.backgroundColorChartWithIpDesc);
+        this.backgroundColorListForChartByMonths.noIp.push(this.backgroundColorChartNoIpDesc);
       });
 
+    if (this.isFirstTimeLoaded){
+      let lastIndexBG = 0;
+
+      if (!this.selectedChartByMonthKey){
+
+        for (let month of Object.keys(this.dataVisitorFilterByMonthsObj)){
+          if (this.dataVisitorFilterByMonthsObj[month].length > 0){
+            lastIndexBG = Number(month) > lastIndexBG ?
+              Number(month) :
+              lastIndexBG;
+          }
+        }
+      }
+
+      this.selectDataChartByMonth(lastIndexBG - 1);
+    }
+
     this.datasetsForChartBarByMonths = {
-      labels: Object.keys(this.dataVisitorFilterByMonthsObj),
+      labels: this.labelsForChartBarByMonths,
       datasets: [
         {
           label: 'Знакомые IP',
           data: dataChartWithIpDesc,
-          backgroundColor: this.backgroundColorChartWithIpDesc,
+          backgroundColor: this.backgroundColorListForChartByMonths.ip,
           borderColor: this.borderColorChartWithIpDesc,
           borderWidth: this.borderWidthChart,
           fill: this.fillLineChart,
@@ -354,7 +402,7 @@ export class SideNavComponent implements OnInit{
           borderWidth: this.borderWidthChart,
           fill: this.fillLineChart,
           tension: this.tensionLineChart,
-          backgroundColor: this.backgroundColorChartNoIpDesc,
+          backgroundColor: this.backgroundColorListForChartByMonths.noIp,
           borderColor: this.borderColorChartNoIpDesc
         }
       ]}
@@ -401,8 +449,35 @@ export class SideNavComponent implements OnInit{
     this.typeForChartByMonths = this.typeForChartByMonths == 'bar' ? 'line' : 'bar';
   }
 
+  onClickChartByMonths(event: any){
+    if (event.active && event.active.length > 0) {
+      const index = event.active[0].index;
+      const datasetIndex = event.active[0].datasetIndex;
+
+      if (index !== this.selectedChartByMonthIndex){
+        this.toResetDataChartByHours();
+        this.selectDataChartByMonth(index);
+      }
+    }
+  }
+
+  selectDataChartByMonth(index: number){
+    if (this.selectedChartByMonthIndex !== -1){
+      this.backgroundColorListForChartByMonths.ip[this.selectedChartByMonthIndex] = this.borderColorChartWithIpDesc;
+      this.backgroundColorListForChartByMonths.noIp[this.selectedChartByMonthIndex] = this.borderColorChartNoIpDesc;
+    }
+    this.backgroundColorListForChartByMonths.ip[index] = draw('diagonal-right-left', this.backgroundColorChartWithIpDesc);
+    this.backgroundColorListForChartByMonths.noIp[index] = draw('diagonal-right-left', this.backgroundColorChartNoIpDesc);
+
+    this.selectedChartByMonthIndex = index;
+    this.chartByMonths.update();
+
+    this.selectedChartByMonthKey = Number(Object.keys(this.dataVisitorFilterByMonthsObj)[index]);
+    this.toCreateBarChartByDays();
+  }
+
   toCreateBarChartByDays(){
-    const currentMonth = new Date().getMonth() + 1;
+    const currentMonth = this.selectedChartByMonthKey;
     const totalDaysInCurrentMonth = new Date(new Date().getFullYear(), currentMonth, 0).getDate();
 
     for (let i= 1; i <= totalDaysInCurrentMonth; i++){
@@ -418,9 +493,11 @@ export class SideNavComponent implements OnInit{
     //создание списков для составных столбцов
     let dataChartWithIpDesc: number[] = [];
     let dataChartNoIpDesc: number[] = [];
-
+    this.labelsForChartBarByDays = [];
+    this.backgroundColorListForChartByDays = {ip: [], noIp: []}
     Object.keys(this.dataVisitorFilterByDaysObj)
       .forEach( key => {
+        this.labelsForChartBarByDays.push(key);
         let tempCountWithIpDesc = 0;
         let tempCountNoIpDesc = 0;
         for (let i = 0; i < this.dataVisitorFilterByDaysObj[key].length; i++){
@@ -432,7 +509,28 @@ export class SideNavComponent implements OnInit{
         }
         dataChartWithIpDesc.push(tempCountWithIpDesc);
         dataChartNoIpDesc.push(tempCountNoIpDesc);
+
+        this.backgroundColorListForChartByDays.ip.push(this.backgroundColorChartWithIpDesc);
+        this.backgroundColorListForChartByDays.noIp.push(this.backgroundColorChartNoIpDesc);
       });
+
+
+    if (this.isFirstTimeLoaded){
+      let lastIndexBG = 0;
+
+      if (!this.selectedChartByDayKey){
+
+        for (let day of Object.keys(this.dataVisitorFilterByDaysObj)){
+          if (this.dataVisitorFilterByDaysObj[day].length > 0){
+            lastIndexBG = Number(day) > lastIndexBG ?
+              Number(day) :
+              lastIndexBG;
+          }
+        }
+      }
+
+      this.selectDataChartByDays(lastIndexBG - 1);
+    }
 
     this.datasetsForChartBarByDays = {
       labels: Object.keys(this.dataVisitorFilterByDaysObj),
@@ -440,7 +538,7 @@ export class SideNavComponent implements OnInit{
         {
           label: 'Знакомые IP',
           data: dataChartWithIpDesc,
-          backgroundColor: this.backgroundColorChartWithIpDesc,
+          backgroundColor: this.backgroundColorListForChartByDays.ip,
           borderColor: this.borderColorChartWithIpDesc,
           borderWidth: this.borderWidthChart,
           fill: this.fillLineChart,
@@ -452,7 +550,7 @@ export class SideNavComponent implements OnInit{
           borderWidth: this.borderWidthChart,
           fill: this.fillLineChart,
           tension: this.tensionLineChart,
-          backgroundColor: this.backgroundColorChartNoIpDesc,
+          backgroundColor: this.backgroundColorListForChartByDays.noIp,
           borderColor: this.borderColorChartNoIpDesc
         }
       ]}
@@ -499,8 +597,43 @@ export class SideNavComponent implements OnInit{
     this.typeForChartByDays = this.typeForChartByDays == 'bar' ? 'line' : 'bar';
   }
 
+  onClickChartByDays(event: any){
+    if (event.active && event.active.length > 0) {
+      const index = event.active[0].index;
+      const datasetIndex = event.active[0].datasetIndex;
+
+      if (index !== this.selectedChartByDayIndex)
+        this.selectDataChartByDays(index);
+    }
+  }
+
+  selectDataChartByDays(index: number){
+    if (this.selectedChartByDayIndex !== -1){
+      this.backgroundColorListForChartByDays.ip[this.selectedChartByDayIndex] = this.borderColorChartWithIpDesc;
+      this.backgroundColorListForChartByDays.noIp[this.selectedChartByDayIndex] = this.borderColorChartNoIpDesc;
+    }
+    this.backgroundColorListForChartByDays.ip[index] = draw('diagonal-right-left', this.backgroundColorChartWithIpDesc);
+    this.backgroundColorListForChartByDays.noIp[index] = draw('diagonal-right-left', this.backgroundColorChartNoIpDesc);
+
+    this.selectedChartByDayIndex = index;
+    this.chartByDays.update();
+
+    this.selectedChartByDayKey = Number(Object.keys(this.dataVisitorFilterByDaysObj)[index]);
+    this.toCreateBarChartByHours();
+  }
+
+  toResetDataChartByDays(): void {
+    this.dataVisitorFilterByDaysObj = {}; // по дням в месяце
+    this.datasetsForChartBarByDays = null;
+    this.optionsForChartBarByDays = [];
+    this.labelsForChartBarByDays = [];
+    this.backgroundColorListForChartByDays = {ip: [], noIp: []};
+    this.selectedChartByDayKey = null;
+    this.selectedChartByDayIndex = -1;
+  }
+
   toCreateBarChartByHours(){
-    const currentDay = new Date().getDate();
+    const currentDay = this.selectedChartByDayKey;
 
     for (let i= 0; i <= 23; i++){
       let j: any = i;
@@ -605,6 +738,12 @@ export class SideNavComponent implements OnInit{
 
   onToggleTypeCharByHours(): void {
     this.typeForChartByHours = this.typeForChartByHours == 'bar' ? 'line' : 'bar';
+  }
+
+  toResetDataChartByHours(): void {
+    this.dataVisitorFilterByHoursObj = {}; // по дням в месяце
+    this.datasetsForChartBarByHours = null;
+    this.optionsForChartBarByHours = [];
   }
 
   updateAndGetAllContacts() {
