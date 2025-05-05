@@ -53,6 +53,10 @@ import { TestComponent } from './business/view/page/test/test.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { NgChartsModule } from 'ng2-charts';
 import { BarChartComponent } from './business/view/page/components/bar-chart/bar-chart.component';
+import {Chart} from "chart.js";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
+Chart.register(ChartDataLabels);
 
 @NgModule({
   declarations: [

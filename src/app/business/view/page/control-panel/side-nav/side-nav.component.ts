@@ -290,9 +290,28 @@ export class SideNavComponent implements OnInit{
           },
           colors: {
             enabled: true
-          }
+          },
+          datalabels: this.getDataLabelsOptionsForChartByYears()
         }
       }
+    }
+  }
+
+  getDataLabelsOptionsForChartByYears() {
+    const isMobile = this.isMobile;
+
+    return {
+      display: function(context) {
+        // Показывать метку только если значение > 20
+        if (isMobile) {
+          return context.dataset.data[context.dataIndex] > 280
+        }
+        return context.dataset.data[context.dataIndex] > 8;
+      },
+      anchor: 'end',
+        align: 'start',
+      offset: -20,
+      color: '#fff'
     }
   }
 
@@ -440,8 +459,26 @@ export class SideNavComponent implements OnInit{
         },
         colors: {
           enabled: true
-        }
+        },
+        datalabels: this.getDataLabelsOptionsForChartByMonths()
       }
+    }
+  }
+
+  getDataLabelsOptionsForChartByMonths(){
+    const isMobile = this.isMobile;
+
+    return {
+      display: function(context) {
+        if (isMobile) {
+          return context.dataset.data[context.dataIndex] > 25
+        }
+        return context.dataset.data[context.dataIndex] > 8;
+      },
+      anchor: 'end',
+      align: 'start',
+      offset: -20,
+      color: '#fff'
     }
   }
 
@@ -565,7 +602,14 @@ export class SideNavComponent implements OnInit{
           stacked: true
         },
         y: {
-          stacked: true
+          stacked: true,
+          ticks: {
+            stepSize: 1,
+            callback: (value) => {
+              // если число целое то возвращаем без десятичной части
+              return Number.isInteger(value) ? value.toString() : value;
+            }
+          }
         }
       },
       plugins: {
@@ -588,8 +632,26 @@ export class SideNavComponent implements OnInit{
         },
         colors: {
           enabled: true
-        }
+        },
+        datalabels: this.getDataLabelsOptionsForChartByDays()
       }
+    }
+  }
+
+  getDataLabelsOptionsForChartByDays(){
+    const isMobile = this.isMobile;
+
+    return {
+      display: function(context) {
+        if (isMobile) {
+          return context.dataset.data[context.dataIndex] > 1
+        }
+        return context.dataset.data[context.dataIndex] > 0;
+      },
+      anchor: 'end',
+      align: 'start',
+      offset: -20,
+      color: '#fff'
     }
   }
 
@@ -638,17 +700,19 @@ export class SideNavComponent implements OnInit{
     for (let i= 0; i <= 23; i++){
       let j: any = i;
       if(j < 10) j = '0' + i;
+      j = j + ':00';
       this.dataVisitorFilterByHoursObj[j] = []; // заполняем обьект пустыми списками по месяцам
     }
 
     for (let i = 0; i < this.dataVisitorFilterByDaysObj[currentDay].length; i++){
       let hour = this.dataVisitorFilterByDaysObj[currentDay][i].date.getHours();
       hour = hour < 10 ? '0' + hour : hour;
+      hour = hour + ':00';
 
       this.dataVisitorFilterByHoursObj[hour].push(this.dataVisitorFilterByDaysObj[currentDay][i])
     }
 
-//создание списков для составных столбцов
+    //создание списков для составных столбцов
     let dataChartWithIpDesc: number[] = [];
     let dataChartNoIpDesc: number[] = [];
 
@@ -705,7 +769,7 @@ export class SideNavComponent implements OnInit{
           ticks: {
             stepSize: 1,
             callback: (value) => {
-              // Если число целое - возвращаем без десятичной части
+              // если число целое то возвращаем без десятичной части
               return Number.isInteger(value) ? value.toString() : value;
             }
           }
@@ -731,8 +795,26 @@ export class SideNavComponent implements OnInit{
         },
         colors: {
           enabled: true
-        }
+        },
+        datalabels: this.getDataLabelsOptionsForChartByHours()
       }
+    }
+  }
+
+  getDataLabelsOptionsForChartByHours(){
+    const isMobile = this.isMobile;
+
+    return {
+      display: function(context) {
+        if (isMobile) {
+          return context.dataset.data[context.dataIndex] > 1
+        }
+        return context.dataset.data[context.dataIndex] > 0;
+      },
+      anchor: 'end',
+      align: 'start',
+      offset: -20,
+      color: '#fff'
     }
   }
 
