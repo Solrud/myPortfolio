@@ -41,6 +41,7 @@ export class SideNavComponent implements OnInit{
 
   // chart
   isFirstTimeLoaded: boolean = true;
+  currentDate: Date = new Date();
 
   typeForChartByYears: ChartType = 'bar';
   dataVisitorFilterByYearObj: ObjList = {}; // по годам
@@ -74,7 +75,6 @@ export class SideNavComponent implements OnInit{
   datasetsForChartBarByHours: ChartData<any>;
   optionsForChartBarByHours: ChartOptions<any>;
 
-
   // глобалльные настройки всех chart's
   backgroundColorSelectedChart: any = draw('diagonal-right-left', 'rgba(155,255,178,0.85)');
   backgroundColorChartWithIpDesc: string = 'rgb(60,158,255)';
@@ -82,8 +82,10 @@ export class SideNavComponent implements OnInit{
   backgroundColorChartNoIpDesc: string = 'rgba(255, 99, 132, 0.8)';
   borderColorChartNoIpDesc: string = 'rgba(255, 99, 132, 1)';
   borderWidthChart: number = 6;
+  borderWidthChartForMobile: number = 2;
   tensionLineChart: number = 0.4;
   fillLineChart: boolean = false;
+  heightChartForMobile: number = 250;
 
 
   constructor(private contactsService: ContactsService,
@@ -124,7 +126,7 @@ export class SideNavComponent implements OnInit{
   initDefault(): void {
     this.isMobile = this.deviceDetectorService.isMobile();
 
-    if (this.isMobile) this.borderWidthChart = 3;
+    if (this.isMobile) this.borderWidthChart = this.borderWidthChartForMobile;
 
     if (!this.searchVisitors)
       this.searchVisitors = new VisitorDTO();
@@ -143,6 +145,7 @@ export class SideNavComponent implements OnInit{
     this.visitorService.search(this.searchVisitors).subscribe(result => {
       dataVisitorsList = result;
 
+      this.dataVisitorFilterByYearObj = {}
       for (let i = 0; i < dataVisitorsList.length; i++) {
         const parts = (dataVisitorsList[i].date).split(' ')
         const dateParts = parts[0].split('.');
@@ -160,11 +163,16 @@ export class SideNavComponent implements OnInit{
 
         dataVisitorsList[i].date = date;
 
+
         if (!this.dataVisitorFilterByYearObj[date.getFullYear()]){ // заполняем визиторами обьект по годам, для чартов
           this.dataVisitorFilterByYearObj[date.getFullYear()] = [];
         }
         this.dataVisitorFilterByYearObj[date.getFullYear()].push(dataVisitorsList[i])
       }
+      this.isFirstTimeLoaded = true;
+      this.toResetDataChartByMonths();
+      this.toResetDataChartByDays();
+      this.toResetDataChartByHours();
 
       this.toCreateBarChartByYears();
       this.isFirstTimeLoaded = false;
@@ -193,12 +201,15 @@ export class SideNavComponent implements OnInit{
   toCreateBarChartByYears(){
     // ПО УМОЛЧАНИЮ ставится последний год
     if (!this.selectedChartByYearKey){
-      this.selectedChartByYearKey = 0;
-      for (let year of Object.keys(this.dataVisitorFilterByYearObj)){
-        this.selectedChartByYearKey = Number(year) > this.selectedChartByYearKey ?
-          Number(year) :
-          this.selectedChartByYearKey; // получили последний год с визиторами
-      }
+      // this.selectedChartByYearKey = this.currentDate.getFullYear();
+
+      // ? -> по умолчанию ставится год, где есть визиторы
+      // this.selectedChartByYearKey = 0;
+      // for (let year of Object.keys(this.dataVisitorFilterByYearObj)){
+      //   this.selectedChartByYearKey = Number(year) > this.selectedChartByYearKey ?
+      //     Number(year) :
+      //     this.selectedChartByYearKey; // получили последний год с визиторами
+      // }
     }
 
     if (this.dataVisitorFilterByYearObj){
@@ -258,6 +269,7 @@ export class SideNavComponent implements OnInit{
 
       this.optionsForChartBarByYears = {
         responsive: true,
+        maintainAspectRatio: true,
         scales: {
           x: {
             ticks: {color: 'rgba(90,143,255,0.64)'}, // Цвет подписей оси X
@@ -295,11 +307,12 @@ export class SideNavComponent implements OnInit{
   }
 
   getDataLabelsOptionsForChartByYears() {
+    // Показывать метку только если значение > n
     const isMobile = this.isMobile;
 
     return {
       display: function(context) {
-        // Показывать метку только если значение > 20
+
         if (isMobile) {
           return context.dataset.data[context.dataIndex] > 280
         }
@@ -322,6 +335,7 @@ export class SideNavComponent implements OnInit{
      const datasetIndex = event.active[0].datasetIndex;
 
      if (index !== this.selectedChartByYearIndex){
+       this.toResetDataChartByMonths();
        this.toResetDataChartByDays();
        this.toResetDataChartByHours();
        this.selectDataChartByYear(index);
@@ -334,13 +348,18 @@ export class SideNavComponent implements OnInit{
       this.backgroundColorListForChartByYears.ip[this.selectedChartByYearIndex] = this.borderColorChartWithIpDesc;
       this.backgroundColorListForChartByYears.noIp[this.selectedChartByYearIndex] = this.borderColorChartNoIpDesc;
     }
-    this.backgroundColorListForChartByYears.ip[index] = draw('diagonal-right-left', this.backgroundColorChartWithIpDesc);
-    this.backgroundColorListForChartByYears.noIp[index] = draw('diagonal-right-left', this.backgroundColorChartNoIpDesc);
+    this.selectedChartByYearKey = this.currentDate.getFullYear()
+    // если совпадает текущий год с последним годом в массиве годов
+    if (Object.keys(this.dataVisitorFilterByYearObj)[index] === this.currentDate.getFullYear().toString()){
+      this.backgroundColorListForChartByYears.ip[index] = draw('diagonal-right-left', this.backgroundColorChartWithIpDesc);
+      this.backgroundColorListForChartByYears.noIp[index] = draw('diagonal-right-left', this.backgroundColorChartNoIpDesc);
 
-    this.selectedChartByYearIndex = index;
-    this.chartByYear.update();
+      this.selectedChartByYearIndex = index;
+      this.chartByYear.update();
 
-    this.selectedChartByYearKey = Number(Object.keys(this.dataVisitorFilterByYearObj)[index]);
+      this.selectedChartByYearKey = Number(Object.keys(this.dataVisitorFilterByYearObj)[index]);
+    }
+
     this.toCreateBarChartByMonth();
   }
 
@@ -489,6 +508,7 @@ export class SideNavComponent implements OnInit{
       const datasetIndex = event.active[0].datasetIndex;
 
       if (index !== this.selectedChartByMonthIndex){
+        this.toResetDataChartByDays();
         this.toResetDataChartByHours();
         this.selectDataChartByMonth(index);
       }
@@ -508,6 +528,16 @@ export class SideNavComponent implements OnInit{
 
     this.selectedChartByMonthKey = Number(Object.keys(this.dataVisitorFilterByMonthsObj)[index]);
     this.toCreateBarChartByDays();
+  }
+
+  toResetDataChartByMonths(): void {
+    this.dataVisitorFilterByMonthsObj = {}; // по дням в месяце
+    this.datasetsForChartBarByMonths = null;
+    this.optionsForChartBarByMonths = [];
+    this.labelsForChartBarByMonths = [];
+    this.backgroundColorListForChartByMonths = {ip: [], noIp: []};
+    this.selectedChartByMonthKey = null;
+    this.selectedChartByMonthIndex = -1;
   }
 
   toCreateBarChartByDays(){
@@ -671,6 +701,15 @@ export class SideNavComponent implements OnInit{
       this.backgroundColorListForChartByDays.ip[this.selectedChartByDayIndex] = this.borderColorChartWithIpDesc;
       this.backgroundColorListForChartByDays.noIp[this.selectedChartByDayIndex] = this.borderColorChartNoIpDesc;
     }
+
+    // this.selectedChartByDayKey = this.currentDate.getDate()
+    // console.log(this.currentDate.getDate().toString())
+    // console.log(Object.keys(this.dataVisitorFilterByDaysObj)[index].toString())
+    // console.log(Object.keys(this.dataVisitorFilterByDaysObj)[index].toString() === this.currentDate.getDate.toString())
+    // если совпадает текущий день с последним днем в массиве дней
+    // if (Object.keys(this.dataVisitorFilterByDaysObj)[index] === this.currentDate.getDate.toString()){
+      //toDo почему то не дата не равна дате, че за прикол
+    // }
     this.backgroundColorListForChartByDays.ip[index] = draw('diagonal-right-left', this.backgroundColorChartWithIpDesc);
     this.backgroundColorListForChartByDays.noIp[index] = draw('diagonal-right-left', this.backgroundColorChartNoIpDesc);
 
@@ -825,8 +864,41 @@ export class SideNavComponent implements OnInit{
     this.optionsForChartBarByHours = [];
   }
 
-  onClickResetToDefaultDateForCharts(): void {
+  getDateSelectedCharts(){
+    let date = [null, null, null];
 
+    if (this.selectedChartByDayKey){
+      const day = this.selectedChartByDayKey < 10 ? '0' + this.selectedChartByDayKey : this.selectedChartByDayKey;
+      date[0] = day.toString();
+    }
+    if (this.selectedChartByMonthKey){
+      const month = this.selectedChartByMonthKey < 10 ? '0' + this.selectedChartByMonthKey : this.selectedChartByMonthKey;
+      date[1] = month.toString();
+    }
+    if (this.selectedChartByYearKey){
+      const year = this.selectedChartByYearKey;
+      date[2] = year;
+    }
+    date = date.filter((date) => date != null)
+
+    const dateTransformed = date.join('.');
+
+    return dateTransformed;
+  }
+
+  getHeightChart(){
+   if (this.isMobile) return this.heightChartForMobile;
+   return null;
+  }
+
+  onClickResetToDefaultDateForCharts(): void {
+    this.isFirstTimeLoaded = true;
+    this.toResetDataChartByMonths();
+    this.toResetDataChartByDays();
+    this.toResetDataChartByHours();
+
+    this.toCreateBarChartByYears();
+    this.isFirstTimeLoaded = false;
   }
 
   updateAndGetAllContacts() {

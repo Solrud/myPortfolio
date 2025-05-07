@@ -63,7 +63,6 @@
                            (onClickRow)="onClickVisitorRow($event)"
         ></app-table-control>
       </mat-tab>
-
       <!-- ? //////////////______ ВКЛАДКА "ЗАЯВКИ" _____\\\\\\\\\\\\\-->
       <mat-tab label="Заявки">
         <button mat-stroked-button
@@ -82,17 +81,17 @@
       <mat-tab label="Графики">
         <div class="h-100 w-100 d-flex flex-column">
           <div class="visitors-chart-span d-flex flex-column align-items-center ">
-            <span class=" mt-2 text-center">Заходы на сайт:</span>
+            <span class=" mt-2 text-center">Заходы на сайт [{{getDateSelectedCharts()}}]</span>
             <div class="my-2">
-              <button class="btn btn-sm btn-outline-primary"
+              <button class="btn btn-sm btn-outline-light"
                       (click)="onClickResetToDefaultDateForCharts()">Вернуть по-умолчанию</button>
             </div>
           </div>
-
           <div class="container-charts">
             <div class="pod-container-charts ">
               <canvas baseChart #chartByYears
                       class="chart"
+                      [height]="getHeightChart()"
                       [type]="typeForChartByYears"
                       [data]="datasetsForChartBarByYears"
                       [options]="optionsForChartBarByYears"
@@ -109,6 +108,7 @@
             <div class="pod-container-charts">
               <canvas baseChart #chartByMonths
                       class="chart"
+                      [height]="getHeightChart()"
                       [type]="typeForChartByMonths"
                       [data]="datasetsForChartBarByMonths"
                       [options]="optionsForChartBarByMonths"
@@ -128,6 +128,7 @@
             <div class="pod-container-charts">
               <canvas baseChart #chartByDays
                       class="chart"
+                      [height]="getHeightChart()"
                       [type]="typeForChartByDays"
                       [data]="datasetsForChartBarByDays"
                       [options]="optionsForChartBarByDays"
@@ -144,6 +145,7 @@
             <div class="pod-container-charts">
               <canvas baseChart #chartByHours
                       class="chart"
+                      [height]="getHeightChart()"
                       [type]="typeForChartByHours"
                       [data]="datasetsForChartBarByHours"
                       [options]="optionsForChartBarByHours"
@@ -158,6 +160,19 @@
           </div>
         </div>
       </mat-tab>
+<!--      <mat-tab label="Тест">-->
+<!--        <div class="test-con-chart">-->
+<!--          <canvas baseChart-->
+<!--                  [height]="null"-->
+<!--                  class="test-chart"-->
+<!--                  [type]="typeForChartByYears"-->
+<!--                  [data]="datasetsForChartBarByYears"-->
+<!--                  [options]="optionsForChartBarByYears"-->
+
+<!--                  (chartClick)="onClickChartByYears($event)"-->
+<!--          ></canvas>-->
+<!--        </div>-->
+<!--      </mat-tab>-->
     </mat-tab-group>
   </div>
 </mat-drawer-container>
