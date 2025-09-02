@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ViewportScroller} from "@angular/common";
+import {FileService} from "../../../../shared/file/file.service";
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,8 @@ import {ViewportScroller} from "@angular/common";
 export class HeaderComponent implements OnInit{
 
   constructor(
-    private scroller: ViewportScroller)
+    private scroller: ViewportScroller,
+    private file: FileService)
   {}
 
   ngOnInit(): void {
@@ -19,6 +21,10 @@ export class HeaderComponent implements OnInit{
 
   scrollToSection(sectionID: string) {
     this.scroller.scrollToAnchor(sectionID)
+  }
+
+  openPortfolioInTab(): void {
+    this.file.openFileInNewWindow('assets/files/temp-portfolio.pdf')
   }
 
 }

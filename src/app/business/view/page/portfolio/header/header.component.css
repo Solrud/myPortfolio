@@ -50,9 +50,14 @@ span:hover{
   }
 }
 
-@media (max-width: 340px){
+@media (max-width: 450px){
   span{
-    font-size: 0.9rem;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 320px){
+  span{
+    font-size: 0.8rem;
   }
 }
 
