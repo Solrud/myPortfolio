@@ -62,5 +62,11 @@ API запросы доступны только после проверки JWT
 [![gitHub](https://img.shields.io/badge/GitHub-Solrud-blue?logo=github)](https://github.com/Solrud)  
 [![devSite](https://img.shields.io/badge/Site-mattheweb.ru-3C517C?logo=monster)](https://mattheweb.ru/git-badges-readme-myportfolio)  
 [![tg](https://img.shields.io/badge/Telegram-@rudalsmolyusr-27a7e7?logo=telegram)](https://t.me/rudalsmolyusr)
+
+## Ⓜ️ Skills
+[![My Skills](https://skillicons.dev/icons?i=js,ts,cs,py&theme=dark)](https://skillicons.dev)
+
+[![My Skills](https://skillicons.dev/icons?i=css,html,angular,bootstrap,figma,git,gitlab,github,idea,pycharm,npm,postman&theme=dark&perline=6)](https://skillicons.dev)
+
 ## ❗ Важно ❗
 Код проекта предоставлен в ознакомительных целях для демонстрации технических навыков разработчика. Проект не будет работать должным образом при самостоятельной сборке ввиду отсутствия доступа к конфиденциальной информации (авторизации).
